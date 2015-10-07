@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<variable name="GlobalBackgroundVar">
-		<value condition="!IsEmpty(ListItem.Art(extrafanart1)) + !Skin.HasSetting(Disable.Extrafanart) + !ListItem.IsCollection">$INFO[Control.GetLabel(4410)]</value>
-		<value condition="!IsEmpty(ListItem.Art(fanart)) + [!Skin.HasSetting(Disable.Fanart) | IsEmpty(ListItem.Art(extrafanart1))]">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(ListItem.Art(extrafanart1)) + !Skin.HasSetting(Disable.Extrafanart) + !ListItem.IsCollection + !Skin.HasSetting(Disable.Fanart)">$INFO[Control.GetLabel(4410)]</value>
+		<value condition="!IsEmpty(ListItem.Art(fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="StringCompare(Container(9033).ListItem.Thumb,1)">$INFO[Window(Home).Property(script.grab.fanart.Movie.FanArt)]</value>
 		<value condition="StringCompare(Container(9033).ListItem.Thumb,2)">$INFO[Window(Home).Property(script.grab.fanart.TV.FanArt)]</value>
 		<value condition="StringCompare(Container(9033).ListItem.Thumb,3)">$INFO[Window(Home).Property(script.grab.fanart.Video.FanArt)]</value>
@@ -119,6 +119,11 @@
 		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31097])">$INFO[Window(Home).Property(PlaylistCount),[COLOR grey]$LOCALIZE[20342]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistWatched),[COLOR grey]  |  $LOCALIZE[16102]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistUnWatched),[COLOR grey]  |  $LOCALIZE[16101]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistInProgress),[COLOR grey]  |  $LOCALIZE[575]:[/COLOR] ]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31098])">$INFO[Window(Home).Property(PlaylistTVShowCount),[COLOR grey]$LOCALIZE[20343]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistEpisodes),[COLOR grey]  |  $LOCALIZE[20360]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistEpisodesUnWatched),[COLOR grey]  |  $LOCALIZE[16101]:[/COLOR] ]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])">$INFO[Window(Home).Property(PlaylistCount),[COLOR grey]$LOCALIZE[20389]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistWatched),[COLOR grey]  |  $LOCALIZE[16102]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistUnWatched),[COLOR grey]  |  $LOCALIZE[16101]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistInProgress),[COLOR grey]  |  $LOCALIZE[575]:[/COLOR] ]</value>
+	</variable>
+	<variable name="PlaylistStatsContentVar">
+		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31097])">plugin://service.library.data.provider?type=playliststats&amp;id=$INFO[Container(9000).ListItem.Property(path)]</value>
+		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31098])">plugin://service.library.data.provider?type=playliststats&amp;id=$INFO[Container(9000).ListItem.Property(path)]</value>
+		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])">plugin://service.library.data.provider?type=playliststats&amp;id=$INFO[Container(9000).ListItem.Property(path)]</value>
 	</variable>
 	<variable name="MusicOSDRepeatButtonVar">
 		<value condition="[!Playlist.IsRepeat + !Playlist.IsRepeatOne] + !Control.HasFocus(707)">osd/buttons/OSDRepeatNF.png</value>
@@ -607,7 +612,8 @@
 		<value condition="IsEmpty(Skin.String(MainMenu.Layout))">Skin.SetString(MainMenu.Layout,3 $LOCALIZE[31025])</value>
 		<value condition="StringCompare(Skin.String(MainMenu.Layout),3 $LOCALIZE[31025])">Skin.SetString(MainMenu.Layout,1 $LOCALIZE[31025])</value>
 		<value condition="StringCompare(Skin.String(MainMenu.Layout),1 $LOCALIZE[31025])">Skin.SetString(MainMenu.Layout,$LOCALIZE[536])</value>
-		<value condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])">Skin.Reset(MainMenu.Layout)</value>
+		<value condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])">Skin.SetString(MainMenu.Layout,Vertical Menu)</value>
+		<value condition="StringCompare(Skin.String(MainMenu.Layout),Vertical Menu)">Skin.Reset(MainMenu.Layout)</value>
 	</variable>
 	<variable name="RatingFlagVar">
 		<value condition="SubString(ListItem.MPAA,US:G) | SubString(ListItem.MPAA,USA:G) | SubString(ListItem.MPAA,Rated G)">flags/mpaa/G.png</value>
@@ -827,12 +833,6 @@
 		<value condition="!IsEmpty(Container(211).ListItem.Property(widgetStyle))">$INFO[Container(211).ListItem.Property(widgetStyle)]</value>
 		<value>$LOCALIZE[571]</value>
 	</variable>
-	<!-- <variable name="PlaylistStatsContentVar">
-		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31097])">plugin://service.library.data.provider?type=playliststats&amp;id=$INFO[Container(9000).ListItem.Property(list)]</value>
-		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31098])">plugin://service.library.data.provider?type=playliststats&amp;id=$INFO[Container(9000).ListItem.Property(list)]</value>
-		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31099])">plugin://service.library.data.provider?type=playliststats&amp;id=$INFO[Container(9000).ListItem.Property(list)]</value>
-		<value>special://skin/extras/playlists/recentmovies.xsp</value>
-	</variable> -->
 	<variable name="AudioChannelVar">
 		<value condition="IntegerGreaterThan(VideoPlayer.AudioChannels,7)">7.1</value>
 		<value condition="IntegerGreaterThan(VideoPlayer.AudioChannels,6)">6.1</value>
@@ -1053,6 +1053,7 @@
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Posters) + !IsEmpty(Skin.String(56.NoTopBar))">$INFO[Skin.String(56.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Shift) + !IsEmpty(Skin.String(57.NoTopBar))">$INFO[Skin.String(57.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Logo) + !IsEmpty(Skin.String(59.NoTopBar))">$INFO[Skin.String(59.NoTopBar)]</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),SmallIcons) + !IsEmpty(Skin.String(499.NoTopBar))">$INFO[Skin.String(499.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),LowList) + !IsEmpty(Skin.String(501.NoTopBar))">$INFO[Skin.String(501.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Episode) + !IsEmpty(Skin.String(502.NoTopBar))">$INFO[Skin.String(502.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Wall) + !IsEmpty(Skin.String(503.NoTopBar))">$INFO[Skin.String(503.NoTopBar)]</value>
@@ -1079,6 +1080,8 @@
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Shift) + !IsEmpty(Skin.String(57.NoTopBar))">Skin.Reset(57.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Logo) + IsEmpty(Skin.String(59.NoTopBar))">Skin.SetString(59.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Logo) + !IsEmpty(Skin.String(59.NoTopBar))">Skin.Reset(59.NoTopBar)</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),SmallIcons) + IsEmpty(Skin.String(499.NoTopBar))">Skin.SetString(499.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),SmallIcons) + !IsEmpty(Skin.String(499.NoTopBar))">Skin.Reset(499.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),LowList) + IsEmpty(Skin.String(501.NoTopBar))">Skin.SetString(501.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),LowList) + !IsEmpty(Skin.String(501.NoTopBar))">Skin.Reset(501.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Episode) + IsEmpty(Skin.String(502.NoTopBar))">Skin.SetString(502.NoTopBar,$LOCALIZE[351])</value>
