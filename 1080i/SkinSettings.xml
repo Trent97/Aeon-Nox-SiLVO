@@ -53,8 +53,7 @@
 						<width>356</width>
 						<height>90</height>
 						<texture border="4">listselect_fo.png</texture>
-						<visible>Control.HasFocus(9000)</visible>
-						<include>VisibleFadeEffect</include>
+						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
 					</control>
 					<control type="label">
 						<width>356</width>
@@ -189,6 +188,7 @@
 						<label2>[COLOR themecolor]$VAR[lowermainmenuVar][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(lowermainmenu)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
 					</control>
 					<control type="button" id="106">
 						<width>1316</width>
@@ -199,6 +199,29 @@
 						<label2>[COLOR labelheader]$VAR[RSSLabelVar][/COLOR]</label2>
 						<onclick>$VAR[RSSPositionVar]</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>system.getbool(lookandfeel.enablerssfeeds) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+					</control>
+					<control type="button" id="110">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>$LOCALIZE[20304]</label>
+						<label2>[COLOR labelheader]$VAR[VerticalMenuRSSLabelVar][/COLOR]</label2>
+						<onclick>$VAR[VerticalMenuRSSPositionVar]</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
+					</control>
+					<control type="button" id="111">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>Time &amp; Date</label>
+						<label2>[COLOR labelheader]$VAR[VerticalMenuSystemBarPositionLabelVar][/COLOR]</label2>
+						<onclick>$VAR[VerticalMenuSystemBarPositionVar]</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !system.getbool(lookandfeel.enablerssfeeds)</visible>
 					</control>
 					<control type="radiobutton" id="108">
 						<width>1316</width>
@@ -208,8 +231,9 @@
 						<label>$LOCALIZE[31157]</label>
 						<onclick>Skin.ToggleSetting(Enable.VisibleSubmenu)</onclick>
 						<selected>Skin.HasSetting(Enable.VisibleSubmenu)</selected>
-						<enable>!StringCompare(Skin.String(RSS.Position),$LOCALIZE[571])</enable>
+						<enable>!StringCompare(Skin.String(RSS.Position),$LOCALIZE[571]) | !system.getbool(lookandfeel.enablerssfeeds)</enable>
 						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
 					</control>
 					<control type="radiobutton" id="102">
 						<width>1316</width>

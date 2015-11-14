@@ -8,7 +8,7 @@
 		<value condition="StringCompare(Container(9033).ListItem.Thumb,3)">$INFO[Window(Home).Property(script.grab.fanart.Video.FanArt)]</value>
 		<value condition="StringCompare(Container(9033).ListItem.Thumb,4)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
 		<value condition="StringCompare(Container(9033).ListItem.Thumb,5)">$INFO[Window(Home).Property(script.grab.fanart.Global.FanArt)]</value>
-		<value condition="StringCompare(Container(9033).ListItem.Thumb,6)">$INFO[Skin.String(WeatherFanartDir)]$INFO[Window(Weather).Property(Current.FanartCode)]</value>
+		<value condition="StringCompare(Container(9033).ListItem.Thumb,6)">$INFO[Skin.String(WeatherFanartDir),resource://,/]$INFO[Window(Weather).Property(Current.FanartCode)]</value>
 		<value condition="!IsEmpty(Container(9033).ListItem.Thumb)">$INFO[Container(9033).ListItem.Thumb]</value>
 		<value condition="IsEmpty(Container(9033).ListItem.Art(thumb))">$INFO[Skin.String(CustomDefaultBackground)]</value>
 		<value>$INFO[Window(home).Property(fakelabel)]</value>
@@ -17,14 +17,18 @@
 		<value condition="!IsEmpty(Container(8000).ListItem.Art(fanart)) + Control.HasFocus(8000)">$INFO[Container(8000).ListItem.Art(fanart)]</value>
 		<value condition="!IsEmpty(Container(8005).ListItem.Art(fanart)) + Control.HasFocus(8005)">$INFO[Container(8005).ListItem.Art(fanart)]</value>
 		<value condition="!IsEmpty(Container(8006).ListItem.Art(fanart)) + Control.HasFocus(8006)">$INFO[Container(8006).ListItem.Art(fanart)]</value>
-		<value condition="!IsEmpty(Container(8010).ListItem.Art(fanart)) + Control.HasFocus(8010)">$INFO[Container(8010).ListItem.Art(fanart)]</value>
-		<value condition="!IsEmpty(Container(8020).ListItem.Art(fanart)) + Control.HasFocus(8020)">$INFO[Container(8020).ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(Container(8007).ListItem.Art(fanart)) + Control.HasFocus(8007)">$INFO[Container(8007).ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(Container(8008).ListItem.Art(fanart)) + Control.HasFocus(8008)">$INFO[Container(8008).ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(Container(8015).ListItem.Art(fanart)) + Control.HasFocus(8015)">$INFO[Container(8015).ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(Container(8016).ListItem.Art(fanart)) + Control.HasFocus(8016)">$INFO[Container(8016).ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(Container(8017).ListItem.Art(fanart)) + Control.HasFocus(8017)">$INFO[Container(8017).ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(Container(8018).ListItem.Art(fanart)) + Control.HasFocus(8018)">$INFO[Container(8018).ListItem.Art(fanart)]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(background),Movie.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.Movie.FanArt)]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(background),TV.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.TV.FanArt)]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(background),Video.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.Video.FanArt)]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(background),Music.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(background),Global.Fanart)">$INFO[Window(Home).Property(script.grab.fanart.Global.FanArt)]</value>
-		<value condition="StringCompare(Container(9000).ListItem.Property(background),Weather.Fanart)">$INFO[Skin.String(WeatherFanartDir)]$INFO[Window(Weather).Property(Current.FanartCode)]</value>
+		<value condition="StringCompare(Container(9000).ListItem.Property(background),Weather.Fanart)">$INFO[Skin.String(WeatherFanartDir),resource://,/]$INFO[Window(Weather).Property(Current.FanartCode)]</value>
 		<value condition="SubString(Container(9000).ListItem.Property(background),s:playlist,Left)">$INFO[Container(9034).ListItem.Art(fanart)]</value>
 		<value condition="!IsEmpty(Container(9000).ListItem.Property(background))">$INFO[Container(9000).ListItem.Property(background)]</value>
 		<value>$INFO[Skin.String(CustomDefaultBackground)]</value>
@@ -586,8 +590,10 @@
 		<value condition="!IsEmpty(Container(9000).ListItem.Property(Widget))">$INFO[Container(9000).ListItem.Property(Widget)]</value>
 	</variable> -->
 	<variable name="WidgetSubLabelVar">
-		<value condition="!StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo)">$INFO[ListItem.Rating]$INFO[ListItem.Duration, • , $LOCALIZE[12391]]</value>
-		<value condition="StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo)">$INFO[ListItem.Rating]$INFO[ListItem.Property(Duration), • , $LOCALIZE[12391]]</value>
+		<value condition="!StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating]$INFO[ListItem.Duration, • , $LOCALIZE[12391]]</value>
+		<value condition="!StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo) + StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating]$INFO[ListItem.Duration, • ,m]</value>
+		<value condition="StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo) + !StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating]$INFO[ListItem.Property(Duration), • , $LOCALIZE[12391]]</value>
+		<value condition="StringCompare(Container(9000).ListItem.Property(widgetTarget),extendedinfo) + StringCompare(Container(9000).ListItem.Property(widgetStyle),$LOCALIZE[31230])">$INFO[ListItem.Rating]$INFO[ListItem.Property(Duration), • ,m]</value>
 	</variable>
 	<variable name="WidgetLogoVar">
 		<value condition="SubString(Container(9000).ListItem.Property(widget),rottentomatoes)">logos/rt-logo.png</value>
@@ -596,7 +602,7 @@
 	</variable>
 	<variable name="WidgetListIconVar">
 		<value condition="!IsEmpty(Container(8000).ListItem.Art(tvshow.landscape))">$INFO[Container(8000).ListItem.Art(tvshow.landscape)]</value>
-		<value condition="!IsEmpty(Container(8000).ListItem.Art(fanart)) + [StringCompare(Container(9000).ListItem.Property(WidgetType),1) | StringCompare(Container(9000).ListItem.Property(WidgetType),14) | StringCompare(Container(9000).ListItem.Property(WidgetType),20)]">$INFO[Container(8000).ListItem.Art(fanart)]</value>
+		<value condition="!IsEmpty(Container(8000).ListItem.Art(fanart)) + [StringCompare(Container(9000).ListItem.Property(widgetTarget),video) | SubString(Container(9000).ListItem.Property(widgetPath),extendedinfo)]">$INFO[Container(8000).ListItem.Art(fanart)]</value>
 		<value>$INFO[Container(8000).ListItem.Icon]</value>
 	</variable>
 	<variable name="WidgetPosterVar">
@@ -613,10 +619,10 @@
 		<value condition="StringCompare(Skin.String(MainMenu.Layout),3 $LOCALIZE[31025])">Skin.SetString(MainMenu.Layout,1 $LOCALIZE[31025])</value>
 		<value condition="StringCompare(Skin.String(MainMenu.Layout),1 $LOCALIZE[31025])">Skin.SetString(MainMenu.Layout,$LOCALIZE[536])</value>
 		<value condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])">Skin.SetString(MainMenu.Layout,$LOCALIZE[31994])</value>
-		<value condition="StringCompare(Skin.String(MainMenu.Layout),Vertical Menu)">Skin.Reset(MainMenu.Layout)</value>
+		<value condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">Skin.Reset(MainMenu.Layout)</value>
 	</variable>
 	<variable name="RatingFlagVar">
-		<value condition="SubString(ListItem.MPAA,US:G) | SubString(ListItem.MPAA,USA:G) | SubString(ListItem.MPAA,Rated G)">flags/mpaa/G.png</value>
+		<value condition="SubString(ListItem.MPAA,US:G) | SubString(ListItem.MPAA,USA:G) | SubString(ListItem.MPAA,Rated G) | SubString(ListItem.MPAA,Rated Approved) | SubString(ListItem.MPAA,Rated Passed)">flags/mpaa/G.png</value>
 		<value condition="SubString(ListItem.MPAA,PG-13)">flags/mpaa/PG-13.png</value>
 		<value condition="SubString(ListItem.MPAA,Rated PG) | StringCompare(ListItem.Mpaa,PG)">flags/mpaa/PG.png</value>
 		<value condition="SubString(ListItem.MPAA,US:R) | SubString(ListItem.MPAA,USA:R) | SubString(ListItem.MPAA,Rated R) | StringCompare(ListItem.MPAA,R)">flags/mpaa/R.png</value>
@@ -658,7 +664,7 @@
 		<value>$INFO[ListItem.MPAA,flags/mpaa/,.png]</value>
 	</variable>
 	<variable name="ColoredRatingFlagVar">
-		<value condition="SubString(ListItem.MPAA,US:G) | SubString(ListItem.MPAA,USA:G) | SubString(ListItem.MPAA,Rated G)">flags/colored/rating/MPAA_G_Certificate_US.png</value>
+		<value condition="SubString(ListItem.MPAA,US:G) | SubString(ListItem.MPAA,USA:G) | SubString(ListItem.MPAA,Rated G) | SubString(ListItem.MPAA,Rated Approved) | SubString(ListItem.MPAA,Rated Passed)">flags/colored/rating/MPAA_G_Certificate_US.png</value>
 		<value condition="SubString(ListItem.MPAA,PG-13)">flags/colored/rating/MPAA_PG-13_Certificate_US.png</value>
 		<value condition="SubString(ListItem.MPAA,Rated PG) | StringCompare(ListItem.Mpaa,PG)">flags/colored/rating/MPAA_PG_Certificate_US.png</value>
 		<value condition="SubString(ListItem.MPAA,US:R) | SubString(ListItem.MPAA,USA:R) | SubString(ListItem.MPAA,Rated R) | StringCompare(ListItem.MPAA,R)">flags/colored/rating/MPAA_R_Certificate_US.png</value>
@@ -715,7 +721,7 @@
 		<value condition="SubString(ListItem.MPAA,TV-MA)">flags/colored/rating/info/TV-MA_Certificate_US.png</value>
 		<value condition="SubString(ListItem.MPAA,TV-Y7)">flags/colored/rating/info/tv-y7.png</value>
 		<value condition="SubString(ListItem.MPAA,TV-Y)">flags/colored/rating/info/tv-y.png</value>
-		<value condition="SubString(ListItem.MPAA,US:G) | SubString(ListItem.MPAA,USA:G) | SubString(ListItem.MPAA,Rated G)">flags/colored/rating/info/MPAA_G_Certificate_US.png</value>
+		<value condition="SubString(ListItem.MPAA,US:G) | SubString(ListItem.MPAA,USA:G) | SubString(ListItem.MPAA,Rated G) | SubString(ListItem.MPAA,Rated Approved) | SubString(ListItem.MPAA,Rated Passed)">flags/colored/rating/info/MPAA_G_Certificate_US.png</value>
 		<value condition="SubString(ListItem.MPAA,PG-13)">flags/colored/rating/info/MPAA_PG-13_Certificate_US.png</value>
 		<value condition="SubString(ListItem.MPAA,Rated PG) | StringCompare(ListItem.Mpaa,PG)">flags/colored/rating/info/MPAA_PG_Certificate_US.png</value>
 		<value condition="SubString(ListItem.MPAA,US:R) | SubString(ListItem.MPAA,USA:R) | SubString(ListItem.MPAA,Rated R) | StringCompare(ListItem.MPAA,R)">flags/colored/rating/info/MPAA_R_Certificate_US.png</value>
@@ -723,7 +729,7 @@
 		<value>$INFO[ListItem.MPAA,flags/colored/rating/info,.png]</value>
 	</variable>
 	<variable name="VideoRatingFlagVar">
-		<value condition="SubString(VideoPlayer.MPAA,US:G) | SubString(VideoPlayer.MPAA,USA:G) | SubString(VideoPlayer.MPAA,Rated G)">flags/mpaa/G.png</value>
+		<value condition="SubString(VideoPlayer.MPAA,US:G) | SubString(VideoPlayer.MPAA,USA:G) | SubString(VideoPlayer.MPAA,Rated G) | SubString(VideoPlayer.MPAA,Rated Approved) | SubString(VideoPlayer.MPAA,Rated Passed)">flags/mpaa/G.png</value>
 		<value condition="SubString(VideoPlayer.MPAA,PG-13)">flags/mpaa/PG-13.png</value>
 		<value condition="SubString(VideoPlayer.MPAA,Rated PG) | StringCompare(VideoPlayer.Mpaa,PG)">flags/mpaa/PG.png</value>
 		<value condition="SubString(VideoPlayer.MPAA,US:R) | SubString(VideoPlayer.MPAA,USA:R) | SubString(VideoPlayer.MPAA,Rated R) | StringCompare(VideoPlayer.MPAA,R)">flags/mpaa/R.png</value>
@@ -769,7 +775,7 @@
 		<value>$INFO[VideoPlayer.MPAA,flags/mpaa/,.png]</value>
 	</variable>
 	<variable name="ColoredVideoRatingFlagVar">
-		<value condition="SubString(VideoPlayer.MPAA,US:G) | SubString(VideoPlayer.MPAA,USA:G) | SubString(VideoPlayer.MPAA,Rated G)">flags/colored/rating/MPAA_G_Certificate_US.png</value>
+		<value condition="SubString(VideoPlayer.MPAA,US:G) | SubString(VideoPlayer.MPAA,USA:G) | SubString(VideoPlayer.MPAA,Rated G) | SubString(VideoPlayer.MPAA,Rated Approved) | SubString(VideoPlayer.MPAA,Rated Passed)">flags/colored/rating/MPAA_G_Certificate_US.png</value>
 		<value condition="SubString(VideoPlayer.MPAA,PG-13)">flags/colored/rating/PG-13.png</value>
 		<value condition="SubString(VideoPlayer.MPAA,Rated PG) | StringCompare(VideoPlayer.Mpaa,PG)">flags/colored/rating/PG.png</value>
 		<value condition="SubString(VideoPlayer.MPAA,US:R) | SubString(VideoPlayer.MPAA,USA:R) | SubString(VideoPlayer.MPAA,Rated R) | StringCompare(VideoPlayer.MPAA,R)">flags/colored/rating/R.png</value>
@@ -833,7 +839,7 @@
 		<value condition="!IsEmpty(Container(211).ListItem.Property(widgetStyle))">$INFO[Container(211).ListItem.Property(widgetStyle)]</value>
 		<value>$LOCALIZE[571]</value>
 	</variable>
-	<variable name="AudioChannelVar">
+	<!-- <variable name="AudioChannelVar">
 		<value condition="IntegerGreaterThan(VideoPlayer.AudioChannels,7)">7.1</value>
 		<value condition="IntegerGreaterThan(VideoPlayer.AudioChannels,6)">6.1</value>
 		<value condition="IntegerGreaterThan(VideoPlayer.AudioChannels,5)">5.1</value>
@@ -842,7 +848,7 @@
 		<value condition="IntegerGreaterThan(VideoPlayer.AudioChannels,2)">2.1</value>
 		<value condition="IntegerGreaterThan(VideoPlayer.AudioChannels,1)">2.0</value>
 		<value condition="IntegerGreaterThan(VideoPlayer.AudioChannels,0)">1.0</value>
-	</variable>
+	</variable> -->
 	<variable name="StudioIconVar">
 		<value condition="!IsEmpty(ListItem.Studio) + !Skin.HasSetting(coloredflags)">$INFO[ListItem.Studio,resource://resource.images.studios.white/,.png]</value>
 		<value condition="!IsEmpty(ListItem.Studio) + Skin.HasSetting(coloredflags)">$INFO[ListItem.Studio,flags/colored/studios/,.png]</value>
@@ -993,6 +999,22 @@
 		<value condition="StringCompare(Skin.String(RSS.Position),$LOCALIZE[418])">Skin.SetString(RSS.Position,$LOCALIZE[419])</value>
 		<value condition="StringCompare(Skin.String(RSS.Position),$LOCALIZE[419])">Skin.Reset(RSS.Position)</value>
 	</variable>
+	<variable name="VerticalMenuRSSLabelVar">
+		<value condition="!IsEmpty(Skin.String(VerticalMenuRSS.Position))">$INFO[Skin.String(VerticalMenuRSS.Position)]</value>
+		<value>$LOCALIZE[418]</value>
+	</variable>
+	<variable name="VerticalMenuRSSPositionVar">
+		<value condition="IsEmpty(Skin.String(VerticalMenuRSS.Position))">Skin.SetString(VerticalMenuRSS.Position,$LOCALIZE[419])</value>
+		<value condition="StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419])">Skin.Reset(VerticalMenuRSS.Position)</value>
+	</variable>
+	<variable name="VerticalMenuSystemBarPositionVar">
+		<value condition="IsEmpty(Skin.String(VerticalMenuSystemBar.Position))">Skin.SetString(VerticalMenuSystemBar.Position,$LOCALIZE[418])</value>
+		<value condition="StringCompare(Skin.String(VerticalMenuSystemBar.Position),$LOCALIZE[418])">Skin.Reset(VerticalMenuSystemBar.Position)</value>
+	</variable>
+	<variable name="VerticalMenuSystemBarPositionLabelVar">
+		<value condition="!IsEmpty(Skin.String(VerticalMenuSystemBar.Position))">$INFO[Skin.String(VerticalMenuSystemBar.Position)]</value>
+		<value>$LOCALIZE[419]</value>
+	</variable>
 	<variable name="MediaflagsLayoutLabelVar">
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Landscape) + Container.Content(movies) + !IsEmpty(Skin.String(52.Movies.MediaflagsLayout))">$INFO[Skin.String(52.Movies.MediaflagsLayout)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Landscape) + Container.Content(movies) + IsEmpty(Skin.String(52.Movies.MediaflagsLayout))">$LOCALIZE[351]</value>
@@ -1065,6 +1087,7 @@
 		<value condition="StringCompare(Window(home).Property(actualViewtype),BannerPlex) + !IsEmpty(Skin.String(601.NoTopBar))">$INFO[Skin.String(601.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),FullscreenWall) + !IsEmpty(Skin.String(609.NoTopBar))">$INFO[Skin.String(609.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),RightList) + !IsEmpty(Skin.String(700.NoTopBar))">$INFO[Skin.String(700.NoTopBar)]</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),MyFlix) + !IsEmpty(Skin.String(701.NoTopBar))">$INFO[Skin.String(701.NoTopBar)]</value>
 		<value>$LOCALIZE[16041]</value>
 	</variable>
 	<variable name="NoTopBarOnClickVar">
@@ -1104,6 +1127,8 @@
 		<value condition="StringCompare(Window(home).Property(actualViewtype),FullscreenWall) + !IsEmpty(Skin.String(609.NoTopBar))">Skin.Reset(609.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),RightList) + IsEmpty(Skin.String(700.NoTopBar))">Skin.SetString(700.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),RightList) + !IsEmpty(Skin.String(700.NoTopBar))">Skin.Reset(700.NoTopBar)</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),MyFlix) + IsEmpty(Skin.String(701.NoTopBar))">Skin.SetString(701.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),MyFlix) + !IsEmpty(Skin.String(701.NoTopBar))">Skin.Reset(701.NoTopBar)</value>
 	</variable>
 	<variable name="TriPanelLayoutLabelVar">
 		<value condition="!IsEmpty(Skin.String(TriPanelLayout))">$INFO[Skin.String(TriPanelLayout)]</value>

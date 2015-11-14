@@ -15,7 +15,7 @@
 				<font>CloseButton</font>
 				<textcolor>grey</textcolor>
 				<focusedcolor>themecolor</focusedcolor>
-				<onclick>Dialog.Close(1129)</onclick>
+				<onclick>Dialog.Close(1131)</onclick>
 				<texturefocus />
 				<texturenofocus />
 				<visible>system.getbool(input.enablemouse)</visible>
@@ -46,7 +46,7 @@
 					<label2>[COLOR themecolor]$VAR[NoTopBarLabelVar][/COLOR]</label2>
 					<onclick>$VAR[NoTopBarOnClickVar]</onclick>
 					<texturenofocus border="1">separator5.png</texturenofocus>
-					<visible>StringCompare(Window(home).Property(actualViewtype),ShowCaseMovies) | StringCompare(Window(home).Property(actualViewtype),ShowCaseSquare) | StringCompare(Window(home).Property(actualViewtype),Landscape) | StringCompare(Window(home).Property(actualViewtype),Posters) | StringCompare(Window(home).Property(actualViewtype),Shift) | StringCompare(Window(home).Property(actualViewtype),Logo) | StringCompare(Window(home).Property(actualViewtype),LowList) | StringCompare(Window(home).Property(actualViewtype),Episode) | StringCompare(Window(home).Property(actualViewtype),Gallery) | StringCompare(Window(home).Property(actualViewtype),Panel) | StringCompare(Window(home).Property(actualViewtype),SongList) | StringCompare(Window(home).Property(actualViewtype),BigFan) | StringCompare(Window(home).Property(actualViewtype),BigInfo) | StringCompare(Window(home).Property(actualViewtype),BannerPlex) | StringCompare(Window(home).Property(actualViewtype),FullscreenWall) | StringCompare(Window(home).Property(actualViewtype),RightList) | StringCompare(Window(home).Property(actualViewtype),Wall) | StringCompare(Window(home).Property(actualViewtype),SmallIcons)</visible>
+					<visible>StringCompare(Window(home).Property(actualViewtype),ShowCaseMovies) | StringCompare(Window(home).Property(actualViewtype),ShowCaseSquare) | StringCompare(Window(home).Property(actualViewtype),Landscape) | StringCompare(Window(home).Property(actualViewtype),Posters) | StringCompare(Window(home).Property(actualViewtype),Shift) | StringCompare(Window(home).Property(actualViewtype),Logo) | StringCompare(Window(home).Property(actualViewtype),LowList) | StringCompare(Window(home).Property(actualViewtype),Episode) | StringCompare(Window(home).Property(actualViewtype),Gallery) | StringCompare(Window(home).Property(actualViewtype),Panel) | StringCompare(Window(home).Property(actualViewtype),SongList) | StringCompare(Window(home).Property(actualViewtype),BigFan) | StringCompare(Window(home).Property(actualViewtype),BigInfo) | StringCompare(Window(home).Property(actualViewtype),BannerPlex) | StringCompare(Window(home).Property(actualViewtype),FullscreenWall) | StringCompare(Window(home).Property(actualViewtype),RightList) | StringCompare(Window(home).Property(actualViewtype),Wall) | StringCompare(Window(home).Property(actualViewtype),SmallIcons) | StringCompare(Window(home).Property(actualViewtype),MyFlix)</visible>
 				</control>
 				<control type="button" id="1501">
 					<include>ButtonCommonValues</include>
@@ -75,6 +75,38 @@
 					<visible>StringCompare(Window(home).Property(actualViewtype),BigList)</visible>
 				</control>
 				<!-- RightList -->
+				<control type="radiobutton" id="1523">
+					<description>Alternate Layout</description>
+					<include>ButtonCommonValues</include>
+					<label>Disable floor</label>
+					<onclick>Skin.ToggleSetting(Disable.RightListFloor.movies)</onclick>
+					<selected>Skin.HasSetting(Disable.RightListFloor.movies)</selected>
+					<visible>StringCompare(Window(home).Property(actualViewtype),RightList) + Container.Content(movies)</visible>
+				</control>
+				<control type="radiobutton" id="1526">
+					<description>Alternate Layout</description>
+					<include>ButtonCommonValues</include>
+					<label>Disable floor</label>
+					<onclick>Skin.ToggleSetting(Disable.RightListFloor.tvshows)</onclick>
+					<selected>Skin.HasSetting(Disable.RightListFloor.tvshows)</selected>
+					<visible>StringCompare(Window(home).Property(actualViewtype),RightList) + Container.Content(tvshows)</visible>
+				</control>
+				<control type="radiobutton" id="1527">
+					<description>Alternate Layout</description>
+					<include>ButtonCommonValues</include>
+					<label>Disable floor</label>
+					<onclick>Skin.ToggleSetting(Disable.RightListFloor.seasons)</onclick>
+					<selected>Skin.HasSetting(Disable.RightListFloor.seasons)</selected>
+					<visible>StringCompare(Window(home).Property(actualViewtype),RightList) + Container.Content(seasons)</visible>
+				</control>
+				<control type="radiobutton" id="1528">
+					<description>Alternate Layout</description>
+					<include>ButtonCommonValues</include>
+					<label>Disable floor</label>
+					<onclick>Skin.ToggleSetting(Disable.RightListFloor.episodes)</onclick>
+					<selected>Skin.HasSetting(Disable.RightListFloor.episodes)</selected>
+					<visible>StringCompare(Window(home).Property(actualViewtype),RightList) + Container.Content(episodes)</visible>
+				</control>
 				<control type="radiobutton" id="1510">
 					<description>Alternate Layout</description>
 					<include>ButtonCommonValues</include>
@@ -143,8 +175,8 @@
 					<description>Hide poster</description>
 					<include>ButtonCommonValues</include>
 					<label>$LOCALIZE[31152]</label>
-					<onclick>Skin.ToggleSetting(Enable.Rightlist.HidePoster.Movies)</onclick>
-					<selected>Skin.HasSetting(Enable.Rightlist.HidePoster.Movies)</selected>
+					<onclick>Skin.ToggleSetting(Enable.Rightlist.HidePoster.movies)</onclick>
+					<selected>Skin.HasSetting(Enable.Rightlist.HidePoster.movies)</selected>
 					<visible>StringCompare(Window(home).Property(actualViewtype),RightList) + Container.Content(movies)</visible>
 				</control>
 				<control type="radiobutton" id="1519">
@@ -178,14 +210,6 @@
 					<onclick>Skin.ToggleSetting(discrightlist)</onclick>
 					<selected>Skin.HasSetting(discrightlist)</selected>
 					<visible>StringCompare(Window(home).Property(actualViewtype),RightList) + [Container.Content(movies) + !Skin.HasSetting(Enable.Rightlist.HidePoster.movies)]</visible>
-				</control>
-				<control type="radiobutton" id="1523">
-					<description>Fake Discart</description>
-					<include>ButtonCommonValues</include>
-					<label>$LOCALIZE[31993]</label>
-					<onclick>Skin.ToggleSetting(RightList.FakeDisc)</onclick>
-					<selected>Skin.HasSetting(RightList.FakeDisc)</selected>
-					<visible>StringCompare(Window(home).Property(actualViewtype),RightList) + Container.Content(movies) + Skin.HasSetting(discrightlist) + !Skin.HasSetting(Enable.Rightlist.HidePoster.movies)</visible>
 				</control>
 				<control type="radiobutton" id="1524">
 					<description>Enable RightList Covers</description>
@@ -399,7 +423,7 @@
 				<control type="radiobutton" id="1564">
 					<description>Enable Oscar logo</description>
 					<include>ButtonCommonValues</include>
-					<label>$LOCALIZE[31146]</label>
+					<label>$LOCALIZE[31611]</label>
 					<onclick>Skin.ToggleSetting(oscarlogo)</onclick>
 					<selected>Skin.HasSetting(oscarlogo)</selected>
 					<visible>StringCompare(Window(home).Property(actualViewtype),Logo) + Container.Content(movies)</visible>
