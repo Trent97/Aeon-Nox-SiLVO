@@ -99,12 +99,12 @@
 						<onclick>noop</onclick>
 						<icon>-</icon>
 					</item>
-					<!--<item id="7">
-						<label></label>
+					<item id="7">
+						<label>Widgets</label>
 						<onclick>noop</onclick>
 						<icon>-</icon>
 					</item>
-					<item id="8">
+					<!--<item id="8">
 						<label>14036</label>
 						<onclick>noop</onclick>
 						<icon>-</icon>
@@ -523,7 +523,7 @@
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
-                        <label>31961</label>
+						<label>31961</label>
 						<onclick>Skin.ToggleSetting(Enable.HideRatings)</onclick>
 						<selected>Skin.HasSetting(Enable.HideRatings)</selected>
 						<texturenofocus border="1">separator5.png</texturenofocus>
@@ -533,7 +533,7 @@
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
-                        <label>Auto open sidemenu when mousing over the top left corner (test setting)</label>
+						<label>Auto open sidemenu when mousing over the top left corner (test setting)</label>
 						<onclick>Skin.ToggleSetting(Enable.AutoOpenMediaMenuOnMouseOver)</onclick>
 						<selected>Skin.HasSetting(Enable.AutoOpenMediaMenuOnMouseOver)</selected>
 						<texturenofocus border="1">separator5.png</texturenofocus>
@@ -753,7 +753,7 @@
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
 				</control>
-				<!-- <control type="grouplist" id="9007">
+				<control type="grouplist" id="9007">
 					<description>control area</description>
 					<left>522</left>
 					<top>32</top>
@@ -766,10 +766,10 @@
 					<onup>9007</onup>
 					<ondown>9007</ondown>
 					<visible>Container(9000).HasFocus(7)</visible>
-					<control type="radiobutton" id="700">
-						<onclick>Skin.ToggleSetting(panelwidgets)</onclick>
-						<selected>Skin.HasSetting(panelwidgets)</selected>
-						<label>$LOCALIZE[31131]</label>
+					<control type="button" id="700">
+						<label>Background</label>
+						<label2>[COLOR labelheader]$VAR[WidgetBackLabelVar][/COLOR]</label2>
+						<onclick>$VAR[WidgetBackVar]</onclick>
 						<width>1316</width>
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
@@ -777,17 +777,36 @@
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
 					<control type="button" id="701">
-						<label>$LOCALIZE[31130]</label>
-						<label2>[COLOR labelheader]$VAR[WidgetLayoutVar][/COLOR]</label2>
-						<onclick>Skin.ToggleSetting(expandedwidgets)</onclick>
-						<visible>Skin.HasSetting(panelwidgets)</visible>
+						<label>Transparency</label>
+						<label2>[COLOR labelheader]$VAR[WidgetTransLabelVar]%[/COLOR]</label2>
+						<onclick>$VAR[WidgetTransVar]</onclick>
 						<width>1316</width>
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
-				</control> -->
+					<control type="button" id="702">
+						<label>Classic Info</label>
+						<label2>[COLOR labelheader]$VAR[WidgetClassicInfoLabelVar][/COLOR]</label2>
+						<onclick>$VAR[WidgetClassicInfoVar]</onclick>
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+					<control type="button" id="703">
+						<label>Vertical Widget Position</label>
+						<label2>[COLOR labelheader]$VAR[WidgetVerticalMenuLabelVar][/COLOR]</label2>
+						<onclick>$VAR[WidgetVerticalMenuVar]</onclick>
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+				</control>
 			</control>
 		</control>
 	</controls>
