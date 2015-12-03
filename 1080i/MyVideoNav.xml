@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">50</defaultcontrol>
-	<allowoverlay>true</allowoverlay>
 	<views>50,602,501,507,51,52,53,55,56,57,58,601,59,500,499,502,503,609,504,505,591,592,700,701</views>
 	<menucontrol>9051</menucontrol>
 	<onload>SetProperty(Window.HasSettings,True,home)</onload>
@@ -719,7 +718,8 @@
 					<top>75</top>
 					<width>1120</width>
 					<align>center</align>
-					<label>$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]</label>
+	<!-- Change color of Unwatched Episodes - Logo view -->					
+					<label>$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] [COLOR=ICS_Blue_Textures]$INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)][/COLOR]</label>
 					<font>font14_bold</font>
 					<textcolor>grey2</textcolor>
 					<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Title)</visible>
@@ -947,7 +947,8 @@
 							<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
 							<font>font48_bold</font>
 							<wrapmultiline>true</wrapmultiline>
-							<textcolor>grey</textcolor>
+	<!-- Change color of UnWatchedEpisodes - RightList, MyFlix, BigFan -->								
+							<textcolor>ICS_Blue_Textures</textcolor>
 						</control>
 						<control type="label">
 							<top>52</top>
@@ -955,7 +956,8 @@
 							<align>center</align>
 							<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
 							<font>font12</font>
-							<textcolor>grey</textcolor>
+	<!-- Change color of UnWatchedEpisodes - RightList, MyFlix, BigFan -->							
+							<textcolor>ICS_Blue_Textures</textcolor>
 						</control>
 					</control>
 				</control>

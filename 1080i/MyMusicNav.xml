@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
 	<defaultcontrol always="true">50</defaultcontrol>
-	<allowoverlay>no</allowoverlay>
 	<onload>SetProperty(Window.HasSettings,True,home)</onload>
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
@@ -298,6 +297,13 @@
 					<label2>[COLOR labelheader]$VAR[MyMusicNavRandomButtonLabelVar][/COLOR]</label2>
 					<onclick>PlayerControl(Random)</onclick>
 					<visible>!StringCompare(Playlist.Length(music),0) + !MusicPartyMode.Enabled + Player.HasAudio + Player.Playing</visible>
+				</control>
+				<control type="button" id="6122">
+					<description>Enable fullscreen</description>
+					<include>ButtonCommonValues</include>
+					<label>$LOCALIZE[244]</label>
+					<onclick>fullscreen</onclick>
+					<visible>Player.HasMedia</visible>
 				</control>
 			</control>
 		</control>
