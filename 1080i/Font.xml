@@ -741,5 +741,12 @@
 			<filename>OpenSans.ttf</filename>
 			<size>20</size>
 		</font>
+        <font>
+            <name>CDLabel</name>
+            <filename>fafers.ttf</filename>
+            <style>uppercase</style>
+            <size>36</size>
+            <linespacing>.8</linespacing>
+        </font>		
 	</fontset>
 </fonts>
