@@ -232,8 +232,9 @@
 				<width>227</width>
 				<height>352</height>
 				<control type="label">
+					<top>-5</top>
 					<height>40</height>
-					<font>font10</font>
+					<font>font13</font>
 					<align>right</align>
 					<textcolor>themecolor_transparent</textcolor>
 					<shadowcolor>black</shadowcolor>
