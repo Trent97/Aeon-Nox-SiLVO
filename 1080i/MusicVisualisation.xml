@@ -206,10 +206,10 @@
 				<texture>separator3.png</texture>
 			</control>
 			<control type="image">
-				<left>733</left>
-				<top>329</top>
+				<left>783</left>
+				<top>283</top>
 				<width>2</width>
-				<height>117</height>
+				<height>164</height>
 				<texture>separator3.png</texture>
 			</control>
 			<control type="image">
@@ -221,18 +221,11 @@
 			</control>	
 			<control type="image">
 				<left>293</left>
-				<top>165</top>
+				<top>225</top>
 				<width>818</width>
 				<height>60</height>
 				<texture>separator2.png</texture>
 			</control>
-			<control type="image">
-				<left>293</left>
-				<top>270</top>
-				<width>818</width>
-				<height>60</height>
-				<texture>separator2.png</texture>
-			</control>	
 			<control type="group"> <!--Next Up Info-->
 				<left>48</left>
 				<top>54</top>
@@ -243,14 +236,24 @@
 					<font>font10</font>
 					<align>right</align>
 					<textcolor>themecolor_transparent</textcolor>
-					<shadowcolor>shadow</shadowcolor>
+					<shadowcolor>black</shadowcolor>
 					<label>• • • $LOCALIZE[19031]</label>
 				</control>
+				<control type="image"> <!--Solo Request-->
+					<visible>Player.IsInternetStream</visible> <!--Solo Request-->
+					<left>0</left> <!--Solo Request-->
+					<top>18</top> <!--Solo Request-->
+					<width>244</width> <!--Solo Request-->
+					<height>246</height> <!--Solo Request-->			
+					<texture border="40">listpanel_back.png</texture> <!--Solo Request-->
+				</control> <!--Solo Request-->
 				<control type="image">
 					<left>22</left>
 					<top>41</top>
 					<width>200</width>
 					<height>200</height>
+					<animation effect="zoom" end="90" reverisble="true" condition="Player.IsInternetStream">Conditional</animation> <!--Solo Request-->
+					<animation effect="slide" end="11,10" reverisble="true" condition="Player.IsInternetStream">Conditional</animation> <!--Solo Request-->
 					<texture>cdinside.png</texture>
 				</control>
 				<control type="image">
@@ -258,6 +261,8 @@
 					<top>41</top>
 					<width>200</width>
 					<height>200</height>
+					<animation effect="zoom" end="90" reverisble="true" condition="Player.IsInternetStream">Conditional</animation> <!--Solo Request-->
+					<animation effect="slide" end="11,10" reverisble="true" condition="Player.IsInternetStream">Conditional</animation> <!--Solo Request-->
 					<texture>$INFO[MusicPlayer.offset(1).Cover]</texture>
 					<visible>!Substring(MusicPlayer.offset(1).Cover,DefaultAlbumCover.png)</visible>
 				</control>
@@ -265,26 +270,27 @@
 					<top>37</top>
 					<height>208</height>
 					<aspectratio align="right">keep</aspectratio>
+					<visible>!Player.IsInternetStream</visible> <!--Solo Request-->
 					<texture>cdcase.png</texture>
 				</control>
 				<control type="grouplist">
 					<top>247</top>
-					<height>100</height>
-					<itemgap>5</itemgap>
+					<height>140</height>
+					<itemgap>10</itemgap>
 					<control type="label">
 						<height>20</height>
-						<font>font10</font>
+						<font>font12</font>
 						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
+						<shadowcolor>black</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
 						<label>$INFO[MusicPlayer.offset(1).Title]</label>
 					</control>
 					<control type="label">
 						<height>20</height>
-						<font>font10</font>
+						<font>font12</font>
 						<textcolor>labelheader</textcolor>
-						<shadowcolor>shadow</shadowcolor>
+						<shadowcolor>black</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
 						<label>[B][UPPERCASE]$INFO[MusicPlayer.offset(1).Artist,][/UPPERCASE][/B]</label>
@@ -293,7 +299,7 @@
 						<height>60</height>
 						<font>font10</font>
 						<textcolor>themecolor_transparent</textcolor>
-						<shadowcolor>shadow</shadowcolor>
+						<shadowcolor>black</shadowcolor>
 						<align>right</align>
 						<aligny>top</aligny>
 						<wrapmultiline>true</wrapmultiline>
@@ -307,16 +313,16 @@
 				<width>810</width>
 				<height>410</height>
 				<control type="image">
-					<left>70</left>
-					<top>270</top>
-					<width>300</width>
-					<height>117</height>
+					<left>38</left>
+					<top>225</top>
+					<width>413</width>
+					<height>160</height>
 					<aspectratio>keep</aspectratio>
 					<texture border="5" colordiffuse="77777777" background="true">$INFO[Window(Home).Property(SkinHelper.Player.Music.ClearLogo)]</texture>
 				</control>
 				<control type="image">
 					<left>494</left>
-					<top>220</top>
+					<top>230</top>
 					<width>400</width>
 					<height>45</height>
 					<colordiffuse>selected</colordiffuse>
@@ -380,7 +386,7 @@
 						<label>$INFO[MusicPlayer.Album,, - ][COLOR labelheader]$INFO[MusicPlayer.Year][/COLOR]</label>
 					</control>
 					<control type="label">
-						<height>21</height>
+						<height>11</height>
 						<label>-</label>
 					</control>
 					<control type="label">
@@ -395,7 +401,7 @@
 						<label>[COLOR labelheader]$INFO[MusicPlayer.TrackNumber,,. ][/COLOR]$INFO[Player.Title]</label>
 					</control>
 					<control type="label">
-						<height>40</height>
+						<height>50</height>
 						<label>-</label>
 					</control>
 					<control type="label">
@@ -421,7 +427,17 @@
 			<control type="group"> <!--CD Art Display-->
 				<left>1180</left>
 				<top>0</top>
+				<control type="image"> <!--Solo Request-->
+					<visible>Player.IsInternetStream</visible> <!--Solo Request-->
+					<left>-70</left> <!--Solo Request-->
+					<top>-43</top> <!--Solo Request-->
+					<width>589</width> <!--Solo Request-->
+					<height>592</height> <!--Solo Request-->			
+					<texture border="40">listpanel_back.png</texture> <!--Solo Request-->
+				</control> <!--Solo Request-->
 				<control type="image">
+					<animation effect="slide" end="-38,-10" reverisble="true" condition="Player.IsInternetStream">Conditional</animation> <!--Solo Request-->
+					<animation effect="zoom" end="105" reverisble="true" condition="Player.IsInternetStream">Conditional</animation> <!--Solo Request-->
 					<width>500</width>
 					<height>500</height>
 					<aspectratio align="right">keep</aspectratio>
@@ -456,9 +472,9 @@
 						<wrapmultiline>true</wrapmultiline>
 					</control>
 					<control type="label">
-						<left>45</left>
-						<top>303</top>
-						<width>380</width>
+						<left>50</left>
+						<top>313</top>
+						<width>370</width>
 						<height>100</height>
 						<align>center</align>
 						<aligny>center</aligny>
@@ -485,11 +501,14 @@
 					<include>VisibleFadeEffect</include>
 					<width>500</width>
 					<height>500</height>
+					<animation effect="slide" end="-38,-10" reverisble="true" condition="Player.IsInternetStream">Conditional</animation> <!--Solo Request-->
+					<animation effect="zoom" end="105" reverisble="true" condition="Player.IsInternetStream">Conditional</animation> <!--Solo Request-->
 					<aspectratio align="right">keep</aspectratio>
 					<texture>$INFO[Player.Art(thumb)]</texture>
 					<visible>!Substring(Player.Art(thumb),DefaultAlbumCover.png)</visible>
 				</control>
 				<control type="image">
+					<visible>!Player.IsInternetStream</visible> <!--Solo Request-->
 					<left>-54</left>
 					<top>-10</top>
 					<width>566</width>
@@ -499,7 +518,7 @@
 				</control>
 				<control type="image">
 					<visible>Player.IsInternetStream</visible>
-					<left>400</left>
+					<left>370</left>
 					<top>446</top>
 					<width>145</width>
 					<height>80</height>
@@ -508,8 +527,8 @@
 				</control>
 				<control type="image">
 					<visible>Player.IsInternetStream</visible>
-	                <animation effect="fade" start="40" time="1500" pulse="true" condition="Player.IsInternetStream + !Player.Paused">Conditional</animation>
-					<left>400</left>
+	                <animation effect="fade" start="40" time="3000" pulse="true" condition="Player.IsInternetStream + !Player.Paused">Conditional</animation>
+					<left>370</left>
 					<top>250</top>
 					<width>301</width>
 					<height>276</height>
@@ -591,6 +610,7 @@
 				<align>left</align>
 				<font>font10</font>
 				<textcolor>grey2</textcolor>
+				<shadowcolor>black</shadowcolor>
 				<label>$INFO[musicplayer.Codec,[COLOR=labelheader]$LOCALIZE[21446]:[/COLOR] ,][CR]$INFO[musicplayer.Bitrate,[COLOR=labelheader]$LOCALIZE[623]:[/COLOR] , kbps][CR]$INFO[musicplayer.bitspersample,[COLOR=labelheader]$LOCALIZE[612]:[/COLOR] , Bits][CR]$INFO[musicplayer.Samplerate,[COLOR=labelheader]$LOCALIZE[613]:[/COLOR] , kHz][CR]$INFO[musicplayer.Channels,[COLOR=labelheader]$LOCALIZE[21444]:[/COLOR] , Ch]</label>
 			</control>
 			<control type="label">
@@ -601,6 +621,7 @@
 				<align>right</align>
 				<font>font10</font>
 				<textcolor>labelheader</textcolor>
+				<shadowcolor>black</shadowcolor>				
 				<label>[B][UPPERCASE]$INFO[Visualisation.Name][/UPPERCASE][/B][CR][COLOR=grey2]$INFO[System.FPS][/COLOR] fps</label>
 			</control>
 			<control type="label">
@@ -611,6 +632,7 @@
 				<align>right</align>
 				<font>font10</font>
 				<textcolor>themecolor_transparent</textcolor>
+				<shadowcolor>black</shadowcolor>
 				<label>[I]$INFO[Visualisation.Preset][/I]</label>
 			</control>
 		</control> 
