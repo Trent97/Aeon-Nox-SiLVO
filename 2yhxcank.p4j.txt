@@ -1,0 +1,17 @@
+﻿Fixes
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Tue Dec 8 22:02:41 2015 -0600
+#
+# On branch master
+# Your branch is ahead of 'origin/master' by 2 commits.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	deleted:    media/cdcase.png
+#	deleted:    media/cdinside.png
+#	deleted:    media/streamicon.png
+#
+
