@@ -718,7 +718,8 @@
 					<top>75</top>
 					<width>1120</width>
 					<align>center</align>
-					<label>$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]</label>
+		<!-- Change color of Unwatched Episodes - Logo(59) -->					
+					<label>$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] [COLOR=ICS_Blue_Textures]$INFO[ListItem.Property(UnWatchedEpisodes)[/COLOR], ($LOCALIZE[16101]: ,)]</label>
 					<font>font14_bold</font>
 					<textcolor>grey2</textcolor>
 					<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Title)</visible>
@@ -946,7 +947,8 @@
 							<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
 							<font>font48_bold</font>
 							<wrapmultiline>true</wrapmultiline>
-							<textcolor>grey</textcolor>
+		<!-- Change color of Unwatched Episodes - RightList (700), MyFlix (701), BigFan (591)) -->							
+							<textcolor>ICS_Blue_Textures</textcolor>
 						</control>
 						<control type="label">
 							<top>52</top>
@@ -954,7 +956,8 @@
 							<align>center</align>
 							<label>[LOWERCASE]$LOCALIZE[16101][/LOWERCASE]</label>
 							<font>font12</font>
-							<textcolor>grey</textcolor>
+		<!-- Change color of Unwatched Episodes - RightList (700), MyFlix (701), BigFan (591)) -->							
+							<textcolor>ICS_Blue_Textures</textcolor>
 						</control>
 					</control>
 				</control>
@@ -1077,11 +1080,12 @@
 					<include>ButtonCommonValues</include>
 					<label>587</label>
 				</control>
-				<control type="button" id="98">
+				<control type="radiobutton" id="98">
 					<visible>Container.CanFilterAdvanced</visible>
 					<description>Filter</description>
 					<include>ButtonCommonValues</include>
 					<label>587</label>
+					<selected>Container.Filtered</selected>
 					<onclick>ClearProperty(MediaMenu,Home)</onclick>
 					<onclick>SetFocus(50)</onclick>
 					<onclick>Filter</onclick>
