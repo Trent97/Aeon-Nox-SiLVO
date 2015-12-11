@@ -10,7 +10,7 @@
 			<top>128</top>
 			<include>Window_OpenClose_Animation</include>
 			<include>SystemLeftPanel</include>
-			<control type="panel" id="9000">
+			<control type="list" id="9000">
 				<left>82</left>
 				<top>32</top>
 				<width>356</width>
@@ -52,7 +52,7 @@
 					<control type="image">
 						<width>356</width>
 						<height>90</height>
-						<texture border="4">listselect_fo.png</texture>
+						<texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
 					</control>
 					<control type="label">
@@ -65,7 +65,7 @@
 						<align>right</align>
 						<aligny>center</aligny>
 						<label>$INFO[ListItem.Label]</label>
-						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(9000)">Conditional</animation>
+						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Container(9000).HasFocus">Conditional</animation>
 					</control>
 				</focusedlayout>
 				<content>
@@ -78,6 +78,12 @@
 						<label>16000</label>
 						<onclick>noop</onclick>
 						<icon>-</icon>
+					</item>
+					<item id="7">
+						<label>Colors</label>
+						<onclick>noop</onclick>
+						<icon>-</icon>
+						<visible>System.HasAddon(script.skin.helper.service)</visible>
 					</item>
 					<item id="3">
 						<label>31014</label>
@@ -99,17 +105,12 @@
 						<onclick>noop</onclick>
 						<icon>-</icon>
 					</item>
-					<item id="7">
-						<label>Widgets</label>
+					<item id="8">
+						<label>31155</label>
 						<onclick>noop</onclick>
 						<icon>-</icon>
 					</item>
-					<!--<item id="8">
-						<label>14036</label>
-						<onclick>noop</onclick>
-						<icon>-</icon>
-					</item>
-					<item id="9">
+					<!-- <item id="9">
 						<label>13000</label>
 						<onclick>noop</onclick>
 						<icon>-</icon>
@@ -155,8 +156,44 @@
 				<visible>!Window.IsActive(script-skinshortcuts.xml)</visible>
 			</control>
 			<control type="group" id="9010">
-				<visible>!Window.IsActive(script-skinshortcuts.xml)</visible>
 				<include>SettingsFadeEffect</include>
+				<control type="grouplist">
+					<visible>Container(9000).HasFocus(7)</visible>
+						<left>1760</left>
+						<top>39.5</top>
+						<itemgap>20</itemgap>
+						<orientation>vertical</orientation>
+					<control type="image">
+						<width>70</width>
+						<height>70</height>
+						<texture colordiffuse="$INFO[Skin.String(FocusedMainMenuColor.name)]" border="5">panel.png</texture>
+						<visible>!IsEmpty(Skin.String(FocusedMainMenuColor)) + !StringCompare(Skin.String(FocusedMainMenuColor),None)</visible>
+					</control>
+					<control type="image">
+						<width>70</width>
+						<height>70</height>
+						<texture colordiffuse="$INFO[Skin.String(UnfocusedMainMenuColor.name)]" border="5">panel.png</texture>
+						<visible>!IsEmpty(Skin.String(UnfocusedMainMenuColor)) + !StringCompare(Skin.String(UnfocusedMainMenuColor),None)</visible>
+					</control>
+					<control type="image">
+						<width>70</width>
+						<height>70</height>
+						<texture colordiffuse="$INFO[Skin.String(FocusedMainMenuIconLabelColor.name)]" border="5">panel.png</texture>
+						<visible>!IsEmpty(Skin.String(FocusedMainMenuIconLabelColor)) + !StringCompare(Skin.String(FocusedMainMenuIconLabelColor),None)</visible>
+					</control>
+					<control type="image">
+						<width>70</width>
+						<height>70</height>
+						<texture colordiffuse="$INFO[Skin.String(UnfocusedMainMenuIconLabelColor.name)]" border="5">panel.png</texture>
+						<visible>!IsEmpty(Skin.String(UnfocusedMainMenuIconLabelColor)) + !StringCompare(Skin.String(UnfocusedMainMenuIconLabelColor),None)</visible>
+					</control>
+					<control type="image">
+						<width>70</width>
+						<height>70</height>
+						<texture colordiffuse="$INFO[Skin.String(HighlightBarColor.name)]" border="5">panel.png</texture>
+						<visible>!IsEmpty(Skin.String(HighlightBarColor)) + !StringCompare(Skin.String(HighlightBarColor),None)</visible>
+					</control>
+				</control>
 				<control type="grouplist" id="9001">
 					<description>control area</description>
 					<left>522</left>
@@ -523,7 +560,7 @@
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
-						<label>31961</label>
+                        <label>31961</label>
 						<onclick>Skin.ToggleSetting(Enable.HideRatings)</onclick>
 						<selected>Skin.HasSetting(Enable.HideRatings)</selected>
 						<texturenofocus border="1">separator5.png</texturenofocus>
@@ -533,7 +570,7 @@
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
-						<label>Auto open sidemenu when mousing over the top left corner (test setting)</label>
+                        <label>Auto open sidemenu when mousing over the top left corner (test setting)</label>
 						<onclick>Skin.ToggleSetting(Enable.AutoOpenMediaMenuOnMouseOver)</onclick>
 						<selected>Skin.HasSetting(Enable.AutoOpenMediaMenuOnMouseOver)</selected>
 						<texturenofocus border="1">separator5.png</texturenofocus>
@@ -767,6 +804,71 @@
 					<ondown>9007</ondown>
 					<visible>Container(9000).HasFocus(7)</visible>
 					<control type="button" id="700">
+						<width>1220</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>Focused Main Menu item</label>
+						<label2>[COLOR=$INFO[Skin.String(FocusedMainMenuColor.name)]][UPPERCASE]$INFO[Skin.String(FocusedMainMenuColor.name)][/UPPERCASE][/COLOR]</label2>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=FocusedMainMenuColor)</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+					<control type="button" id="705">
+						<width>1220</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>Unfocused Main Menu item</label>
+						<label2>[COLOR=$INFO[Skin.String(UnfocusedMainMenuColor.name)]][UPPERCASE]$INFO[Skin.String(UnfocusedMainMenuColor.name)][/UPPERCASE][/COLOR]</label2>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=UnfocusedMainMenuColor)</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+					<control type="button" id="702">
+						<width>1220</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>Focused label for Icons Main Menu</label>
+						<label2>[COLOR=$INFO[Skin.String(FocusedMainMenuIconLabelColor.name)]][UPPERCASE]$INFO[Skin.String(FocusedMainMenuIconLabelColor.name)][/UPPERCASE][/COLOR]</label2>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=FocusedMainMenuIconLabelColor)</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
+					</control>
+					<control type="button" id="703">
+						<width>1220</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>Unfocused label for Icons Main Menu</label>
+						<label2>[COLOR=$INFO[Skin.String(UnfocusedMainMenuIconLabelColor.name)]][UPPERCASE]$INFO[Skin.String(UnfocusedMainMenuIconLabelColor.name)][/UPPERCASE][/COLOR]</label2>
+						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=UnfocusedMainMenuIconLabelColor)</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
+					</control>
+					<control type="button" id="704">
+						<width>1220</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>Highlight bar</label>
+						<label2>[COLOR=$INFO[Skin.String(HighlightBarColor.name)]][UPPERCASE]$INFO[Skin.String(HighlightBarColor.name)][/UPPERCASE][/COLOR]</label2>						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=HighlightBarColor)</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+				</control>
+				<control type="grouplist" id="9008">
+					<description>control area</description>
+					<left>522</left>
+					<top>32</top>
+					<width>1316</width>
+					<height>720</height>
+					<itemgap>0</itemgap>
+					<pagecontrol>60</pagecontrol>
+					<onleft>9000</onleft>
+					<onright>60</onright>
+					<onup>9007</onup>
+					<ondown>9007</ondown>
+					<visible>Container(9000).HasFocus(8)</visible>
+					<control type="button" id="800">
 						<label>Background</label>
 						<label2>[COLOR labelheader]$VAR[WidgetBackLabelVar][/COLOR]</label2>
 						<onclick>$VAR[WidgetBackVar]</onclick>
@@ -776,7 +878,7 @@
 						<font>font15</font>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
-					<control type="button" id="701">
+					<control type="button" id="801">
 						<label>Transparency</label>
 						<label2>[COLOR labelheader]$VAR[WidgetTransLabelVar]%[/COLOR]</label2>
 						<onclick>$VAR[WidgetTransVar]</onclick>
@@ -786,7 +888,7 @@
 						<font>font15</font>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
-					<control type="button" id="702">
+					<control type="button" id="802">
 						<label>Classic Info</label>
 						<label2>[COLOR labelheader]$VAR[WidgetClassicInfoLabelVar][/COLOR]</label2>
 						<onclick>$VAR[WidgetClassicInfoVar]</onclick>
@@ -796,7 +898,7 @@
 						<font>font15</font>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
-					<control type="button" id="703">
+					<control type="button" id="803">
 						<label>Vertical Widget Position</label>
 						<label2>[COLOR labelheader]$VAR[WidgetVerticalMenuLabelVar][/COLOR]</label2>
 						<onclick>$VAR[WidgetVerticalMenuVar]</onclick>

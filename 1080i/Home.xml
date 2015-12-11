@@ -16,22 +16,21 @@
 			<top>424</top>
 			<control type="group">
 				<animation effect="slide" end="0,338" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(lowermainmenu)">Conditional</animation>
-				<animation effect="slide" end="-1870,0" time="240">WindowClose</animation>
-				<animation effect="slide" start="-1870,0" end="0,0" delay="300" time="240" condition="!Window.Previous(startup)">WindowOpen</animation>
-				<animation effect="slide" start="-1870" end="0" time="240">VisibleChange</animation>
-				<animation effect="slide" start="-1870,0" end="0,0" delay="800" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
-				<animation effect="slide" end="0,-381" time="320" tween="cubic" easing="inout" condition="!Skin.HasSetting(lowermainmenu) + Window.IsVisible(1199)">Conditional</animation>
+				<animation effect="slide" end="-1945,0" time="240">WindowClose</animation>
+				<animation effect="slide" start="-1945,0" end="0,0" delay="300" time="240" condition="!Window.Previous(startup)">WindowOpen</animation>
+				<animation effect="slide" start="-1945" end="0" time="240">VisibleChange</animation>
+				<animation effect="slide" start="-1945,0" end="0,0" delay="800" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
 				<control type="image">
-					<width>1780</width>
+					<width>FullScreenWidth</width>
 					<height>87</height>
 					<texture flipy="true">submenu_bar.png</texture>
 				</control>
-				<control type="image">
+				<!-- <control type="image">
 					<left>1780</left>
 					<width>90</width>
 					<height>87</height>
 					<texture flipx="true" flipy="true">submenu_end.png</texture>
-				</control>
+				</control> -->
 				<include condition="System.HasAddon(service.library.data.provider)">PlayListStatsList</include>
 				<control type="label">
 					<left>0</left>
@@ -45,9 +44,9 @@
 					<shadowcolor>shadow</shadowcolor>
 				</control>
 				<control type="grouplist" id="9020">
-					<left>0</left>
+					<left>945</left>
 					<top>46</top>
-					<width>1790</width>
+					<width>960</width>
 					<height>41</height>
 					<align>right</align>
 					<orientation>horizontal</orientation>
@@ -107,7 +106,7 @@
 						<width>60</width>
 						<height>40</height>
 						<aspectratio>keep</aspectratio>
-						<texture fallback="weather/normal/na.png">weather/normal/$INFO[Weather.FanartCode].png</texture>
+						<texture fallback="$VAR[WeatherIconsPathVar]na.png">$VAR[WeatherIconsPathVar]$INFO[Weather.FanartCode,,.png]</texture>
 						<visible>Weather.IsFetched + !IsEmpty(Weather.Plugin)</visible>
 					</control>
 					<control type="label" id="9023">
@@ -158,15 +157,15 @@
 					<include condition="[StringCompare(Skin.String(RSS.Position),$LOCALIZE[571]) | !StringCompare(Skin.String(RSS.Position),$LOCALIZE[571]) + !Skin.HasSetting(Enable.VisibleSubmenu)] + system.getbool(lookandfeel.enablerssfeeds) | [!system.getbool(lookandfeel.enablerssfeeds) + !Skin.HasSetting(Enable.VisibleSubmenu)]">SubMenuAnimation</include>
 					<animation effect="slide" start="1870,0" end="0,0" delay="300" time="240" condition="!Window.Previous(startup)">WindowOpen</animation>
 					<animation effect="slide" start="1870,0" end="0,0" delay="200" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
-					<control type="image" id="90101">
+					<!-- <control type="image" id="90101">
 						<left>50</left>
 						<width>90</width>
 						<height>87</height>
 						<texture>submenu_end.png</texture>
-					</control>
+					</control> -->
 					<control type="image">
-						<left>140</left>
-						<width>1780</width>
+						<left>0</left>
+						<width>FullScreenWidth</width>
 						<height>87</height>
 						<texture>submenu_bar.png</texture>
 					</control>
@@ -200,7 +199,7 @@
 								<control type="image">
 									<width>300</width>
 									<height>41</height>
-									<texture>listselect_fo.png</texture>
+									<texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
 								</control>
 								<control type="label">
 									<width>300</width>
@@ -283,18 +282,6 @@
 					<animation effect="rotate" start="360" end="0" center="auto" time="2000" loop="true" condition="true">conditional</animation>
 				</control>
 			</control>-->
-			<control type="label">
-				<left>0</left>
-				<top>17</top>
-				<width>FullScreenWidth</width>
-				<height>41</height>
-				<font>font13_title</font>
-				<textcolor>grey</textcolor>
-				<align>center</align>
-				<aligny>center</aligny>
-				<label>[UPPERCASE]$INFO[Container(9000).ListItem.Label][/UPPERCASE]</label>
-				<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
-			</control>
 			<control type="image">
 				<left>0</left>
 				<top>58</top>
@@ -314,6 +301,7 @@
 				<width>FullScreenWidth</width>
 				<height>72</height>
 				<texture border="1">gradient_floor.png</texture>
+				<visible>!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
 			</control>
 		</control>
 		<control type="group">
@@ -379,7 +367,7 @@
 						<control type="image">
 							<width>338</width>
 							<height>60</height>
-							<texture>listselect_fo.png</texture>
+							<texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
 						</control>
 						<control type="label">
 							<left>15</left>
@@ -467,7 +455,7 @@
 					<width>65</width>
 					<height>40</height>
 					<aspectratio>keep</aspectratio>
-					<texture fallback="weather/normal/na.png">weather/normal/$INFO[Weather.FanartCode].png</texture>
+					<texture fallback="$VAR[WeatherIconsPathVar]na.png">$VAR[WeatherIconsPathVar]$INFO[Weather.FanartCode,,.png]</texture>
 					<visible>Weather.IsFetched + !IsEmpty(Weather.Plugin)</visible>
 				</control>
 				<control type="label" id="9023">
