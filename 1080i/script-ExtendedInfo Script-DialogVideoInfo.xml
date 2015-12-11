@@ -125,47 +125,33 @@
 					</control>
 					<control type="group">
 						<width>198</width>
-						<control type="group">
+						<control type="panel" id="550">
 							<visible>!IntegerGreaterThan(Container(1450).NumItems,0)</visible>
-							<control type="image" id="800011">
+                            <itemlayout height="90" width="198">							
+							<control type="image">
 								<colordiffuse>grey</colordiffuse>
 								<width>198</width>
 								<include>MediaFlagVars</include>
 								<bordersize>2</bordersize>
-								<texture>$INFO[Container(550).ListItem(0).label,resource://resource.images.studios.white/,.png]</texture>
+								<texture fallback="resource://resource.images.studios.white/default-studio.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
 							</control> 
-							<control type="label">
-								<left>0</left>
-								<width>198</width>
-								<height>90</height>
-								<align>center</align>
-								<label>$INFO[Container(550).ListItem(0).label]</label>
-								<font>font10</font>
-								<textcolor>grey</textcolor>
-								<wrapmultiline>true</wrapmultiline>
-								<visible>IsEmpty(Control.GetLabel(800011))</visible>
-							</control>
+                            </itemlayout>
+                            <focusedlayout>							
+                            </focusedlayout>							
 						</control>
-						<control type="group">
+						<control type="panel" id="1450">
 							<visible>IntegerGreaterThan(Container(1450).NumItems,0)</visible>
-							<control type="image" id="800012">
+                            <itemlayout height="90" width="198">							
+							<control type="image"  id="800012">
 								<colordiffuse>grey</colordiffuse>
 								<width>198</width>
 								<include>MediaFlagVars</include>
 								<bordersize>2</bordersize>
-								<texture>$INFO[Container(1450).ListItem(0).label,resource://resource.images.studios.white/,.png]</texture>
+								<texture fallback="resource://resource.images.studios.white/default-studio.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
 							</control>
-							<control type="label">
-								<left>0</left>
-								<width>198</width>
-								<height>90</height>
-								<align>center</align>
-								<label>$INFO[Container(1450).ListItem(0).label]</label>
-								<font>font10</font>
-								<textcolor>grey</textcolor>
-								<wrapmultiline>true</wrapmultiline>
-								<visible>IsEmpty(Control.GetLabel(800012))</visible>
-							</control>
+                            </itemlayout>
+                            <focusedlayout>							
+                            </focusedlayout>							
 						</control>
 					</control>
 					<control type="image">
@@ -1146,10 +1132,6 @@
 						<description>Lists from MovieDB Users</description>
 						<visible>false</visible>
 					</control>
-					<control type="panel" id="550">
-						<description>Production Companies</description>
-						<visible>false</visible>
-					</control>
 					<control type="panel" id="650">
 						<description>Releases</description>
 						<visible>false</visible>
@@ -1164,10 +1146,6 @@
 					</control>
 					<control type="panel" id="1050">
 						<description>Reviews</description>
-						<visible>false</visible>
-					</control>
-					<control type="panel" id="1450">
-						<description>Networks</description>
 						<visible>false</visible>
 					</control>
 					<control type="panel" id="2000">

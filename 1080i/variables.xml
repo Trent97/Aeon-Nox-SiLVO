@@ -466,7 +466,8 @@
 		<value condition="Container.Content(musicvideos)">$INFO[ListItem.Artist]</value>
 		<value condition="Container.Content(movies) + !IsEmpty(ListItem.Title) + !Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration,, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,]</value>
 		<value condition="Container.Content(movies) + !IsEmpty(ListItem.Title) + Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ListItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(ListItem.Title)">$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]</value>
+<!-- Change color of UnwatchedEpisodes - FloorSubLabelVar -->
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(ListItem.Title)">$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] [COLOR=ICS_Blue_Textures]$INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)][/COLOR]</value>
 	</variable>
 	<variable name="FloorSubLabelNoYearDurationVar">
 		<value condition="Container.Content(episodes)">$INFO[ListItem.TvShowTitle]</value>
@@ -474,8 +475,7 @@
 		<value condition="Container.Content(musicvideos)">$INFO[ListItem.Artist]</value>
 		<value condition="Container.Content(movies) + !IsEmpty(ListItem.Title) + !Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration,, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,]</value>
 		<value condition="Container.Content(movies) + !IsEmpty(ListItem.Title) + Skin.HasSetting(Enable.HourMinuteDuration)">$INFO[ListItem.RatingAndVotes,, • ]$VAR[ListItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,]</value>
-<!-- Change color of UnwatchedEpisodes - FloorSubLabelVar -->
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(ListItem.Title)">$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] [COLOR=ICS_Blue_Textures]$INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)][/COLOR]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(ListItem.Title)">$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]</value>
 	</variable>
 	<variable name="FloorLabel2Var">
 		<value condition="Container.Content(artists)">$INFO[ListItem.Property(Artist_Genre)]</value>
@@ -980,8 +980,8 @@
 		<value condition="ControlGroup(9001).HasFocus(1000)">$LOCALIZE[206]$INFO[Container(1000).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(150)">$ADDON[script.extendedinfo 32116]$INFO[Container(150).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(750)">$ADDON[script.extendedinfo 32115]$INFO[Container(750).NumItems, [COLOR grey3](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(250) + IsEmpty(Window.Property(movie.set.label))">$LOCALIZE[33054]$INFO[Container(250).NumItems, [COLOR grey3](,)[/COLOR]]</value>
-		<value condition="ControlGroup(9001).HasFocus(250)">$INFO[Window.Property(movie.set.label)]$INFO[Container(250).NumItems, [COLOR grey3](,)[/COLOR]]</value>
+		<value condition="ControlGroup(9001).HasFocus(250) + IsEmpty(Window.Property(set.label))">$LOCALIZE[33054]$INFO[Container(250).NumItems, [COLOR grey3](,)[/COLOR]]</value>
+		<value condition="ControlGroup(9001).HasFocus(250)">$INFO[Window.Property(set.label)]$INFO[Container(250).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(1150)">$ADDON[script.extendedinfo 32117]$INFO[Container(1150).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(350)">$ADDON[script.extendedinfo 32118]$INFO[Container(350).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(1250)">$ADDON[script.extendedinfo 32119]$INFO[Container(1250).NumItems, [COLOR grey3](,)[/COLOR]]</value>
