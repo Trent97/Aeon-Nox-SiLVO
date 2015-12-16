@@ -15,15 +15,15 @@
 			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="Skin.HasSetting(Enable.WidgetHide) + !Control.HasFocus(8001) + !Control.HasFocus(8002)">Conditional</animation>
 			<visible>!IsEmpty(Container(9000).ListItem.Property(widgetPath))</visible>
 			<include>VisibleFadeEffect</include>
-			<!-- For Testing -->
+			<!-- Test Image
 			<control type="image">
 				<top>449</top>
 				<left></left>
 				<centerleft>50%</centerleft>
 				<width>1440</width>
 				<height>310</height>
-				<texture>xxxhomewidgets/test.png</texture>
-			</control>
+				<texture>back.png</texture>
+			</control>-->
 			<!-- Widgets -->
 			<include>skinshortcuts-template-widgetList1</include>
 			<include>skinshortcuts-template-widgetPanel1</include>
@@ -48,22 +48,15 @@
 			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="!IsEmpty(Container(9000).ListItem.Property(widgetLiveTV)) + [PVR.HasNonRecordingTimer | PVR.IsRecording] + !Control.HasFocus(8002)">Conditional</animation>
 			<visible>!IsEmpty(Container(9000).ListItem.Property(widgetPath.2))</visible>
 			<include>VisibleFadeEffect</include>
+			<!-- Test Image
 			<control type="image">
 				<top>449</top>
 				<left></left>
 				<centerleft>50%</centerleft>
 				<width>1440</width>
 				<height>310</height>
-				<texture>xxxhomewidgets/test.png</texture>
-			</control>
-			<control type="image">
-				<top>90</top>
-				<left></left>
-				<centerleft>50%</centerleft>
-				<width>1440</width>
-				<height>310</height>
-				<texture>xxxhomewidgets/test.png</texture>
-			</control>
+				<texture>back.png</texture>
+			</control>-->
 			<!-- Widgets -->
 			<include>skinshortcuts-template-widgetList2</include>
 			<include>skinshortcuts-template-widgetPanel2</include>
@@ -315,7 +308,6 @@
 			<aligny>center</aligny>
 			<font>fontCDartist</font>
 			<textcolor>lightgrey</textcolor>
-			<colordiffuse>$VAR[HomeWidgetTransVar]</colordiffuse>
 			<label>$PARAM[fallbackText]</label>
 			<visible>$PARAM[fallbackVisible]</visible>
 		</control>
@@ -365,8 +357,8 @@
 	<!-- ******* PANEL WIDGETS ******** -->
 	<!-- Panel Containers -->
 	<include name="PanelWidget1">
-		<centerleft>50%</centerleft>
 		<top>0</top>
+		<left>242</left>
 		<width>1435</width>
 		<height>300</height>
 		<include>HorizontalNavigation1</include>
@@ -376,8 +368,8 @@
 		<scrolltime tween="quadratic" easing="out">300</scrolltime>
 	</include>
 	<include name="PanelWidget2">
-		<centerleft>50%</centerleft>
 		<top>0</top>
+		<left>242</left>
 		<width>1435</width>
 		<height>300</height>
 		<include>HorizontalNavigation2</include>
@@ -392,9 +384,9 @@
 			<left></left>
 			<centerleft>50%</centerleft>
 			<top>-21</top>
-			<width>1472</width>
+			<width>1473.5</width>
 			<height>$PARAM[backHeight]</height>
-			<texture border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+			<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
 		</control>
 		<control type="label">
 			<top>-28</top>
@@ -428,9 +420,9 @@
 			<left></left>
 			<centerleft>50%</centerleft>
 			<top>-21</top>
-			<width>1472</width>
+			<width>1473.5</width>
 			<height>$PARAM[backHeight]</height>
-			<texture border="40">$VAR[HomeWidgetBackgroundVar]</texture>
+			<texture colordiffuse="$VAR[HomeWidgetTransVar]" border="40">$VAR[HomeWidgetBackgroundVar]</texture>
 		</control>
 		<control type="label">
 			<top>-28</top>
@@ -463,7 +455,7 @@
 	<include name="PortraitArt">
 		<itemlayout height="300" width="205">
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>200</width>
 				<height>300</height>
@@ -475,7 +467,7 @@
 				<texture>$PARAM[Texture]</texture>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>200</top>
 				<width>200</width>
 				<height>100</height>
@@ -486,7 +478,7 @@
 				<visible>$PARAM[labelVisible]</visible>
 			</control>
 			<control type="textbox">
-				<left>5</left>
+				<left>8</left>
 				<top>230</top>
 				<width>190</width>
 				<height>70</height>
@@ -498,7 +490,7 @@
 				<visible>$PARAM[labelVisible]</visible>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>200</width>
 				<height>300</height>
@@ -512,7 +504,7 @@
 					<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 				</animation>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>200</width>
 					<height>300</height>
@@ -523,6 +515,7 @@
 					<texture>$PARAM[Texture]</texture>
 				</control>
 				<control type="image">
+					<left>3</left>
 					<width>200</width>
 					<height>300</height>
 					<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
@@ -531,7 +524,7 @@
 					<texture border="4">listselect_fo.png</texture>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>200</top>
 					<width>200</width>
 					<height>100</height>
@@ -541,7 +534,7 @@
 					<visible>$PARAM[labelVisible]</visible>
 				</control>
 				<control type="textbox">
-					<left>5</left>
+					<left>8</left>
 					<top>230</top>
 					<width>190</width>
 					<height>70</height>
@@ -553,7 +546,7 @@
 					<visible>$PARAM[labelVisible]</visible>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>200</width>
 					<height>300</height>
@@ -565,7 +558,7 @@
 	<include name="SquareArt">
 		<itemlayout height="282" width="287">
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>282</width>
 				<height>282</height>
@@ -578,7 +571,7 @@
 				<texture diffuse="$PARAM[Diffuse]">$PARAM[Texture]</texture>
 			</control>
 			<control type="label">
-				<left>17</left>
+				<left>20</left>
 				<width>248</width>
 				<height>45</height>
 				<font>font14</font>
@@ -592,7 +585,7 @@
 			</control>
 			<control type="textbox">
 				<top>150</top>
-				<left>17</left>
+				<left>20</left>
 				<width>248</width>
 				<height>80</height>
 				<font>font14</font>
@@ -606,7 +599,7 @@
 			</control>
 			<control type="label">
 				<top>225</top>
-				<left>17</left>
+				<left>20</left>
 				<width>248</width>
 				<height>60</height>
 				<font>font14</font>
@@ -619,7 +612,7 @@
 				<visible>$PARAM[isWeather]</visible>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>282</width>
 				<height>282</height>
@@ -631,7 +624,7 @@
 				<visible>$PARAM[fallbackVisible]</visible>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>182</top>
 				<width>282</width>
 				<height>100</height>
@@ -641,7 +634,7 @@
 				<visible>$PARAM[labelVisible]</visible>
 			</control>
 			<control type="textbox">
-				<left>17</left>
+				<left>20</left>
 				<top>212</top>
 				<width>248</width>
 				<height>70</height>
@@ -655,7 +648,7 @@
 				<visible>$PARAM[labelVisible]</visible>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>282</width>
 				<height>282</height>
@@ -669,7 +662,7 @@
 					<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 				</animation>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>282</width>
 					<height>282</height>
@@ -681,6 +674,7 @@
 					<texture diffuse="$PARAM[Diffuse]">$PARAM[Texture]</texture>
 				</control>
 				<control type="image">
+					<left>3</left>
 					<width>282</width>
 					<height>282</height>
 					<animation effect="zoom" end="96,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
@@ -689,7 +683,7 @@
 					<texture border="4">listselect_fo.png</texture>
 				</control>
 				<control type="label">
-					<left>17</left>
+					<left>20</left>
 					<width>248</width>
 					<height>45</height>
 					<font>font14</font>
@@ -703,7 +697,7 @@
 				</control>
 				<control type="textbox">
 					<top>150</top>
-					<left>17</left>
+					<left>20</left>
 					<width>248</width>
 					<height>80</height>
 					<font>font14</font>
@@ -717,7 +711,7 @@
 				</control>
 				<control type="label">
 					<top>225</top>
-					<left>17</left>
+					<left>20</left>
 					<width>248</width>
 					<height>60</height>
 					<font>font14</font>
@@ -730,7 +724,7 @@
 					<visible>$PARAM[isWeather]</visible>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>282</width>
 					<height>282</height>
@@ -742,7 +736,7 @@
 					<visible>$PARAM[fallbackVisible]</visible>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>182</top>
 					<width>282</width>
 					<height>100</height>
@@ -751,7 +745,7 @@
 					<visible>$PARAM[labelVisible]</visible>
 				</control>
 				<control type="textbox">
-					<left>17</left>
+					<left>20</left>
 					<top>212</top>
 					<width>248</width>
 					<height>70</height>
@@ -765,7 +759,7 @@
 					<visible>$PARAM[labelVisible]</visible>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>282</width>
 					<height>282</height>
@@ -777,7 +771,7 @@
 	<include name="LandscapeArt">
 		<itemlayout height="266" width="478">
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>473</width>
 				<height>266</height>
@@ -787,7 +781,7 @@
 				<texture>$PARAM[Texture]</texture>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>166</top>
 				<width>473</width>
 				<height>100</height>
@@ -797,7 +791,7 @@
 				<visible>$PARAM[isWeather]</visible>
 			</control>
 			<control type="textbox">
-				<left>5</left>
+				<left>8</left>
 				<top>196</top>
 				<width>463</width>
 				<height>70</height>
@@ -809,7 +803,7 @@
 				<visible>$PARAM[isWeather]</visible>
 			</control>
 			<control type="textbox">
-				<left>20</left>
+				<left>23</left>
 				<top>20</top>
 				<width>433</width>
 				<height>226</height>
@@ -821,7 +815,7 @@
 				<visible>$PARAM[fallbackVisible]</visible>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>166</top>
 				<width>473</width>
 				<height>100</height>
@@ -831,7 +825,7 @@
 				<visible>$PARAM[labelVisible]</visible>
 			</control>
 			<control type="textbox">
-				<left>5</left>
+				<left>8</left>
 				<top>196</top>
 				<width>463</width>
 				<height>70</height>
@@ -843,7 +837,7 @@
 				<visible>$PARAM[labelVisible]</visible>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>473</width>
 				<height>266</height>
@@ -856,7 +850,7 @@
 					<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 				</animation>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>473</width>
 					<height>266</height>
@@ -865,13 +859,14 @@
 					<texture>$PARAM[Texture]</texture>
 				</control>
 				<control type="image">
+					<left>3</left>
 					<width>473</width>
 					<height>266</height>
 					<animation effect="zoom" end="98,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<texture border="4">listselect_fo.png</texture>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>166</top>
 					<width>473</width>
 					<height>100</height>
@@ -880,7 +875,7 @@
 					<visible>$PARAM[isWeather]</visible>
 				</control>
 				<control type="textbox">
-					<left>5</left>
+					<left>8</left>
 					<top>196</top>
 					<width>463</width>
 					<height>70</height>
@@ -892,7 +887,7 @@
 					<visible>$PARAM[isWeather]</visible>
 				</control>
 				<control type="textbox">
-					<left>20</left>
+					<left>23</left>
 					<top>20</top>
 					<width>433</width>
 					<height>226</height>
@@ -900,12 +895,11 @@
 					<aligny>center</aligny>
 					<font>fontCDartist</font>
 					<textcolor>lightgrey</textcolor>
-					<colordiffuse>$VAR[HomeWidgetTransVar]</colordiffuse>
 					<label>$VAR[HomeWidgetTitleVar]</label>
 					<visible>$PARAM[fallbackVisible]</visible>
 				</control>
 				<control type="textbox">
-					<left>20</left>
+					<left>23</left>
 					<top>20</top>
 					<width>433</width>
 					<height>226</height>
@@ -917,7 +911,7 @@
 					<visible>$PARAM[fallbackVisible]</visible>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>166</top>
 					<width>473</width>
 					<height>100</height>
@@ -926,7 +920,7 @@
 					<visible>$PARAM[labelVisible]</visible>
 				</control>
 				<control type="textbox">
-					<left>5</left>
+					<left>8</left>
 					<top>196</top>
 					<width>463</width>
 					<height>70</height>
@@ -938,7 +932,7 @@
 					<visible>$PARAM[labelVisible]</visible>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>473</width>
 					<height>266</height>
@@ -950,7 +944,7 @@
 	<include name="BannerArt">
 		<itemlayout height="137" width="717">
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>712</width>
 				<height>132</height>
@@ -960,7 +954,7 @@
 				<texture>$PARAM[Texture]</texture>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>712</width>
 				<height>132</height>
@@ -970,7 +964,7 @@
 				<visible>IsEmpty(ListItem.Art(banner)) + IsEmpty(ListItem.Art(tvshow.banner))</visible>
 			</control>
 			<control type="textbox">
-				<left>20</left>
+				<left>23</left>
 				<top>20</top>
 				<width>672</width>
 				<height>92</height>
@@ -983,7 +977,7 @@
 				<visible>IsEmpty(ListItem.Art(banner)) + IsEmpty(ListItem.Art(tvshow.banner)) + IsEmpty(ListItem.Art(clearlogo)) + IsEmpty(ListItem.Art(tvshow.clearlogo))</visible>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>82</top>
 				<width>712</width>
 				<height>50</height>
@@ -993,7 +987,7 @@
 				<visible>$PARAM[labelVisible]</visible>
 			</control>
 			<control type="textbox">
-				<left>5</left>
+				<left>8</left>
 				<top>97</top>
 				<width>712</width>
 				<height>35</height>
@@ -1005,7 +999,7 @@
 				<visible>$PARAM[labelVisible]</visible>
 			</control>
 			<control type="image">
-				<left>0</left>
+				<left>3</left>
 				<top>0</top>
 				<width>712</width>
 				<height>132</height>
@@ -1018,7 +1012,7 @@
 					<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 				</animation>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>712</width>
 					<height>132</height>
@@ -1028,13 +1022,14 @@
 					<texture>$PARAM[Texture]</texture>
 				</control>
 				<control type="image">
+					<left>3</left>
 					<width>712</width>
 					<height>132</height>
 					<animation effect="zoom" end="99,96" center="auto" condition="$PARAM[glassVisible]">conditional</animation>
 					<texture border="4">listselect_fo.png</texture>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>712</width>
 					<height>132</height>
@@ -1044,7 +1039,7 @@
 					<visible>IsEmpty(ListItem.Art(banner)) + IsEmpty(ListItem.Art(tvshow.banner))</visible>
 				</control>
 				<control type="textbox">
-					<left>20</left>
+					<left>23</left>
 					<top>20</top>
 					<width>672</width>
 					<height>92</height>
@@ -1057,7 +1052,7 @@
 					<visible>IsEmpty(ListItem.Art(banner)) + IsEmpty(ListItem.Art(tvshow.banner)) + IsEmpty(ListItem.Art(clearlogo)) + IsEmpty(ListItem.Art(tvshow.clearlogo))</visible>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>82</top>
 					<width>712</width>
 					<height>50</height>
@@ -1066,7 +1061,7 @@
 					<visible>$PARAM[labelVisible]</visible>
 				</control>
 				<control type="textbox">
-					<left>5</left>
+					<left>8</left>
 					<top>97</top>
 					<width>712</width>
 					<height>35</height>
@@ -1078,7 +1073,7 @@
 					<visible>$PARAM[labelVisible]</visible>
 				</control>
 				<control type="image">
-					<left>0</left>
+					<left>3</left>
 					<top>0</top>
 					<width>712</width>
 					<height>132</height>

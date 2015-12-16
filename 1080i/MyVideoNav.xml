@@ -81,26 +81,6 @@
 			<visible>Control.IsVisible(701) + ListItem.IsCollection</visible>
 		</control>
 		<include>CommonBackground</include>
-		<control type="fadelabel" id="4410">
-			<top>-100</top>
-			<width>2560</width>
-			<height>100</height>
-			<scrollspeed>20</scrollspeed>
-			<scrollout>false</scrollout>
-			<pauseatend>7000</pauseatend>
-			<font>font10</font>
-			<textcolor>white</textcolor>
-			<label>$INFO[ListItem.Art(extrafanart1)]</label>
-			<label>$INFO[ListItem.Art(extrafanart2)]</label>
-			<label>$INFO[ListItem.Art(extrafanart3)]</label>
-			<label>$INFO[ListItem.Art(extrafanart4)]</label>
-			<label>$INFO[ListItem.Art(extrafanart5)]</label>
-			<label>$INFO[ListItem.Art(extrafanart6)]</label>
-			<label>$INFO[ListItem.Art(extrafanart7)]</label>
-			<label>$INFO[ListItem.Art(extrafanart8)]</label>
-			<label>$INFO[ListItem.Art(extrafanart9)]</label>
-			<label>$INFO[ListItem.Art(extrafanart10)]</label>
-		</control>
 		<control type="group">
 			<visible>Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(57) | Control.IsVisible(601)</visible>
 			<top>-30</top>
@@ -758,7 +738,7 @@
 				<top>980</top>
 				<width>1840</width>
 				<height>90</height>
-				<visible>[Container.Content(movies) | Container.Content(episodes)] + !ListItem.IsCollection</visible>
+				<visible>[Container.Content(movies) | Container.Content(episodes)]</visible>
 				<visible>[Control.IsVisible(700) + !Skin.HasSetting(Disable.RightList.Mediaflags)] | [Control.IsVisible(591)] | [Control.IsVisible(701) + !Skin.HasSetting(Disable.MyFlix.Mediaflags)]</visible>
 				<animation effect="slide" tween="cubic" time="720" start="0,806" end="0,0">VisibleChange</animation>
 				<animation effect="slide" end="-500,10" time="320" tween="cubic" easing="inout" condition="Control.IsVisible(701) + [Container.Content(movies) | Container.Content(episodes)]">Conditional</animation>
@@ -788,7 +768,7 @@
 					<texture fallback="flags/colored/rating/NR.png">$VAR[ColoredRatingFlagVar]</texture>
 					<colordiffuse>grey</colordiffuse>
 					<include>MediaFlagVars</include>
-					<visible>Skin.HasSetting(coloredflags) + !IsEmpty(ListItem.Title)</visible>
+					<visible>Skin.HasSetting(coloredflags) + !IsEmpty(ListItem.Title) + !ListItem.IsCollection</visible>
 				</control>
 				<control type="image">
 					<left>165</left>
@@ -796,7 +776,7 @@
 					<colordiffuse>grey</colordiffuse>
 					<include>MediaFlagVars</include>
 					<texture fallback="flags/mpaa/NR.png">$VAR[RatingFlagVar]</texture>
-					<visible>!Skin.HasSetting(coloredflags)	 + !IsEmpty(ListItem.Title)</visible>
+					<visible>!Skin.HasSetting(coloredflags)	 + !IsEmpty(ListItem.Title) + !ListItem.IsCollection</visible>
 				</control>
 				<control type="image">
 					<left>400</left>
@@ -804,7 +784,6 @@
 					<include>MediaFlagVars</include>
 					<texture>$VAR[PathFlagsResolution]</texture>
 					<visible>!IsEmpty(ListItem.VideoResolution)</visible>
-					<include>VisibleFadeEffect</include>
 				</control>
 				<control type="image">
 					<left>600</left>
@@ -825,6 +804,7 @@
 					<colordiffuse>grey</colordiffuse>
 					<include>MediaFlagVars</include>
 					<texture>$VAR[PathFlagsAspect]</texture>
+					<visible>!IsEmpty(ListItem.VideoAspect)</visible>
 				</control>
 				<control type="image">
 					<left>1000</left>
@@ -976,7 +956,7 @@
 					<textwidth>255</textwidth>
 					<include>ButtonCommonValues</include>
 					<label>$LOCALIZE[31018]</label>
-					<label2>[COLOR labelheader]$VAR[InfoPanelLabelVar][/COLOR]</label2>
+					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[InfoPanelLabelVar][/COLOR]</label2>
 					<onclick condition="Control.IsVisible(52)">$VAR[52VideoInfoPanelVar]</onclick>
 					<onclick condition="Control.IsVisible(53)">$VAR[53VideoInfoPanelVar]</onclick>
 					<onclick condition="Control.IsVisible(57)">$VAR[57VideoInfoPanelVar]</onclick>
@@ -998,7 +978,7 @@
 					<textwidth>255</textwidth>
 					<include>ButtonCommonValues</include>
 					<label>$LOCALIZE[31189]</label>
-					<label2>[COLOR labelheader]$VAR[TriPanelLayoutLabelVar][/COLOR]</label2>
+					<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[TriPanelLayoutLabelVar][/COLOR]</label2>
 					<onclick>$VAR[TriPanelLayoutOnclickVar]</onclick>
 					<visible>Control.IsVisible(55)</visible>
 				</control>
@@ -1059,14 +1039,14 @@
 					<include>ButtonCommonValues</include>
 					<label>31026</label>
 					<enable>no</enable>
-					<disabledcolor>themecolor</disabledcolor>
+					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
 				</control>
 				<control type="button" id="10">
 					<description>Watched Toggle</description>
 					<textwidth>255</textwidth>
 					<include>ButtonCommonValues</include>
 					<label>20367</label>
-					<label2>[COLOR themecolor]$INFO[Container.NumItems][/COLOR]</label2>
+					<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Container.NumItems][/COLOR]</label2>
 				</control>
 				<control type="button" id="8">
 					<description>Search</description>
@@ -1111,7 +1091,7 @@
 					<include>ButtonCommonValues</include>
 					<label>31039</label>
 					<enable>no</enable>
-					<disabledcolor>themecolor</disabledcolor>
+					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
 				</control>
 				<control type="togglebutton" id="20">
 					<description>Update library</description>

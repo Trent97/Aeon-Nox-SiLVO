@@ -15,6 +15,7 @@
 				<onup>211</onup>
 				<ondown>211</ondown>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
+				<include>SettingsFadeEffect</include>
 				<itemlayout height="90" width="356">
 					<control type="image">
 						<top>30</top>
@@ -116,7 +117,7 @@
 				<font>font15_textbox</font>
 				<align>left</align>
 				<textcolor>grey2</textcolor>
-				<label>$VAR[MainMenuDescriptionVar]</label>
+				<label>$VAR[MainMenuCustomizerDescriptionVar]</label>
 				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
 				<animation effect="fade" start="0" end="100" time="300" tween="sine" easing="inout">Visible</animation>
 				<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout">Hidden</animation>
@@ -131,6 +132,17 @@
 				<onleft>211</onleft>
 				<onup>90001</onup>
 				<ondown>90001</ondown>
+				<!-- <control type="radiobutton" id="4000">
+					<description>Enable Advanced Widgets</description>
+					<width>1316</width>
+					<height>90</height>
+					<textoffsetx>30</textoffsetx>
+					<font>font15</font>
+					<label>Enable Advanced Widgets</label>
+					<onclick>Skin.ToggleSetting(Enable.AdvancedWidgets)</onclick>
+					<selected>Skin.HasSetting(Enable.AdvancedWidgets)</selected>
+					<texturenofocus border="1">separator5.png</texturenofocus>
+				</control> -->
 				<control type="button" id="401">
 					<description>Choose shortcut</description>
 					<width>1316</width>
@@ -138,15 +150,17 @@
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
 					<label>$ADDON[script.skinshortcuts 32048]</label>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="305">
-					<description>Change action</description>
+					<description>Change label</description>
 					<width>1316</width>
 					<height>90</height>
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
 					<label>$ADDON[script.skinshortcuts 32025]</label>
 					<label2>$INFO[Container(211).ListItem.Label]</label2>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="307">
 					<description>Change action</description>
@@ -156,6 +170,7 @@
 					<font>font15</font>
 					<label>$ADDON[script.skinshortcuts 32027]</label>
 					<label2>$INFO[Container(211).ListItem.Property(displaypath)]</label2>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="405">
 					<description>Edit submenu</description>
@@ -165,6 +180,7 @@
 					<font>font15</font>
 					<label>$LOCALIZE[31080]</label>
 					<visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="310">
 					<description>Change background</description>
@@ -175,6 +191,7 @@
 					<label>$ADDON[script.skinshortcuts 32045]</label>
 					<label2>$INFO[Container(211).ListItem.Property(backgroundName)]</label2>
 					<visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="306">
 					<description>Change icon</description>
@@ -184,8 +201,8 @@
 					<font>font15</font>
 					<label>$LOCALIZE[31047]</label>
 					<label2>-</label2>
-					<texturenofocus border="1">separator5.png</texturenofocus>
 					<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="312">
 					<description>Change widget 1</description>
@@ -193,11 +210,12 @@
 					<height>90</height>
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
-					<label>$ADDON[script.skinshortcuts 32044] 1</label>
+					<label>$ADDON[script.skinshortcuts 32044]</label>
 					<label2>$INFO[Container(211).ListItem.Property(widgetName)]</label2>
 					<onclick>SetProperty(customProperty,widgetArt)</onclick>
 					<onclick>SendClick(404)</onclick>
 					<visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="511">
 					<description>Change widget art 1</description>
@@ -209,6 +227,8 @@
 					<label2>$VAR[WidgetArtLabelVar]</label2>
 					<visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
 					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName)) + !StringCompare(Container(211).ListItem.Property(widget),$LOCALIZE[31502])</visible>
+					<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="517">
 					<description>Change widget case 1</description>
@@ -219,6 +239,8 @@
 					<label>Case</label>
 					<label2>$VAR[WidgetCaseLabelVar]</label2>
 					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName)) + !StringCompare(Container(211).ListItem.Property(widget),$LOCALIZE[31502])</visible>
+					<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="509">
 					<description>Change widget style 1</description>
@@ -229,6 +251,8 @@
 					<label>Style</label>
 					<label2>$VAR[WidgetStyleLabelVar]</label2>
 					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName)) + !StringCompare(Container(211).ListItem.Property(widget),$LOCALIZE[31502])</visible>
+					<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="515">
 					<description>Change widget title 1</description>
@@ -239,6 +263,8 @@
 					<label>Label</label>
 					<label2>$VAR[WidgetTitleLabelVar]</label2>
 					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName)) + !StringCompare(Container(211).ListItem.Property(widget),weather) + !StringCompare(Container(211).ListItem.Property(widget),$LOCALIZE[31502]) + !SubString(Container(211).ListItem.Property(widgetStyle),Classic)</visible>
+					<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="512">
 					<description>Change widget 2</description>
@@ -253,6 +279,8 @@
 					<onclick>SetProperty(customProperty,widgetArt.2)</onclick>
 					<onclick>SendClick(404)</onclick>
 					<visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
+					<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="513">
 					<description>Change widget art 2</description>
@@ -264,6 +292,8 @@
 					<label2>$VAR[WidgetArt2LabelVar]</label2>
 					<visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
 					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName.2)) + !StringCompare(Container(211).ListItem.Property(widget.2),$LOCALIZE[31502])</visible>
+					<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="518">
 					<description>Change widget case 2</description>
@@ -274,6 +304,8 @@
 					<label>Case</label>
 					<label2>$VAR[WidgetCase2LabelVar]</label2>
 					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName.2)) + !StringCompare(Container(211).ListItem.Property(widget.2),$LOCALIZE[31502])</visible>
+					<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="514">
 					<description>Change widget style 2</description>
@@ -284,6 +316,8 @@
 					<label>Style</label>
 					<label2>$VAR[WidgetStyle2LabelVar]</label2>
 					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName.2)) + !StringCompare(Container(211).ListItem.Property(widget.2),$LOCALIZE[31502])</visible>
+					<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="516">
 					<description>Change widget title 2</description>
@@ -294,6 +328,8 @@
 					<label>Label</label>
 					<label2>$VAR[WidgetTitle2LabelVar]</label2>
 					<visible>!IsEmpty(Container(211).ListItem.Property(widgetName.2)) + !StringCompare(Container(211).ListItem.Property(widget.2),weather) + !StringCompare(Container(211).ListItem.Property(widget.2),$LOCALIZE[31502]) + !SubString(Container(211).ListItem.Property(widgetStyle.2),Classic)</visible>
+					<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="radiobutton" id="519">
 					<description>Show Live TV Widget</description>
@@ -307,7 +343,8 @@
 					<onclick condition="IsEmpty(Container(211).ListItem.Property(widgetLiveTV))">SetProperty(customValue,true)</onclick>
 					<onclick>SendClick(404)</onclick>
 					<selected>!IsEmpty(Container(211).ListItem.Property(widgetLiveTV))</selected>
-				</control>							
+					<texturenofocus border="1">separator5.png</texturenofocus>
+				</control>
 				<control type="button" id="510">
 					<description>Choose infoline</description>
 					<width>1316</width>
@@ -319,6 +356,7 @@
 					<visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
 					<onclick>SetProperty(chooseProperty,InfoLine)</onclick>
 					<onclick>SendClick(404)</onclick>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="303">
 					<description>Move up</description>
@@ -326,6 +364,7 @@
 					<height>90</height>
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="304">
 					<description>Move down</description>
@@ -333,6 +372,7 @@
 					<height>90</height>
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="301">
 					<description>Add shortcut</description>
@@ -341,6 +381,7 @@
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
 					<label>$ADDON[script.skinshortcuts 32000]</label>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="302">
 					<description>Delete shortcut</description>
@@ -348,6 +389,7 @@
 					<height>90</height>
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 				<control type="button" id="308">
 					<description>Restore shortcuts</description>
@@ -356,6 +398,7 @@
 					<textoffsetx>30</textoffsetx>
 					<font>font15</font>
 					<label>$ADDON[script.skinshortcuts 32028]</label>
+					<texturenofocus border="1">separator5.png</texturenofocus>
 				</control>
 			</control>
 		</control>

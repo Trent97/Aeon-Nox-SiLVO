@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1199" type="dialog">
 	<defaultcontrol always="true">8052</defaultcontrol>
-	<animation type="WindowOpen" reversible="false">
-		<effect type="rotatex" start="-180" end="0" center="465,0" time="400" tween="sine" easing="inout" />
+	<animation type="WindowOpen" reversible="false" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + Skin.HasSetting(lowermainmenu)">
+		<effect type="rotatex" start="-180" end="0" center="425,0" time="400" tween="sine" easing="inout" />
 		<effect type="fade" start="0" end="100" time="10" delay="200" />
 	</animation>
-	<animation type="WindowClose" reversible="false">
-		<effect type="rotatex" start="0" end="-180" center="465,0" time="400" tween="sine" easing="inout" />
+	<animation type="WindowClose" reversible="false" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + Skin.HasSetting(lowermainmenu)">
+		<effect type="rotatex" start="0" end="-180" center="425,0" time="400" tween="sine" easing="inout" />
+		<effect type="fade" start="100" end="0" time="10" delay="200" />
+	</animation>
+	<animation type="WindowOpen" reversible="false" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">
+		<effect type="rotatex" start="-180" end="0" center="656,0" time="400" tween="sine" easing="inout" />
+		<effect type="fade" start="0" end="100" time="10" delay="200" />
+	</animation>
+	<animation type="WindowClose" reversible="false" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">
+		<effect type="rotatex" start="0" end="-180" center="656,0" time="400" tween="sine" easing="inout" />
+		<effect type="fade" start="100" end="0" time="10" delay="200" />
+	</animation>
+	<animation type="WindowOpen" reversible="false" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">
+		<effect type="rotatex" start="-180" end="0" center="490,0" time="400" tween="sine" easing="inout" />
+		<effect type="fade" start="0" end="100" time="10" delay="200" />
+	</animation>
+	<animation type="WindowClose" reversible="false" condition="StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])">
+		<effect type="rotatex" start="0" end="-180" center="490,0" time="400" tween="sine" easing="inout" />
 		<effect type="fade" start="100" end="0" time="10" delay="200" />
 	</animation>
 	<animation effect="slide" end="0,231" condition="!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !Skin.HasSetting(lowermainmenu)">Conditional</animation>
@@ -272,7 +288,7 @@
 				<width>1266</width>
 				<top>285</top>
 				<height>60</height>
-				<onup>-</onup>
+				<onup>noop</onup>
 				<ondown>8001</ondown>
 				<orientation>horizontal</orientation>
 				<control type="button" id="8053">
@@ -556,7 +572,7 @@
 				<width>1063</width>
 				<top>285</top>
 				<height>60</height>
-				<onup>-</onup>
+				<onup>noop</onup>
 				<ondown>8001</ondown>
 				<orientation>horizontal</orientation>
 				<control type="button" id="8053">

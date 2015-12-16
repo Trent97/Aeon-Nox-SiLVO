@@ -33,6 +33,7 @@
 				<preloaditems>2</preloaditems>
 				<pagecontrol>60</pagecontrol>
 				<orientation>vertical</orientation>
+				<animation effect="slide" tween="cubic" time="0" end="-50,0" condition="Container.Content(albums) + Skin.HasSetting(alternatebiglistlayout)">Conditional</animation>
 				<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(artists) | Container.Content(albums)]</visible>
 				<!--landscape layout-->
 				<itemlayout width="1808" height="235">
@@ -52,7 +53,7 @@
 							<width>1380</width>
 							<label>$INFO[ListItem.Label]</label>
 							<font>font16_title_bold</font>
-							<textcolor>grey</textcolor>
+							<textcolor>$VAR[BigListItemLabelColor]</textcolor>
 							<aligny>top</aligny>
 							<visible>!ListItem.IsCollection</visible>
 						</control>
@@ -61,7 +62,7 @@
 							<width>1380</width>
 							<label>$INFO[ListItem.Label]</label>
 							<font>font45caps_title</font>
-							<textcolor>grey</textcolor>
+							<textcolor>$VAR[BigListItemLabelColor]</textcolor>
 							<aligny>top</aligny>
 							<visible>ListItem.IsCollection</visible>
 						</control>
@@ -124,10 +125,10 @@
 							<top>90</top>
 							<width>1380</width>
 							<height>108</height>
-							<label>$INFO[ListItem.Tagline,[COLOR themecolor_transparent],[/COLOR] - ]$VAR[VideoInfoPlotVar]</label>
+							<label>$INFO[ListItem.Tagline,, - ]$VAR[VideoInfoPlotVar,[COLOR grey],[/COLOR]]</label>
 							<autoscroll>false</autoscroll>
 							<font>font14_textbox</font>
-							<textcolor>grey</textcolor>
+							<textcolor>$VAR[BigListThemeLabelColor]</textcolor>
 							<visible>!Container.Content(artists)</visible>
 							<visible>!ListItem.IsCollection</visible>
 						</control>
@@ -213,7 +214,7 @@
 								<width>1380</width>
 								<label>$INFO[ListItem.Label]</label>
 								<font>font16_title_bold</font>
-								<textcolor>white</textcolor>
+								<textcolor>$VAR[BigListFocusedLabelColor]</textcolor>
 								<aligny>top</aligny>
 								<visible>!ListItem.IsCollection</visible>
 							</control>
@@ -222,7 +223,7 @@
 								<width>1380</width>
 								<label>$INFO[ListItem.Label]</label>
 								<font>font45caps_title</font>
-								<textcolor>white</textcolor>
+								<textcolor>$VAR[BigListFocusedLabelColor]</textcolor>
 								<aligny>top</aligny>
 								<visible>ListItem.IsCollection</visible>
 							</control>
@@ -284,14 +285,14 @@
 								<visible>Container.Content(albums)</visible>
 							</control>
 							<control type="textbox">
-								<visible>!Container.Content(artists)</visible>
 								<top>90</top>
 								<width>1380</width>
 								<height>108</height>
-								<label>$INFO[ListItem.Tagline,[COLOR labelheader],[/COLOR] - ]$VAR[VideoInfoPlotVar]</label>
-								<textcolor>white</textcolor>
+								<label>$INFO[ListItem.Tagline,, - ]$VAR[VideoInfoPlotVar,[COLOR white],[/COLOR]]</label>
+								<autoscroll>false</autoscroll>
 								<font>font14_textbox</font>
-								<autoscroll time="3500" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+								<textcolor>$VAR[BigListThemeLabelColor]</textcolor>
+								<visible>!Container.Content(artists)</visible>
 								<visible>!ListItem.IsCollection</visible>
 							</control>
 							<control type="textbox">

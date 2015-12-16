@@ -21,7 +21,7 @@
 				<ondown>9000</ondown>
 				<pagecontrol>-</pagecontrol>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
-				<visible>!Window.IsActive(script-skinshortcuts.xml)</visible>
+				<visible>!Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1140)</visible>
 				<include>SettingsFadeEffect</include>
 				<itemlayout height="90" width="356">
 					<control type="image">
@@ -79,12 +79,6 @@
 						<onclick>noop</onclick>
 						<icon>-</icon>
 					</item>
-					<item id="7">
-						<label>Colors</label>
-						<onclick>noop</onclick>
-						<icon>-</icon>
-						<visible>System.HasAddon(script.skin.helper.service)</visible>
-					</item>
 					<item id="3">
 						<label>31014</label>
 						<onclick>noop</onclick>
@@ -101,10 +95,16 @@
 						<icon>-</icon>
 					</item>
 					<item id="6">
-						<label>$LOCALIZE[31190]</label>
+						<label>31190</label>
 						<onclick>noop</onclick>
 						<icon>-</icon>
 					</item>
+					<!-- <item id="7">
+						<label>Colors</label>
+						<onclick>noop</onclick>
+						<icon>-</icon>
+						<visible>System.HasAddon(script.skin.helper.service)</visible>
+					</item> -->
 					<item id="8">
 						<label>31155</label>
 						<onclick>noop</onclick>
@@ -153,47 +153,11 @@
 				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
 				<animation effect="fade" start="0" end="100" time="300" tween="sine" easing="inout">Visible</animation>
 				<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout">Hidden</animation>
-				<visible>!Window.IsActive(script-skinshortcuts.xml)</visible>
+				<visible>!Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1140)</visible>
 			</control>
 			<control type="group" id="9010">
+				<visible>!Window.IsActive(script-skinshortcuts.xml) + !Window.IsActive(1140)</visible>
 				<include>SettingsFadeEffect</include>
-				<control type="grouplist">
-					<visible>Container(9000).HasFocus(7)</visible>
-					<left>1760</left>
-					<top>39.5</top>
-					<itemgap>20</itemgap>
-					<orientation>vertical</orientation>
-					<control type="image">
-						<width>70</width>
-						<height>70</height>
-						<texture colordiffuse="$INFO[Skin.String(FocusedMainMenuColor.name)]" border="5">panel.png</texture>
-						<visible>!IsEmpty(Skin.String(FocusedMainMenuColor)) + !StringCompare(Skin.String(FocusedMainMenuColor),None)</visible>
-					</control>
-					<control type="image">
-						<width>70</width>
-						<height>70</height>
-						<texture colordiffuse="$INFO[Skin.String(UnfocusedMainMenuColor.name)]" border="5">panel.png</texture>
-						<visible>!IsEmpty(Skin.String(UnfocusedMainMenuColor)) + !StringCompare(Skin.String(UnfocusedMainMenuColor),None)</visible>
-					</control>
-					<control type="image">
-						<width>70</width>
-						<height>70</height>
-						<texture colordiffuse="$INFO[Skin.String(FocusedMainMenuIconLabelColor.name)]" border="5">panel.png</texture>
-						<visible>!IsEmpty(Skin.String(FocusedMainMenuIconLabelColor)) + !StringCompare(Skin.String(FocusedMainMenuIconLabelColor),None)</visible>
-					</control>
-					<control type="image">
-						<width>70</width>
-						<height>70</height>
-						<texture colordiffuse="$INFO[Skin.String(UnfocusedMainMenuIconLabelColor.name)]" border="5">panel.png</texture>
-						<visible>!IsEmpty(Skin.String(UnfocusedMainMenuIconLabelColor)) + !StringCompare(Skin.String(UnfocusedMainMenuIconLabelColor),None)</visible>
-					</control>
-					<control type="image">
-						<width>70</width>
-						<height>70</height>
-						<texture colordiffuse="$INFO[Skin.String(HighlightBarColor.name)]" border="5">panel.png</texture>
-						<visible>!IsEmpty(Skin.String(HighlightBarColor)) + !StringCompare(Skin.String(HighlightBarColor),None)</visible>
-					</control>
-				</control>
 				<control type="grouplist" id="9001">
 					<description>control area</description>
 					<left>522</left>
@@ -206,7 +170,7 @@
 					<onright>60</onright>
 					<onup>9001</onup>
 					<ondown>9001</ondown>
-					<visible>Container(9000).HasFocus(1) + !Window.IsActive(script-skinshortcuts.xml)</visible>
+					<visible>Container(9000).HasFocus(1)</visible>
 					<control type="button" id="100">
 						<width>1316</width>
 						<height>90</height>
@@ -222,7 +186,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>31913</label>
-						<label2>[COLOR themecolor]$VAR[lowermainmenuVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[lowermainmenuVar][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(lowermainmenu)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 						<visible>!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
@@ -233,7 +197,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>$LOCALIZE[20304]</label>
-						<label2>[COLOR labelheader]$VAR[RSSLabelVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[RSSLabelVar][/COLOR]</label2>
 						<onclick>$VAR[RSSPositionVar]</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 						<visible>system.getbool(lookandfeel.enablerssfeeds) + !StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
@@ -244,7 +208,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>$LOCALIZE[20304]</label>
-						<label2>[COLOR labelheader]$VAR[VerticalMenuRSSLabelVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[VerticalMenuRSSLabelVar][/COLOR]</label2>
 						<onclick>$VAR[VerticalMenuRSSPositionVar]</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 						<visible>system.getbool(lookandfeel.enablerssfeeds) + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
@@ -255,7 +219,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>Time &amp; Date</label>
-						<label2>[COLOR labelheader]$VAR[VerticalMenuSystemBarPositionLabelVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[VerticalMenuSystemBarPositionLabelVar][/COLOR]</label2>
 						<onclick>$VAR[VerticalMenuSystemBarPositionVar]</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 						<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994]) + !system.getbool(lookandfeel.enablerssfeeds)</visible>
@@ -309,7 +273,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>31928</label>
-						<label2>[COLOR labelheader]$VAR[MainMenuLayoutVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[MainMenuLayoutVar][/COLOR]</label2>
 						<onclick>$VAR[MainMenuLayoutOnClickVar]</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
@@ -319,7 +283,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>$LOCALIZE[31603]</label>
-						<label2>[COLOR labelheader]$VAR[HomeMenuNavVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[HomeMenuNavVar][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(HomeMenuNavVar)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
@@ -346,6 +310,16 @@
 					<onup>9002</onup>
 					<ondown>9002</ondown>
 					<visible>Container(9000).HasFocus(2)</visible>
+					<control type="button" id="20010">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>Color customizer</label>
+						<onclick condition="!System.HasAddon(script.skin.helper.service)">Notification($LOCALIZE[19098]:,Install script.skin.helper.service for full functionality,7000,DefaultIconWarning.png)</onclick>
+						<onclick condition="System.HasAddon(script.skin.helper.service)">ActivateWindow(1140)</onclick>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
 					<control type="radiobutton" id="200">
 						<width>1316</width>
 						<height>90</height>
@@ -362,7 +336,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>31931</label>
-						<label2>[COLOR themecolor]$VAR[VideoPlotLocalizeVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[VideoPlotLocalizeVar][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(VideoInfoPlotToggle)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
@@ -458,7 +432,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>31015</label>
-						<label2>[COLOR labelheader]$INFO[Skin.String(VideoGenreFanartPath)][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(VideoGenreFanartPath)][/COLOR]</label2>
 						<onclick>Skin.SetPath(VideoGenreFanartPath)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
@@ -478,7 +452,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>31017</label>
-						<label2>[COLOR labelheader]$INFO[Skin.String(MusicGenreFanartPath)][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(MusicGenreFanartPath)][/COLOR]</label2>
 						<onclick>Skin.SetPath(MusicGenreFanartPath)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
@@ -491,6 +465,16 @@
 						<onclick>Skin.Reset(MusicGenreFanartPath)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 						<visible>!IsEmpty(Skin.String(MusicGenreFanartPath))</visible>
+					</control>
+					<control type="radiobutton" id="306">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>Let It Snow! Let It Snow! Let It Snow!</label>
+						<onclick>Skin.Togglesetting(MakeItSnow)</onclick>
+						<selected>Skin.HasSetting(MakeItSnow)</selected>
+						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
 				</control>
 				<control type="grouplist" id="9004">
@@ -512,7 +496,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>31939</label>
-						<label2>[COLOR themecolor]$VAR[InfoPanelDelayLocalizeVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[InfoPanelDelayLocalizeVar][/COLOR]</label2>
 						<onclick>$VAR[InfoPanelDelayOnClickVar]</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
@@ -532,7 +516,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>31915</label>
-						<label2>[COLOR themecolor]$VAR[HorizontalListNavVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[HorizontalListNavVar][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(HorizontalListNav)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
@@ -551,7 +535,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<label>31094</label>
-						<label2>[COLOR themecolor]$VAR[SlimListSettingVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[SlimListSettingVar][/COLOR]</label2>
 						<onclick>Skin.ToggleSetting(Enable.SlimList)</onclick>
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
@@ -685,17 +669,18 @@
 						<onclick>Skin.Reset(pathlogosartists)</onclick>
 						<onclick>Skin.SetPath(pathlogosartists)</onclick>
 						<label>$LOCALIZE[31175]</label>
-						<label2>[COLOR labelheader]$INFO[Skin.String(pathlogosartists)][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$INFO[Skin.String(pathlogosartists)][/COLOR]</label2>
 						<width>1316</width>
 						<height>90</height>
 						<font>font15</font>
 						<textoffsetx>30</textoffsetx>
 						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>!System.HasAddon(script.skin.helper.service)</visible>
 					</control>
 					<control type="button" id="506">
 						<onclick>Skin.ToggleSetting(useclearcases)</onclick>
 						<label>$LOCALIZE[31974]</label>
-						<label2>[COLOR labelheader]$VAR[SelectCaseVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[SelectCaseVar][/COLOR]</label2>
 						<width>1316</width>
 						<height>90</height>
 						<font>font15</font>
@@ -718,7 +703,7 @@
 					<visible>Container(9000).HasFocus(6)</visible>
 					<control type="button" id="605">
 						<label>$LOCALIZE[31990]</label>
-						<label2>[COLOR labelheader]$VAR[CinemaVisionButtonLabelVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[CinemaVisionButtonLabelVar][/COLOR]</label2>
 						<onclick>$VAR[CinemaVisionButtonOnClickVar]</onclick>
 						<width>1316</width>
 						<height>90</height>
@@ -729,7 +714,7 @@
 					</control>
 					<control type="button" id="606">
 						<label>$LOCALIZE[31613]</label>
-						<label2>[COLOR labelheader]$VAR[TrailerButtonLabelVar][/COLOR]</label2>
+						<label2>[COLOR $VAR[ThemeLabelColor]]$VAR[TrailerButtonLabelVar][/COLOR]</label2>
 						<onclick>$VAR[TrailerButtonOnClickVar]</onclick>
 						<width>1316</width>
 						<height>90</height>
@@ -757,7 +742,7 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<texturenofocus border="1">separator5.png</texturenofocus>
-						<visible>System.HasAddon(script.toolbox)</visible>
+						<visible>System.HasAddon(script.colorbox)</visible>
 					</control>
 					<control type="radiobutton" id="601">
 						<onclick>Skin.ToggleSetting(discartoninfo)</onclick>
@@ -790,71 +775,6 @@
 						<texturenofocus border="1">separator5.png</texturenofocus>
 					</control>
 				</control>
-				<control type="grouplist" id="9007">
-					<description>control area</description>
-					<left>522</left>
-					<top>32</top>
-					<width>1316</width>
-					<height>720</height>
-					<itemgap>0</itemgap>
-					<pagecontrol>60</pagecontrol>
-					<onleft>9000</onleft>
-					<onright>60</onright>
-					<onup>9007</onup>
-					<ondown>9007</ondown>
-					<visible>Container(9000).HasFocus(7)</visible>
-					<control type="button" id="700">
-						<width>1220</width>
-						<height>90</height>
-						<textoffsetx>30</textoffsetx>
-						<font>font15</font>
-						<label>Focused Main Menu item</label>
-						<label2>[COLOR=$INFO[Skin.String(FocusedMainMenuColor.name)]][UPPERCASE]$INFO[Skin.String(FocusedMainMenuColor.name)][/UPPERCASE][/COLOR]</label2>
-						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=FocusedMainMenuColor)</onclick>
-						<texturenofocus border="1">separator5.png</texturenofocus>
-					</control>
-					<control type="button" id="705">
-						<width>1220</width>
-						<height>90</height>
-						<textoffsetx>30</textoffsetx>
-						<font>font15</font>
-						<label>Unfocused Main Menu item</label>
-						<label2>[COLOR=$INFO[Skin.String(UnfocusedMainMenuColor.name)]][UPPERCASE]$INFO[Skin.String(UnfocusedMainMenuColor.name)][/UPPERCASE][/COLOR]</label2>
-						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=UnfocusedMainMenuColor)</onclick>
-						<texturenofocus border="1">separator5.png</texturenofocus>
-					</control>
-					<control type="button" id="702">
-						<width>1220</width>
-						<height>90</height>
-						<textoffsetx>30</textoffsetx>
-						<font>font15</font>
-						<label>Focused label for Icons Main Menu</label>
-						<label2>[COLOR=$INFO[Skin.String(FocusedMainMenuIconLabelColor.name)]][UPPERCASE]$INFO[Skin.String(FocusedMainMenuIconLabelColor.name)][/UPPERCASE][/COLOR]</label2>
-						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=FocusedMainMenuIconLabelColor)</onclick>
-						<texturenofocus border="1">separator5.png</texturenofocus>
-						<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
-					</control>
-					<control type="button" id="703">
-						<width>1220</width>
-						<height>90</height>
-						<textoffsetx>30</textoffsetx>
-						<font>font15</font>
-						<label>Unfocused label for Icons Main Menu</label>
-						<label2>[COLOR=$INFO[Skin.String(UnfocusedMainMenuIconLabelColor.name)]][UPPERCASE]$INFO[Skin.String(UnfocusedMainMenuIconLabelColor.name)][/UPPERCASE][/COLOR]</label2>
-						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=UnfocusedMainMenuIconLabelColor)</onclick>
-						<texturenofocus border="1">separator5.png</texturenofocus>
-						<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
-					</control>
-					<control type="button" id="704">
-						<width>1220</width>
-						<height>90</height>
-						<textoffsetx>30</textoffsetx>
-						<font>font15</font>
-						<label>Highlight bar</label>
-						<label2>[COLOR=$INFO[Skin.String(HighlightBarColor.name)]][UPPERCASE]$INFO[Skin.String(HighlightBarColor.name)][/UPPERCASE][/COLOR]</label2>						<onclick>RunScript(script.skin.helper.service,action=colorpicker,skinstring=HighlightBarColor)</onclick>
-						<texturenofocus border="1">separator5.png</texturenofocus>
-					</control>
-				</control>
 				<control type="grouplist" id="9008">
 					<description>control area</description>
 					<left>522</left>
@@ -868,7 +788,17 @@
 					<onup>9007</onup>
 					<ondown>9007</ondown>
 					<visible>Container(9000).HasFocus(8)</visible>
-					<control type="button" id="800">
+					<control type="radiobutton" id="800">
+						<width>1316</width>
+						<height>90</height>
+						<textoffsetx>30</textoffsetx>
+						<font>font15</font>
+						<label>Enable Advanced Widgets</label>
+						<onclick>Skin.ToggleSetting(Enable.AdvancedWidgets)</onclick>
+						<selected>Skin.HasSetting(Enable.AdvancedWidgets)</selected>
+						<texturenofocus border="1">separator5.png</texturenofocus>
+					</control>
+					<control type="button" id="801">
 						<label>Background</label>
 						<label2>[COLOR labelheader]$VAR[WidgetBackLabelVar][/COLOR]</label2>
 						<onclick>$VAR[WidgetBackVar]</onclick>
@@ -877,18 +807,40 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
 					</control>
-					<control type="button" id="801">
+					<control type="button" id="802">
 						<label>Transparency</label>
 						<label2>[COLOR labelheader]$VAR[WidgetTransLabelVar]%[/COLOR]</label2>
-						<onclick>$VAR[WidgetTransVar]</onclick>
+						<onclick>SetProperty(Dialog.1.Label,100%)</onclick>
+						<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(Widget.Trans))</onclick>
+						<onclick>SetProperty(Dialog.2.Label,90%)</onclick>
+						<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(Widget.Trans,90))</onclick>
+						<onclick>SetProperty(Dialog.3.Label,80%)</onclick>
+						<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(Widget.Trans,80))</onclick>
+						<onclick>SetProperty(Dialog.4.Label,70%)</onclick>
+						<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(Widget.Trans,70))</onclick>
+						<onclick>SetProperty(Dialog.5.Label,60%)</onclick>
+						<onclick>SetProperty(Dialog.5.BuiltIn,Skin.SetString(Widget.Trans,60))</onclick>
+						<onclick>SetProperty(Dialog.6.Label,50%)</onclick>
+						<onclick>SetProperty(Dialog.6.BuiltIn,Skin.SetString(Widget.Trans,50))</onclick>
+						<onclick>SetProperty(Dialog.7.Label,40%)</onclick>
+						<onclick>SetProperty(Dialog.7.BuiltIn,Skin.SetString(Widget.Trans,40))</onclick>
+						<onclick>SetProperty(Dialog.8.Label,30%)</onclick>
+						<onclick>SetProperty(Dialog.8.BuiltIn,Skin.SetString(Widget.Trans,30))</onclick>
+						<onclick>SetProperty(Dialog.9.Label,20%)</onclick>
+						<onclick>SetProperty(Dialog.9.BuiltIn,Skin.SetString(Widget.Trans,20))</onclick>
+						<onclick>SetProperty(Dialog.10.Label,10%)</onclick>
+						<onclick>SetProperty(Dialog.10.BuiltIn,Skin.SetString(Widget.Trans,10))</onclick>
+						<onclick>RunScript(script.toolbox,info=selectdialog,header=Widget Transparency)</onclick>
 						<width>1316</width>
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
 					</control>
-					<control type="button" id="802">
+					<control type="button" id="803">
 						<label>Show list widget information</label>
 						<label2>[COLOR labelheader]$VAR[WidgetListInfoLabelVar][/COLOR]</label2>
 						<onclick>$VAR[WidgetListInfoVar]</onclick>
@@ -897,8 +849,9 @@
 						<textoffsetx>30</textoffsetx>
 						<font>font15</font>
 						<texturenofocus border="1">separator5.png</texturenofocus>
-					</control>					
-					<control type="radiobutton" id="803">
+						<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
+					</control>
+					<control type="radiobutton" id="804">
 						<width>1316</width>
 						<height>90</height>
 						<textoffsetx>30</textoffsetx>
@@ -907,6 +860,7 @@
 						<onclick>Skin.ToggleSetting(Enable.WidgetHide)</onclick>
 						<selected>Skin.HasSetting(Enable.WidgetHide)</selected>
 						<texturenofocus border="1">separator5.png</texturenofocus>
+						<visible>Skin.HasSetting(Enable.AdvancedWidgets)</visible>
 					</control>
 				</control>
 			</control>

@@ -7,10 +7,11 @@
 		<include>CommonBackground</include>
 		<include condition="!Skin.HasSetting(Disable.Videoinfo)">NowPlayingVideoWidget</include>
 		<include condition="!Skin.HasSetting(Disable.Musicinfo)">NowPlayingMusicWidget</include>
+		<include condition="!Skin.HasSetting(Enable.AdvancedWidgets)">HomeRecentlyAddedInfo</include>
+		<include condition="Skin.HasSetting(Enable.AdvancedWidgets)">Widget1</include>
+		<include condition="Skin.HasSetting(Enable.AdvancedWidgets)">Widget2</include>
 		<include>WeatherWidget</include>
 		<include>LiveTVWidget</include>
-		<include>Widget1</include>
-		<include>Widget2</include>
 		<control type="group">
 			<visible>!StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[31994])</visible>
 			<top>424</top>
@@ -20,6 +21,7 @@
 				<animation effect="slide" start="-1945,0" end="0,0" delay="300" time="240" condition="!Window.Previous(startup)">WindowOpen</animation>
 				<animation effect="slide" start="-1945" end="0" time="240">VisibleChange</animation>
 				<animation effect="slide" start="-1945,0" end="0,0" delay="800" time="480" condition="Window.Previous(startup)">WindowOpen</animation>
+				<animation effect="slide" end="0,-381" time="320" tween="cubic" easing="inout" condition="!Skin.HasSetting(lowermainmenu) + Window.IsVisible(1199)">Conditional</animation>
 				<control type="image">
 					<width>FullScreenWidth</width>
 					<height>87</height>
@@ -40,7 +42,7 @@
 					<label>$VAR[LibraryStatsVar]</label>
 					<textoffsetx>15</textoffsetx>
 					<font>font13_title</font>
-					<textcolor>themecolor</textcolor>
+					<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 					<shadowcolor>shadow</shadowcolor>
 				</control>
 				<control type="grouplist" id="9020">
@@ -50,6 +52,7 @@
 					<height>41</height>
 					<align>right</align>
 					<orientation>horizontal</orientation>
+					<onup condition="Control.IsVisible(9003)">9003</onup>
 					<onup condition="Skin.HasSetting(lowermainmenu) + !Control.IsVisible(90010) + Control.IsVisible(90020)">8002</onup>
 					<onup condition="Skin.HasSetting(lowermainmenu) + Control.IsVisible(90010)">8001</onup>
 					<onup condition="!Skin.HasSetting(lowermainmenu) + Control.IsVisible(90010)">8001</onup>
@@ -100,7 +103,7 @@
 						<height>41</height>
 						<label>-</label>
 						<font>font13_title</font>
-						<textcolor>themecolor</textcolor>
+						<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 					</control>
 					<control type="image">
 						<width>60</width>
@@ -114,7 +117,7 @@
 						<height>41</height>
 						<label>$INFO[Weather.Temperature,,[COLOR grey] | [/COLOR]]</label>
 						<font>font13_title</font>
-						<textcolor>themecolor</textcolor>
+						<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 						<visible>Weather.IsFetched + !IsEmpty(Weather.Plugin)</visible>
 						<shadowcolor>shadow</shadowcolor>
 					</control>
@@ -123,7 +126,7 @@
 						<height>41</height>
 						<label>$INFO[System.Date,[COLOR grey], | [/COLOR]]$INFO[System.Time]</label>
 						<font>font13_title</font>
-						<textcolor>themecolor</textcolor>
+						<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 						<shadowcolor>shadow</shadowcolor>
 					</control>
 				</control>
@@ -346,6 +349,7 @@
 					<onup>90100</onup>
 					<ondown>90100</ondown>
 					<onright>9000</onright>
+					<onleft>9004</onleft>
 					<pagecontrol>-</pagecontrol>
 					<scrolltime tween="quadratic" easing="out">300</scrolltime>
 					<orientation>Vertical</orientation>
@@ -432,7 +436,7 @@
 					<label>$VAR[LibraryStatsVar]</label>
 					<textoffsetx>15</textoffsetx>
 					<font>font13_title</font>
-					<textcolor>themecolor</textcolor>
+					<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 					<shadowcolor>shadow</shadowcolor>
 				</control>
 			</control>
@@ -445,6 +449,8 @@
 				<align>right</align>
 				<orientation>horizontal</orientation>
 				<onleft>9000</onleft>
+				<ondown condition="Control.IsVisible(9003)">9003</ondown>
+				<ondown condition="!Control.IsVisible(9003)">9000</ondown>
 				<onup condition="StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) + Control.IsVisible(8002)">8002</onup>
 				<onup condition="StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) + Control.IsVisible(8001) + !Control.IsVisible(8002)">8001</onup>
 				<onup condition="StringCompare(Skin.String(VerticalMenuRSS.Position),$LOCALIZE[419]) + !Control.IsVisible(8001) + !Control.IsVisible(8002)">9000</onup>
@@ -463,7 +469,7 @@
 					<height>41</height>
 					<label>$INFO[Weather.Temperature,,[COLOR grey] | [/COLOR]]</label>
 					<font>font13_title</font>
-					<textcolor>themecolor</textcolor>
+					<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 					<visible>Weather.IsFetched + !IsEmpty(Weather.Plugin)</visible>
 					<shadowcolor>shadow</shadowcolor>
 				</control>
@@ -472,7 +478,7 @@
 					<height>41</height>
 					<label>$INFO[System.Date,[COLOR grey], | [/COLOR]]$INFO[System.Time]</label>
 					<font>font13_title</font>
-					<textcolor>themecolor</textcolor>
+					<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 					<shadowcolor>shadow</shadowcolor>
 				</control>
 			</control>

@@ -7,9 +7,9 @@
 	<include file="Includes_LiveBG.xml" />
 	<include file="Includes_LiveTV.xml" />
 	<include file="Includes_LiveTV_Views.xml" />
+	<include file="IncludesHomeRecentlyAdded.xml" />
 	<include file="Includes_Widgets.xml" />
 	<include file="IncludesBackgroundBuilding.xml" />
-	<include file="IncludesHomeRecentlyAdded.xml" />
 	<include file="IncludesWidgets.xml" />
 	<include file="View_50_List.xml" />
 	<include file="View_51_InfoWall.xml" />
@@ -77,7 +77,7 @@
 			<label></label>
 			<font>CloseButton</font>
 			<textcolor>grey</textcolor>
-			<focusedcolor>themecolor</focusedcolor>
+			<focusedcolor>$VAR[ThemeLabelColor]</focusedcolor>
 			<onclick>ClearProperty(MediaMenu,Home)</onclick>
 			<onclick>SetFocus(50)</onclick>
 			<texturefocus />
@@ -126,7 +126,7 @@
 			<textoffsetx>15</textoffsetx>
 			<font>font13_title</font>
 			<label>31006</label>
-			<textcolor>themecolor</textcolor>
+			<textcolor>$VAR[ThemeLabelColor]</textcolor>
 			<aligny>center</aligny>
 		</control>
 		<control type="button" id="2000">
@@ -135,7 +135,7 @@
 			<include>ButtonCommonValues</include>
 			<label>$INFO[Container.Viewmode,$LOCALIZE[31100] ]</label>
 			<onclick>ActivateWindow(1130)</onclick>
-			<visible>!Window.IsActive(tvchannels)</visible>
+			<visible>!Window.IsActive(tvchannels) + !Window.IsActive(eventlog)</visible>
 		</control>
 		<control type="button" id="7031">
 			<description>View settings</description>
@@ -233,7 +233,7 @@
 					<textoffsetx>15</textoffsetx>
 					<font>font13_title</font>
 					<label>31006</label>
-					<textcolor>themecolor</textcolor>
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
 					<aligny>center</aligny>
 				</control>
 				<control type="button" id="28">
@@ -271,7 +271,7 @@
 					<include>ButtonCommonValues</include>
 					<label>31039</label>
 					<enable>no</enable>
-					<disabledcolor>themecolor</disabledcolor>
+					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
 				</control>
 				<control type="button" id="100">
 					<description>Channels</description>
@@ -288,6 +288,7 @@
 					<include>ButtonCommonValues</include>
 					<onclick condition="IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVGuide)</onclick>
 					<onclick condition="!IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioGuide)</onclick>
+					<visible>!Skin.HasSetting(Disable.PVRGuide)</visible>
 				</control>
 				<control type="button" id="102">
 					<description>Recordings</description>
@@ -296,6 +297,7 @@
 					<include>ButtonCommonValues</include>
 					<onclick condition="IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVRecordings)</onclick>
 					<onclick condition="!IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioRecordings)</onclick>
+					<visible>!Skin.HasSetting(Disable.PVRRecordings)</visible>
 				</control>
 				<control type="button" id="103">
 					<description>Timers</description>
@@ -304,6 +306,7 @@
 					<include>ButtonCommonValues</include>
 					<onclick condition="IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVTimers)</onclick>
 					<onclick condition="!IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioTimers)</onclick>
+					<visible>!Skin.HasSetting(Disable.PVRTimer)</visible>
 				</control>
 				<control type="button" id="104">
 					<description>Search</description>
@@ -312,6 +315,7 @@
 					<include>ButtonCommonValues</include>
 					<onclick condition="IsEmpty(Window.Property(IsRadio))">ActivateWindow(TVSearch)</onclick>
 					<onclick condition="!IsEmpty(Window.Property(IsRadio))">ActivateWindow(RadioSearch)</onclick>
+					<visible>!Skin.HasSetting(Disable.PVRSearch)</visible>
 				</control>
 				<control type="button" id="201">
 					<description>View options</description>
@@ -320,7 +324,7 @@
 					<include>ButtonCommonValues</include>
 					<label>31026</label>
 					<enable>no</enable>
-					<disabledcolor>themecolor</disabledcolor>
+					<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
 				</control>
 				<control type="button" id="330">
 					<description>Settings</description>
@@ -328,7 +332,7 @@
 					<include>ButtonCommonValues</include>
 					<label>$LOCALIZE[31127]</label>
 					<onclick>ActivateWindow(1150)</onclick>
-				</control>
+                </control>
 			</control>
 		</control>
 	</include>
@@ -353,7 +357,7 @@
 			<textoffsetx>15</textoffsetx>
 			<font>font13_title</font>
 			<label>31006</label>
-			<textcolor>themecolor</textcolor>
+			<textcolor>$VAR[ThemeLabelColor]</textcolor>
 			<aligny>center</aligny>
 		</control>
 		<control type="button" id="2001">
@@ -450,6 +454,7 @@
 					<aligny>top</aligny>
 					<textoffsety>-2</textoffsety>
 					<label>$INFO[Container.NumItems,, $LOCALIZE[31025]]$INFO[Container.CurrentPage,[COLOR grey2] | ,]$INFO[Container.NumPages,/,[/COLOR]]</label>
+					<animation effect="slide" tween="cubic" time="0" end="-400,0" condition="Player.HasMedia + ![Window.IsActive(volumebar)]">Conditional</animation>
 				</control>
 				<control type="label">
 					<left>0</left>
@@ -467,11 +472,11 @@
 					<visible>Player.HasMedia + ![Window.IsActive(volumebar)]</visible>
 					<animation effect="slide" start="0,-60" end="0,0" time="200">Visible</animation>
 					<animation effect="slide" start="0,0" end="0,-60" time="200">Hidden</animation>
-					<left>1080</left>
+					<left>1521</left>
 					<control type="progress">
 						<left>0</left>
 						<top>0</top>
-						<width>500</width>
+						<width>400</width>
 						<height>39</height>
 						<texturebg border="2">osd/texturebg.png</texturebg>
 						<lefttexture>-</lefttexture>
@@ -483,7 +488,7 @@
 					<control type="progress">
 						<left>0</left>
 						<top>1</top>
-						<width>500</width>
+						<width>400</width>
 						<height>37</height>
 						<texturebg border="1">osd/texturebg_cache.png</texturebg>
 						<lefttexture>-</lefttexture>
@@ -495,7 +500,7 @@
 					<control type="label">
 						<left>0</left>
 						<top>0</top>
-						<width>500</width>
+						<width>400</width>
 						<height>90</height>
 						<font>font13_title</font>
 						<textoffsetx>10</textoffsetx>
@@ -1269,6 +1274,47 @@
 				<animation effect="fade" time="600">Visible</animation>
 				<animation effect="fade" time="600">Hidden</animation>
 				<animation effect="fade" time="200">WindowClose</animation>
+			</control>
+		</definition>
+	</include>
+	<include name="ColorCustomizerSwatchGrouplist">
+		<param name="FocusID"/>
+		<definition>
+			<left>1760</left>
+			<top>39.5</top>
+			<itemgap>20</itemgap>
+			<orientation>vertical</orientation>
+			<visible>Container(9000).HasFocus($PARAM[FocusID])</visible>
+		</definition>
+	</include>
+	<include name="ColorCustomizerSwatchimage">
+		<param name="ColorString"/>
+		<param name="SwatchSize" default="70"/>
+		<definition>
+			<control type="image">
+				<width>$PARAM[SwatchSize]</width>
+				<height>$PARAM[SwatchSize]</height>
+				<texture>color_swatch.png</texture>
+				<colordiffuse>$INFO[Skin.String($PARAM[ColorString])]</colordiffuse>
+				<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout" condition="IsEmpty(Skin.String($PARAM[ColorString])) | StringCompare(Skin.String($PARAM[ColorString]),None)">Conditional</animation>
+			</control>
+		</definition>
+	</include>
+	<include name="SnowFlake">
+		<param name="left"/>
+		<param name="top"/>
+		<param name="size" default="45"/>
+		<param name="texture" default="snow.png"/>
+		<param name="fall_time"/>
+		<definition>
+			<control type="image">
+				<left>$PARAM[left]</left>
+				<top>$PARAM[top]</top>
+				<width>$PARAM[size]</width>
+				<height>$PARAM[size]</height>
+				<texture>snow/$PARAM[texture]</texture>
+				<aspectratio scalediffuse="false">keep</aspectratio>
+				<animation effect="slide" tween="quadratic" easing="in" start="0,-300" end="0,1480" time="$PARAM[fall_time]" delay="0" reversible="false" loop="true" condition="true">Conditional</animation>
 			</control>
 		</definition>
 	</include>
