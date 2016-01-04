@@ -83,6 +83,14 @@
 			<shortcut label="Favourite Media" condition="System.HasAddon(script.skin.helper.service)" icon="logos/shs-logo.png" widget="addon" widgetType="favourite">plugin://script.skin.helper.service/?action=favouritemedia&amp;limit=25&amp;reload=$INFO[Window(Home).Property(widgetreload2)]</shortcut>
 			<shortcut label="1036" condition="System.HasAddon(script.skin.helper.service)" icon="logos/shs-logo.png" widget="addon" widgetType="favourite">plugin://script.skin.helper.service/?action=favourites&amp;limit=25&amp;reload=$INFO[Window(Home).Property(widgetreload2)]</shortcut>
 		</node>
+		<node label="Video Library">
+			<content>video</content>
+			<content>videosources</content>
+		</node>
+		<node label="Music Library">
+			<content>music</content>
+			<content>musicsources</content>
+		</node>
 		<node label="136">
 			<content>playlist-video</content>
 			<content>playlist-audio</content>
@@ -109,8 +117,10 @@
 	<!-- Widget Default Values If Empty -->
 	<propertyfallback property="widgetStyle">Panel</propertyfallback>
 	<propertyfallback property="widgetArt">FanArt</propertyfallback>
+	<propertyfallback property="widgetBack">Default</propertyfallback>
 	<propertyfallback property="widgetStyle.2">Panel</propertyfallback>
 	<propertyfallback property="widgetArt.2">FanArt</propertyfallback>
+	<propertyfallback property="widgetBack.2">Default</propertyfallback>
 	<!-- Widget Art 1 -->
 	<propertySettings property="widgetArt" buttonID="511" showNone="False" title="Art"/>
 	<property property="widgetArt" condition="StringCompare(Container(211).ListItem.Property(widgetType),movies) | StringCompare(Container(211).ListItem.Property(widgetType),sets) | StringCompare(Container(211).ListItem.Property(widgetType),episodes) | StringCompare(Container(211).ListItem.Property(widgetType),tvshows) | StringCompare(Container(211).ListItem.Property(widgetType),babe) | StringCompare(Container(211).ListItem.Property(widgetType),favourite)">Poster</property>
@@ -179,6 +189,20 @@
 	<property property="widgetStyle.2">Extended Panel</property>
 	<property property="widgetStyle.2">Compact Panel</property>
 	<property property="widgetStyle.2">Compact Extended Panel</property>
+	<!-- Widget Back 1 -->
+	<propertySettings property="widgetBack" buttonID="524" showNone="False" title="Widget Background" />
+	<property property="widgetBack">Default</property>
+	<property property="widgetBack">Flat</property>
+	<property property="widgetBack">Clear</property>
+	<property property="widgetBack">Clear White</property>
+	<property property="widgetBack">None</property>
+	<!-- Widget Back 2 -->
+	<propertySettings property="widgetBack.2" buttonID="525" showNone="False" title="Widget Background" />
+	<property property="widgetBack.2">Default</property>
+	<property property="widgetBack.2">Flat</property>
+	<property property="widgetBack.2">Clear</property>
+	<property property="widgetBack.2">Clear White</property>
+	<property property="widgetBack.2">None</property>
 	<!-- Widget Title 1 -->
 	<propertySettings property="widgetTitle" buttonID="515" title="Panel Label" />
 	<property property="widgetTitle">Panel</property>
@@ -205,7 +229,7 @@
 	<propertySettings property="widgetSort" buttonID="521" title="Sort Order" />
 	<property property="widgetSort" label="Ascending">ascending</property>
 	<property property="widgetSort" label="Descending">descending</property>
-	<!-- Widget Sort By 1 -->
+	<!-- Widget Sort By 2 -->
 	<propertySettings property="widgetSortby.2" buttonID="522" title="Sort by" />
 	<property property="widgetSortby.2" label="Title">title</property>
 	<property property="widgetSortby.2" label="TV Show Title" condition="StringCompare(Container(211).ListItem.Property(widgetType),episodes)">tvshowtitle</property>
@@ -217,7 +241,7 @@
 	<property property="widgetSortby.2" label="Year" condition="StringCompare(Container(211).ListItem.Property(widgetType),movies) | StringCompare(Container(211).ListItem.Property(widgetType),tvshows) | StringCompare(Container(211).ListItem.Property(widgetType),musicvideos) | StringCompare(Container(211).ListItem.Property(widgetType),albums)">year</property>
 	<property property="widgetSortby.2" label="Date Added" condition="!StringCompare(Container(211).ListItem.Property(widgetType),pvr)">dateAdded</property>
 	<property property="widgetSortby.2" label="Random">random</property>
-	<!-- Widget Sort Order 1 -->
+	<!-- Widget Sort Order 2 -->
 	<propertySettings property="widgetSort.2" buttonID="523" title="Sort Order" />
 	<property property="widgetSort.2" label="Ascending">ascending</property>
 	<property property="widgetSort.2" label="Descending">descending</property>
