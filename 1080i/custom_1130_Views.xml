@@ -79,14 +79,14 @@
 					<onclick>Container.SetViewMode(708)</onclick>
 					<visible>Window.IsActive(videos)</visible>
 					<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows)]</visible>
-					<visible>IntegerGreaterThan(Container.NumItems,10) + !IsEmpty(ListItem.DBTYPE)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,10)</visible>
 				</item>
 				<item>
 				<label>Shelf 3D</label>
 					<onclick>Container.SetViewMode(718)</onclick>
 					<visible>Window.IsActive(videos)</visible>
 					<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
-					<visible>!IntegerGreaterThan(Container.NumItems,10) + !IsEmpty(ListItem.DBTYPE)</visible>
+					<visible>!IntegerGreaterThan(Container.NumItems,10)</visible>
 				</item>
 				<item>
 				<label>Shelf 3D</label>
