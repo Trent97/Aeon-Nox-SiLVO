@@ -36,6 +36,9 @@
 	<include file="View_609_Fullscreen_Wall.xml" />
 	<include file="View_700_RightList.xml" />
 	<include file="View_701_MyFlix.xml" />
+	<include file="View_708_Shelf.xml" />
+	<include file="View_718_Shelf.xml" />
+	<include file="View_728_Shelf.xml" />	
 	<include file="variables.xml" />
 	<include file="script-skinshortcuts-includes.xml" />
 	<constant name="FanartCrossfadeTime">500</constant>

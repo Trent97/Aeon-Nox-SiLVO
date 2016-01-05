@@ -75,6 +75,26 @@
 					<onclick>Container.SetViewMode(50)</onclick>
 				</item>
 				<item>
+				<label>Shelf 3D</label>
+					<onclick>Container.SetViewMode(708)</onclick>
+					<visible>Window.IsActive(videos)</visible>
+					<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows)]</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,10) + !IsEmpty(ListItem.DBTYPE)</visible>
+				</item>
+				<item>
+				<label>Shelf 3D</label>
+					<onclick>Container.SetViewMode(718)</onclick>
+					<visible>Window.IsActive(videos)</visible>
+					<visible>[Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)]</visible>
+					<visible>!IntegerGreaterThan(Container.NumItems,10) + !IsEmpty(ListItem.DBTYPE)</visible>
+				</item>
+				<item>
+				<label>Shelf 3D</label>
+					<onclick>Container.SetViewMode(728)</onclick>
+					<visible>Window.IsActive(musicfiles) | Window.IsActive(musiclibrary)</visible>
+					<visible>[Container.Content(albums) | Container.Content(artists) | Window.IsActive(musicfiles)]</visible>
+				</item>				
+				<item>
 					<label>SongList</label>
 					<onclick>Container.SetViewMode(508)</onclick>
 					<visible>Window.IsActive(musiclibrary)</visible>

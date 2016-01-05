@@ -903,11 +903,16 @@
 		<value condition="!Skin.HasSetting(coloredflags)">flags/cc.png</value>
 	</variable>
 	<variable name="GlobalCaseVar">
+		<value condition="ListItem.IsCollection">set.png</value>
+		<value condition="SubString(ListItem.Filename,bluray)">1080p.png</value>		
+		<value condition="SubString(ListItem.Filename,4k) | Substring(ListItem.VideoResolution,4k)">4k.png</value>		
 		<value condition="SubString(ListItem.Filename,3d) | SubString(ListItem.Filename,3dbd)">3d.png</value>
 		<value condition="SubString(ListItem.Filename,hddvd)">hddvd.png</value>
 		<value condition="SubString(ListItem.Filename,hdtv) | SubString(ListItem.Filename,hd tv)">hdtv.png</value>
 		<value condition="SubString(ListItem.Filename,webdl) | SubString(ListItem.Filename,web-dl)">webdl.png</value>
 		<value condition="SubString(ListItem.Filename,screener)">screener.png</value>
+		<value condition="!IsEmpty(ListItem.Art(tvshow.poster))">season.png</value>
+		<value condition="!IsEmpty(ListItem.Season)">tvshow.png</value>		
 		<value>$INFO[ListItem.VideoResolution]p.png</value>
 	</variable>
 	<variable name="CaseTypePathVar">
@@ -1453,6 +1458,35 @@
 		<value condition="!IsEmpty(ListItem.Art(extrafanart1))">$INFO[ListItem.Art(extrafanart1)]</value>
 		<value condition="IsEmpty(ListItem.Art(extrafanart1))">$INFO[ListItem.Art(fanart)]</value>
 	</variable>
+	<!-- Shelf 3D Variables -->
+	<variable name="ringcdVar">
+		<value condition="SubString(ListItem.Title,s,Left) | SubString(ListItem.Title,a,Left) | SubString(ListItem.Title,j,Left) | SubString(ListItem.Title,S,Left) | SubString(ListItem.Title,A,Left) | SubString(ListItem.Title,J,Left)">thumbs/ring2.png</value>
+		<value condition="SubString(ListItem.Title,m,Left) | SubString(ListItem.Title,c,Left) | SubString(ListItem.Title,l,Left) | SubString(ListItem.Title,M,Left) | SubString(ListItem.Title,C,Left) | SubString(ListItem.Title,L,Left)">thumbs/ring1.png</value>
+		<value condition="SubString(ListItem.Title,t,Left) | SubString(ListItem.Title,e,Left) | SubString(ListItem.Title,b,Left) | SubString(ListItem.Title,T,Left) | SubString(ListItem.Title,E,Left) | SubString(ListItem.Title,B,Left)">thumbs/ring3.png</value>
+		<value condition="SubString(ListItem.Title,k,Left) | SubString(ListItem.Title,r,Left) | SubString(ListItem.Title,d,Left) | SubString(ListItem.Title,K,Left) | SubString(ListItem.Title,R,Left) | SubString(ListItem.Title,D,Left)">thumbs/ring4.png</value>
+		<value condition="SubString(ListItem.Title,n,Left) | SubString(ListItem.Title,p,Left) | SubString(ListItem.Title,u,Left) | SubString(ListItem.Title,N,Left) | SubString(ListItem.Title,P,Left) | SubString(ListItem.Title,U,Left)">thumbs/ring5.png</value>
+		<value condition="SubString(ListItem.Title,v,Left) | SubString(ListItem.Title,g,Left) | SubString(ListItem.Title,o,Left) | SubString(ListItem.Title,V,Left) | SubString(ListItem.Title,G,Left) | SubString(ListItem.Title,O,Left)">thumbs/ring6.png</value>
+		<value condition="SubString(ListItem.Title,f,Left) | SubString(ListItem.Title,w,Left) | SubString(ListItem.Title,i,Left) | SubString(ListItem.Title,F,Left) | SubString(ListItem.Title,W,Left) | SubString(ListItem.Title,I,Left) | SubString(ListItem.Title,1,Left) | SubString(ListItem.Title,2,Left) | SubString(ListItem.Title,3,Left) | SubString(ListItem.Title,4,Left) | SubString(ListItem.Title,5,Left)">thumbs/ring7.png</value>
+		<value condition="SubString(ListItem.Title,h,Left) | SubString(ListItem.Title,z,Left) | SubString(ListItem.Title,q,Left) | SubString(ListItem.Title,x,Left) | SubString(ListItem.Title,y,Left) |SubString(ListItem.Title,H,Left) | SubString(ListItem.Title,Z,Left) | SubString(ListItem.Title,Q,Left) | SubString(ListItem.Title,X,Left) | SubString(ListItem.Title,Y,Left) | SubString(ListItem.Title,6,Left) | SubString(ListItem.Title,7,Left) | SubString(ListItem.Title,8,Left) | SubString(ListItem.Title,9,Left) | SubString(ListItem.Title,0,Left)">thumbs/ring8.png</value>
+		<value>thumbs/ring1.png</value>
+	</variable>
+	<variable name="MusicAlbumDiscVar">
+		<value condition="Stringcompare(Skin.String(LibraryStructure),2)">$INFO[Skin.String(pathlogosartists)]$INFO[ListItem.Artist]\$INFO[ListItem.Year] - $INFO[ListItem.Title,,\cdart.png]</value>
+		<value condition="Stringcompare(Skin.String(LibraryStructure),3)">$INFO[Skin.String(pathlogosartists)]$INFO[ListItem.Artist]\$INFO[ListItem.Title] $INFO[ListItem.Year,(,)\cdart.png]</value>
+		<value condition="Stringcompare(Skin.String(LibraryStructure),4)">$INFO[Skin.String(pathlogosartists)]$INFO[ListItem.Artist] - $INFO[ListItem.Title] $INFO[ListItem.Year,(,)\cdart.png]</value>
+		<value>$INFO[Skin.String(pathlogosartists)]$INFO[ListItem.Artist]\$INFO[ListItem.Title,,\cdart.png]</value>
+	</variable>
+	<variable name="alblistcdARTVar">
+		<value condition="SubString(ListItem.Album,s,Left) | SubString(ListItem.Album,a,Left) | SubString(ListItem.Album,j,Left) | SubString(ListItem.Album,S,Left) | SubString(ListItem.Album,A,Left) | SubString(ListItem.Album,J,Left)">thumbs/blank.png</value>
+		<value condition="SubString(ListItem.Album,m,Left) | SubString(ListItem.Album,c,Left) | SubString(ListItem.Album,l,Left) | SubString(ListItem.Album,M,Left) | SubString(ListItem.Album,C,Left) | SubString(ListItem.Album,L,Left)">thumbs/grey1.png</value>
+		<value condition="SubString(ListItem.Album,t,Left) | SubString(ListItem.Album,k,Left) | SubString(ListItem.Album,b,Left) | SubString(ListItem.Album,T,Left) | SubString(ListItem.Album,K,Left) | SubString(ListItem.Album,B,Left)">thumbs/blue.png</value>
+		<value condition="SubString(ListItem.Album,e,Left) | SubString(ListItem.Album,r,Left) | SubString(ListItem.Album,d,Left) | SubString(ListItem.Album,E,Left) | SubString(ListItem.Album,R,Left) | SubString(ListItem.Album,D,Left)">thumbs/golden.png</value>
+		<value condition="SubString(ListItem.Album,n,Left) | SubString(ListItem.Album,p,Left) | SubString(ListItem.Album,u,Left) | SubString(ListItem.Album,N,Left) | SubString(ListItem.Album,P,Left) | SubString(ListItem.Album,U,Left)">thumbs/purple.png</value>
+		<value condition="SubString(ListItem.Album,v,Left) | SubString(ListItem.Album,g,Left) | SubString(ListItem.Album,o,Left) | SubString(ListItem.Album,V,Left) | SubString(ListItem.Album,G,Left) | SubString(ListItem.Album,O,Left)">thumbs/green.png</value>
+		<value condition="SubString(ListItem.Album,f,Left) | SubString(ListItem.Album,w,Left) | SubString(ListItem.Album,i,Left) | SubString(ListItem.Album,F,Left) | SubString(ListItem.Album,W,Left) | SubString(ListItem.Album,I,Left) | SubString(ListItem.Album,1,Left) | SubString(ListItem.Album,2,Left) | SubString(ListItem.Album,3,Left) | SubString(ListItem.Album,4,Left) | SubString(ListItem.Album,5,Left)">thumbs/orange.png</value>
+		<value condition="SubString(ListItem.Album,h,Left) | SubString(ListItem.Album,z,Left) | SubString(ListItem.Album,q,Left) | SubString(ListItem.Album,x,Left) | SubString(ListItem.Album,y,Left) |SubString(ListItem.Album,H,Left) | SubString(ListItem.Album,Z,Left) | SubString(ListItem.Album,Q,Left) | SubString(ListItem.Album,X,Left) | SubString(ListItem.Album,Y,Left) | SubString(ListItem.Album,6,Left) | SubString(ListItem.Album,7,Left) | SubString(ListItem.Album,8,Left) | SubString(ListItem.Album,9,Left) | SubString(ListItem.Album,0,Left)">thumbs/red.png</value>
+		<value>thumbs/green.png</value>
+	</variable>		
 	<!-- Classic Widget VARS -->
 	<variable name="WidgetListIconVar">
 		<value condition="!IsEmpty(Container(8000).ListItem.Art(tvshow.landscape))">$INFO[Container(8000).ListItem.Art(tvshow.landscape)]</value>
