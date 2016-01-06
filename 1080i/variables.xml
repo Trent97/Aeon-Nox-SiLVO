@@ -28,7 +28,6 @@
 		<value condition="SubString(Container(9000).ListItem.Property(background),s:playlist,Left) | [Control.HasFocus(9010) + SubString(Container(9010).ListItem.Property(background),s:playlist,Left)] | [Control.HasFocus(90100) + SubString(Container(90100).ListItem.Property(background),s:playlist,Left)]">$INFO[Container(9034).ListItem.Art(fanart)]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(background),Container(9000).ListItem.Property(backgroundName))">$INFO[Container(9000).ListItem.Property(background)]</value>
 		<value condition="!IsEmpty(SkinString(CustomDefaultBackground))">$INFO[Skin.String(CustomDefaultBackground)]</value>
-		<value>$INFO[Window(home).Property(fakelabel)]</value>
 	</variable>
 	<variable name="VizBackgroundClickVar">
 		<value condition="IsEmpty(Skin.String(Viz.Background))">Skin.SetString(Viz.Background,1)</value>
@@ -58,9 +57,9 @@
 		<value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">SetProperty(Nox.Temp,TVShows.Fallback,home)</value>
 		<value condition="Container.Content(musicvideos)">SetProperty(Nox.Temp,MusicVideos.Fallback,home)</value>
 		<value condition="Window.IsActive(videos) | Window.IsActive(videoplaylist)">SetProperty(Nox.Temp,Videos.Fallback,home)</value>
-		<value condition="Window.IsActive(musiclibrary) | Window.IsActive(musicfiles) | Window.IsActive(musicplaylist)">SetProperty(Nox.Temp,Music.Fallback,home)</value>
-		<value condition="Window.IsActive(MyPVRChannels.xml) | Window.IsActive(MyPVRGuide.xml) | Window.IsActive(MyPVRRecordings.xml) | Window.IsActive(MyPVRSearch.xml) | Window.IsActive(MyPVRTimers.xml)">SetProperty(Nox.Temp,LiveTV.Fallback,home)</value>
-		<value condition="Window.IsActive(SettingsCategory.xml) | Window.IsActive(systeminfo) | Window.IsActive(skinsettings) | Window.IsActive(settings) | Window.IsActive(addonbrowser) | Window.IsActive(filemanager)">SetProperty(Nox.Temp,System.Fallback,home)</value>
+		<value condition="Window.IsActive(musiclibrary) | Window.IsActive(musicplaylist)">SetProperty(Nox.Temp,Music.Fallback,home)</value>
+		<value condition="Window.IsActive(pvr)">SetProperty(Nox.Temp,LiveTV.Fallback,home)</value>
+		<value condition="Window.IsActive(SettingsCategory.xml) | Window.IsActive(systeminfo) | Window.IsActive(skinsettings) | Window.IsActive(settings) | Window.IsActive(addonbrowser) | Window.IsActive(filemanager) | Window.IsActive(eventlog)">SetProperty(Nox.Temp,System.Fallback,home)</value>
 		<value condition="Window.IsActive(programs)">SetProperty(Nox.Temp,Apps.Fallback,home)</value>
 		<value condition="Window.IsActive(pictures)">SetProperty(Nox.Temp,Pictures.Fallback,home)</value>
 	</variable>
@@ -102,10 +101,11 @@
 	</variable>
 	<variable name="OverlayVar">
 		<value condition="Container.ListItem.IsResumable + IsEmpty(Window(Home).Property(Overlay.Resumable))">overlays/showcase/resumable.png</value>
-		<value condition="Skin.HasSetting(coloredflags) + Skin.HasSetting(nocoloredoverlay)">$INFO[ListItem.Overlay,overlays/showcase/4/]</value>
+		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/5/)">$INFO[ListItem.Overlay,overlays/showcase/5/]</value>
+		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/4/)">$INFO[ListItem.Overlay,overlays/showcase/4/]</value>
 		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/3/)">$INFO[ListItem.Overlay,overlays/showcase/3/]</value>
-		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/2/) + !Skin.HasSetting(coloredflags)">$INFO[ListItem.Overlay,overlays/showcase/2/]</value>
-		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/1/) + !Skin.HasSetting(coloredflags)">$INFO[ListItem.Overlay,overlays/showcase/1/]</value>
+		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/2/)">$INFO[ListItem.Overlay,overlays/showcase/2/]</value>
+		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/1/)">$INFO[ListItem.Overlay,overlays/showcase/1/]</value>
 		<value>$INFO[ListItem.Overlay,overlays/showcase/]</value>
 	</variable>
 	<variable name="ListItem.Overlay">
@@ -117,18 +117,19 @@
 		<value>$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
 	</variable>
 	<variable name="BreadcrumbsFillerVar">
-		<value condition="Container.Content(tvshows) | Container.Content(seasons)">$LOCALIZE[20343]: </value>
+		<value condition="Container.Content(tvshows) | Container.Content(seasons)">$LOCALIZE[20343]:</value>
 		<value condition="SubString(Container.FolderPath,videodb://recentlyadded,left)">$INFO[Window(home).Property(fakelabel)]</value>
-		<value condition="Container.Content(episodes) + !StringCompare(Container.FolderName,ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]: </value>
-		<value condition="SubString(Container.FolderPath,videodb://tvshows/,left)">$LOCALIZE[20343]: </value>
-		<value condition="SubString(Container.FolderPath,videodb://movies/,left)">$LOCALIZE[20342]: </value>
+		<value condition="Container.Content(episodes) + !StringCompare(Container.FolderName,ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]:</value>
+		<value condition="SubString(Container.FolderPath,videodb://tvshows/,left)">$LOCALIZE[20343]:</value>
+		<value condition="SubString(Container.FolderPath,videodb://movies/,left)">$LOCALIZE[20342]:</value>
 		<value condition="Window.IsActive(textviewer)">$INFO[Control.GetLabel(1)]</value>
 		<value condition="Window.IsActive(script-NextAired-TVGuide.xml) | Window.IsActive(script-NextAired-TVGuide2.xml)">$INFO[System.AddonTitle(script.tv.show.next.aired)]</value>
-		<value condition="Window.IsActive(1140)">Color Customizer</value>
 		<value condition="Window.IsActive(skinsettings)">$LOCALIZE[20077]</value>
-		<value condition="Window.IsActive(tvchannels) | Window.IsActive(TVGuide) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch)">$LOCALIZE[19020]: </value>
-		<value condition="Window.IsActive(RadioChannels) | Window.IsActive(RadioGuide) | Window.IsActive(RadioRecordings) | Window.IsActive(RadioSearch)">$LOCALIZE[19183]: </value>
-		<value condition="!IsEmpty(Container.FolderName)">$INFO[System.CurrentWindow]: </value>
+		<value condition="Window.IsActive(musiclibrary) + !IsEmpty(Container.FolderName)">$LOCALIZE[2]:</value>
+		<value condition="Window.IsActive(musiclibrary)">$LOCALIZE[2]</value>
+		<value condition="Window.IsActive(tvchannels) | Window.IsActive(TVGuide) | Window.IsActive(TVRecordings) | Window.IsActive(TVTimers) | Window.IsActive(TVSearch)">$LOCALIZE[19020]:</value>
+		<value condition="Window.IsActive(RadioChannels) | Window.IsActive(RadioGuide) | Window.IsActive(RadioRecordings) | Window.IsActive(RadioSearch)">$LOCALIZE[19183]:</value>
+		<value condition="!IsEmpty(Container.FolderName)">$INFO[System.CurrentWindow]:</value>
 		<value>$INFO[System.CurrentWindow]</value>
 	</variable>
 	<variable name="BreadcrumbsVar">
@@ -171,7 +172,7 @@
 		<value condition="Playlist.IsRepeatOne+ Control.HasFocus(707)">osd/buttons/OSDRepeatOneFO.png</value>
 		<value condition="Playlist.IsRepeat+ Control.HasFocus(707)">osd/buttons/OSDRepeatAllFO.png</value>
 	</variable>
-	<!--  List Label Vars -->
+	<!-- List Label Vars -->
 	<variable name="VideoListLabelVar">
 		<value condition="Skin.HasSetting(Enable.HideRatings) + StringCompare(ListItem.Label2,ListItem.Rating) + !StringCompare(Container.SortMethod,$LOCALIZE[563])">$INFO[ListItem.Year]</value>
 		<value>$INFO[ListItem.Label2]</value>
@@ -233,8 +234,10 @@
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="VideoPlotVar3">
-		<value condition="!IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR labelheader]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.PlotOutline]</value>
-		<value condition="IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR labelheader]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.Plot]</value>
+		<value condition="Control.IsVisible(700) + !IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR $VAR[RightListThemeLabelColor]]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.PlotOutline]</value>
+		<value condition="Control.IsVisible(700) + IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR $VAR[RightListThemeLabelColor]]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.Plot]</value>
+		<value condition="Control.IsVisible(701) + !IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR $VAR[MyFlixThemeLabelColor]]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.PlotOutline]</value>
+		<value condition="Control.IsVisible(701) + IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR $VAR[MyFlixThemeLabelColor]]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.Plot]</value>
 		<value condition="!IsEmpty(Window(home).Property(Set.Movies.ExtendedPlot))">$INFO[Window(home).Property(Set.Movies.ExtendedPlot)]</value>
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
@@ -359,7 +362,7 @@
 	</variable>
 	<variable name="52MusicInfoPanelVar">
 		<value condition="Container.Content(artists) + IsEmpty(Skin.String(52.Artists.InfoPanel))">Skin.SetString(52.Artists.InfoPanel,2)</value>
-		<!--<value condition="Container.Content(artists) + StringCompare(Skin.String(52.Artists.InfoPanel),1)">Skin.SetString(52.Artists.InfoPanel,2)</value>-->
+		<!-- <value condition="Container.Content(artists) + StringCompare(Skin.String(52.Artists.InfoPanel),1)">Skin.SetString(52.Artists.InfoPanel,2)</value> -->
 		<value condition="Container.Content(artists) + StringCompare(Skin.String(52.Artists.InfoPanel),2)">Skin.Reset(52.Artists.InfoPanel)</value>
 	</variable>
 	<variable name="54MusicInfoPanelVar">
@@ -367,7 +370,7 @@
 		<value condition="Container.Content(albums) + StringCompare(Skin.String(54.Albums.InfoPanel),1)">Skin.Reset(54.Albums.InfoPanel)</value>
 		<value condition="Container.Content(artists) + IsEmpty(Skin.String(54.Artists.InfoPanel))">Skin.SetString(54.Artists.InfoPanel,1)</value>
 		<value condition="Container.Content(artists) + StringCompare(Skin.String(54.Artists.InfoPanel),1)">Skin.Reset(54.Artists.InfoPanel)</value>
-		<!--<value condition="Container.Content(albums) + StringCompare(Skin.String(54.Albums.InfoPanel),2)">Skin.Reset(54.Albums.InfoPanel)</value>-->
+		<!-- <value condition="Container.Content(albums) + StringCompare(Skin.String(54.Albums.InfoPanel),2)">Skin.Reset(54.Albums.InfoPanel)</value> -->
 	</variable>
 	<variable name="InfoPanelLabelVar">
 		<value condition="StringCompare(Control.GetLabel(4420),1)">$LOCALIZE[20445]</value>
@@ -410,37 +413,37 @@
 		<value>$LOCALIZE[351]</value>
 	</variable>
 	<variable name="InfoPanelLabel1Var">
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !IsEmpty(Window(home).Property(Set.Movies.Director))">[COLOR labelheader]$LOCALIZE[31000]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Director)]</value>
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR labelheader]$LOCALIZE[31000]:[/COLOR][CR]$INFO[ListItem.Director]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(Window(Home).Property(NextAired.Status))">[COLOR labelheader]$LOCALIZE[126]:[/COLOR][CR]$INFO[Window(Home).Property(NextAired.Status)]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR labelheader]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !IsEmpty(Window(home).Property(Set.Movies.Director))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31000]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Director)]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31000]:[/COLOR][CR]$INFO[ListItem.Director]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(Window(Home).Property(NextAired.Status))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[126]:[/COLOR][CR]$INFO[Window(Home).Property(NextAired.Status)]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</value>
 	</variable>
 	<variable name="InfoPanelLabel2Var">
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !IsEmpty(Window(home).Property(Set.Movies.Writer))">[COLOR labelheader]$LOCALIZE[31001]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Writer)]</value>
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR labelheader]$LOCALIZE[31001]:[/COLOR][CR]$INFO[ListItem.Writer]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(Window(Home).Property(NextAired.NextDate))">[COLOR labelheader]$LOCALIZE[31010]:[/COLOR][CR]$INFO[Window(Home).Property(NextAired.NextDate),,: ]$INFO[Window(Home).Property(NextAired.NextTitle)]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(Window(Home).Property(NextAired.LatestDate))">[COLOR labelheader]$LOCALIZE[31011]:[/COLOR][CR]$INFO[Window(Home).Property(NextAired.LatestNumber),, - ]$INFO[Window(Home).Property(NextAired.LatestTitle)]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR labelheader]$LOCALIZE[31019]:[/COLOR][CR]$INFO[ListItem.Studio]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !IsEmpty(Window(home).Property(Set.Movies.Writer))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31001]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Writer)]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31001]:[/COLOR][CR]$INFO[ListItem.Writer]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(Window(Home).Property(NextAired.NextDate))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31010]:[/COLOR][CR]$INFO[Window(Home).Property(NextAired.NextDate),,: ]$INFO[Window(Home).Property(NextAired.NextTitle)]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !IsEmpty(Window(Home).Property(NextAired.LatestDate))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31011]:[/COLOR][CR]$INFO[Window(Home).Property(NextAired.LatestNumber),, - ]$INFO[Window(Home).Property(NextAired.LatestTitle)]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[31019]:[/COLOR][CR]$INFO[ListItem.Studio]</value>
 	</variable>
 	<variable name="InfoPanelLabel3Var">
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR labelheader]$LOCALIZE[563]:[/COLOR][CR]$INFO[ListItem.RatingAndVotes]$INFO[ListItem.Top250, / $LOCALIZE[13409] #]</value>
-		<value condition="Container.Content(tvshows) + !IsEmpty(Window(Home).Property(NextAired.Status))">[COLOR labelheader]$INFO[ListItem.Property(TotalSeasons)]$VAR[OneOrMoreSeasonsVar, , / ]$INFO[ListItem.Property(TotalEpisodes),, ]$VAR[OneOrMoreEpisodesVar]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[16101]]</value>
-		<value condition="Container.Content(tvshows)">[COLOR labelheader]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]$INFO[ListItem.Property(UnWatchedEpisodes), (,[LOWERCASE] $LOCALIZE[16101][/LOWERCASE])]</value>
-		<value condition="Container.Content(seasons)">[COLOR labelheader]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[563]:[/COLOR][CR]$INFO[ListItem.RatingAndVotes]$INFO[ListItem.Top250, / $LOCALIZE[13409] #]</value>
+		<value condition="Container.Content(tvshows) + !IsEmpty(Window(Home).Property(NextAired.Status))">[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Property(TotalSeasons)]$VAR[OneOrMoreSeasonsVar, , / ]$INFO[ListItem.Property(TotalEpisodes),, ]$VAR[OneOrMoreEpisodesVar]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[16101]]</value>
+		<value condition="Container.Content(tvshows)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]$INFO[ListItem.Property(UnWatchedEpisodes), (,[LOWERCASE] $LOCALIZE[16101][/LOWERCASE])]</value>
+		<value condition="Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20360]:[/COLOR][CR]$INFO[ListItem.Property(TotalEpisodes)]</value>
 	</variable>
 	<variable name="InfoPanelLabel4Var">
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !IsEmpty(Window(home).Property(Set.Movies.Runtime))">[COLOR labelheader]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Runtime),, $LOCALIZE[12391]]</value>
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR labelheader]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR labelheader]$LOCALIZE[2050]:[/COLOR][CR]$VAR[ListItemDurationVar]</value>
-		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR labelheader]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
-		<value condition="Container.Content(tvshows) + !IsEmpty(Window(Home).Property(NextAired.Runtime))">[COLOR labelheader]$LOCALIZE[2050]:[/COLOR][CR]$VAR[DurationVar,, $LOCALIZE[12391]]</value>
-		<value condition="Container.Content(tvshows)">[COLOR labelheader]$LOCALIZE[33054]:[/COLOR][CR]$INFO[ListItem.Property(TotalSeasons)]</value>
-		<value condition="Container.Content(seasons)">[COLOR labelheader]$LOCALIZE[16101]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !IsEmpty(Window(home).Property(Set.Movies.Runtime))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Runtime),, $LOCALIZE[12391]]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + !Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)] + Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$VAR[ListItemDurationVar]</value>
+		<value condition="[Container.Content(movies) | Container.Content(episodes) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration,, $LOCALIZE[12391]]</value>
+		<value condition="Container.Content(tvshows) + !IsEmpty(Window(Home).Property(NextAired.Runtime))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$VAR[DurationVar,, $LOCALIZE[12391]]</value>
+		<value condition="Container.Content(tvshows)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[33054]:[/COLOR][CR]$INFO[ListItem.Property(TotalSeasons)]</value>
+		<value condition="Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[16101]:[/COLOR][CR]$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
 	</variable>
 	<variable name="InfoPanelLabel5Var">
-		<value condition="[Container.Content(movies) | Container.Content(sets)] + !IsEmpty(Window(home).Property(Set.Movies.Years))">[COLOR labelheader]$LOCALIZE[345]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Years)]</value>
-		<value condition="[Container.Content(movies) | Container.Content(sets)]">[COLOR labelheader]$LOCALIZE[345]:[/COLOR][CR]$INFO[ListItem.Year]</value>
-		<value condition="Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)">[COLOR labelheader]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</value>
+		<value condition="[Container.Content(movies) | Container.Content(sets)] + !IsEmpty(Window(home).Property(Set.Movies.Years))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[345]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Years)]</value>
+		<value condition="[Container.Content(movies) | Container.Content(sets)]">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[345]:[/COLOR][CR]$INFO[ListItem.Year]</value>
+		<value condition="Container.Content(tvshows) | Container.Content(episodes) | Container.Content(seasons)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[20416]:[/COLOR][CR]$INFO[ListItem.Premiered]</value>
 	</variable>
 	<variable name="PosterThumbVar">
 		<value condition="!IsEmpty(Container.Art(season.poster))">$INFO[Container.Art(season.poster)]</value>
@@ -996,6 +999,12 @@
 	<variable name="DialogSelectLabel2Var">
 		<value condition="StringCompare(Control.GetLabel(1),$LOCALIZE[25006])">$INFO[ListItem.Duration,, [LOWERCASE]$LOCALIZE[12391][/LOWERCASE]]</value>
 		<value>$INFO[ListItem.Property(Addon.Version)]</value>
+	</variable>
+	<variable name="EpisodeCountVar">
+		<value condition="!IntegerGreaterThan(ListItem.Season,9) + !IntegerGreaterThan(ListItem.Episode,9)">$INFO[ListItem.Season,S0]$INFO[ListItem.Episode,E0]</value>
+		<value condition="!IntegerGreaterThan(ListItem.Season,9)">$INFO[ListItem.Season,S0]$INFO[ListItem.Episode,E]</value>
+		<value condition="!IntegerGreaterThan(ListItem.Episode,9)">$INFO[ListItem.Season,S]$INFO[ListItem.Episode,E0]</value>
+		<value>$INFO[ListItem.Season,S]$INFO[ListItem.Episode,E]</value>
 	</variable>
 	<variable name="SelectCaseVar">
 		<value condition="Skin.HasSetting(useclearcases)">Clear</value>
@@ -2094,11 +2103,11 @@
 	</variable>
 	<variable name="HighlightBarColor">
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(HighlightBarColor)) + !StringCompare(Skin.String(HighlightBarColor),None)">$INFO[Skin.String(HighlightBarColor)]</value>
-		<value>FF6db9e5</value>
+		<value>$VAR[ThemeLabelColor]</value>
 	</variable>
 	<variable name="WidgetHighlightBarColor">
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(WidgetHighlightBarColor)) + !StringCompare(Skin.String(WidgetHighlightBarColor),None)">$INFO[Skin.String(WidgetHighlightBarColor)]</value>
-		<value>FF6db9e5</value>
+		<value>$VAR[ThemeLabelColor]</value>
 	</variable>
 	<variable name="ThemeLabelColor">
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(ThemeLabelColor)) + !StringCompare(Skin.String(ThemeLabelColor),None)">$INFO[Skin.String(ThemeLabelColor)]</value>
@@ -2106,18 +2115,28 @@
 	</variable>
 	<variable name="ThemeHomeLabelColor">
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(ThemeHomeLabelColor)) + !StringCompare(Skin.String(ThemeHomeLabelColor),None)">$INFO[Skin.String(ThemeHomeLabelColor)]</value>
-		<value>FF6db9e5</value>
+		<value>$VAR[ThemeLabelColor]</value>
 	</variable>
+	<!-- RightList -->
+	<variable name="RightListThemeLabelColor">
+		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(RightListThemeLabelColor)) + !StringCompare(Skin.String(RightListThemeLabelColor),None)">$INFO[Skin.String(RightListThemeLabelColor)]</value>
+		<value>$VAR[ThemeLabelColor]</value>
+	</variable>
+	<!-- BigList -->
 	<variable name="BigListFocusedLabelColor">
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(BigListFocusedLabelColor)) + !StringCompare(Skin.String(BigListFocusedLabelColor),None)">$INFO[Skin.String(BigListFocusedLabelColor)]</value>
 		<value>white</value>
 	</variable>
 	<variable name="BigListItemLabelColor">
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(BigListItemLabelColor)) + !StringCompare(Skin.String(BigListItemLabelColor),None)">$INFO[Skin.String(BigListItemLabelColor)]</value>
-		<value>grey</value>
+		<value>white</value>
 	</variable>
 	<variable name="BigListThemeLabelColor">
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(BigListThemeLabelColor)) + !StringCompare(Skin.String(BigListThemeLabelColor),None)">$INFO[Skin.String(BigListThemeLabelColor)]</value>
-		<value>FF6db9e5</value>
+		<value>$VAR[ThemeLabelColor]</value>
+	</variable>
+	<variable name="MyFlixThemeLabelColor">
+		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(MyFlixThemeLabelColor)) + !StringCompare(Skin.String(MyFlixThemeLabelColor),None)">$INFO[Skin.String(MyFlixThemeLabelColor)]</value>
+		<value>$VAR[ThemeLabelColor]</value>
 	</variable>
 </includes>
