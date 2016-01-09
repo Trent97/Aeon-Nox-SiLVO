@@ -56,7 +56,7 @@
 							<height>70</height>
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<align>right</align>
 							<aligny>center</aligny>
 							<label>$INFO[ListItem.Label]</label>
@@ -68,7 +68,7 @@
 							<height>70</height>
 							<font>font30</font>
 							<textcolor>grey2</textcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<align>left</align>
 							<aligny>center</aligny>
 							<label>$INFO[ListItem.Label]</label>
@@ -80,7 +80,7 @@
 							<width>64</width>
 							<height>64</height>
 							<aspectratio>keep</aspectratio>
-							<texture>$VAR[ListItem.Overlay]</texture>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItem.Overlay]</texture>
 							<visible>!Skin.HasSetting(alternatelayoutepisode)</visible>
 						</control>
 						<control type="image">
@@ -89,7 +89,7 @@
 							<width>64</width>
 							<height>64</height>
 							<aspectratio>keep</aspectratio>
-							<texture>$VAR[ListItem.Overlay]</texture>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItem.Overlay]</texture>
 							<visible>Skin.HasSetting(alternatelayoutepisode)</visible>
 						</control>
 					</itemlayout>
@@ -192,7 +192,7 @@
 							<height>70</height>
 							<font>font30</font>
 							<textcolor>white2</textcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<align>right</align>
 							<aligny>center</aligny>
 							<label>$INFO[ListItem.Label]</label>
@@ -206,7 +206,7 @@
 							<height>70</height>
 							<font>font30</font>
 							<textcolor>white2</textcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<align>left</align>
 							<aligny>center</aligny>
 							<label>$INFO[ListItem.Label]</label>
@@ -245,7 +245,7 @@
 							<width>64</width>
 							<height>64</height>
 							<aspectratio>keep</aspectratio>
-							<texture>$VAR[ListItem.Overlay]</texture>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItem.Overlay]</texture>
 							<visible>!Skin.HasSetting(alternatelayoutepisode)</visible>
 						</control>
 						<control type="image">
@@ -254,7 +254,7 @@
 							<width>64</width>
 							<height>64</height>
 							<aspectratio>keep</aspectratio>
-							<texture>$VAR[ListItem.Overlay]</texture>
+							<texture colordiffuse="$VAR[ThemeLabelColor]">$VAR[ListItem.Overlay]</texture>
 							<visible>Skin.HasSetting(alternatelayoutepisode)</visible>
 						</control>
 					</focusedlayout>

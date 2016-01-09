@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<variable name="GlobalBackgroundVar">
-		<value condition="!IsEmpty(ListItem.Art(extrafanart1)) + !Skin.HasSetting(Disable.Extrafanart) + !ListItem.IsCollection + !Skin.HasSetting(Disable.Fanart)">$INFO[Control.GetLabel(4410)]</value>
+		<value condition="!IsEmpty(Control.GetLabel(4410)) + !Skin.HasSetting(Disable.Extrafanart) + !ListItem.IsCollection + !Skin.HasSetting(Disable.Fanart)">$INFO[Control.GetLabel(4410)]</value>
 		<value condition="!IsEmpty(ListItem.Art(fanart)) + !Skin.HasSetting(Disable.Fanart)">$INFO[ListItem.Art(fanart)]</value>
 		<value condition="StringCompare(Container(9033).ListItem.Thumb,1)">$INFO[Window(Home).Property(script.grab.fanart.Movie.FanArt)]</value>
 		<value condition="StringCompare(Container(9033).ListItem.Thumb,2)">$INFO[Window(Home).Property(script.grab.fanart.TV.FanArt)]</value>
@@ -100,7 +100,8 @@
 		<value>resource://resource.images.weathericons.default/</value>
 	</variable>
 	<variable name="OverlayVar">
-		<value condition="Container.ListItem.IsResumable + IsEmpty(Window(Home).Property(Overlay.Resumable))">overlays/showcase/resumable.png</value>
+		<value condition="Container.ListItem.IsResumable + !IsEmpty(Window(Home).Property(Overlay.Resumable))">overlays/showcase/resumable.png</value>
+		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/6/)">$INFO[ListItem.Overlay,overlays/showcase/6/]</value>
 		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/5/)">$INFO[ListItem.Overlay,overlays/showcase/5/]</value>
 		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/4/)">$INFO[ListItem.Overlay,overlays/showcase/4/]</value>
 		<value condition="StringCompare(Window(Home).Property(Overlay.Path),overlays/showcase/3/)">$INFO[ListItem.Overlay,overlays/showcase/3/]</value>
@@ -117,6 +118,7 @@
 		<value>$INFO[ListItem.Property(UnWatchedEpisodes)]</value>
 	</variable>
 	<variable name="BreadcrumbsFillerVar">
+		<value condition="Window.IsActive(1140)">$LOCALIZE[20077]: Color customization</value>
 		<value condition="Container.Content(tvshows) | Container.Content(seasons)">$LOCALIZE[20343]:</value>
 		<value condition="SubString(Container.FolderPath,videodb://recentlyadded,left)">$INFO[Window(home).Property(fakelabel)]</value>
 		<value condition="Container.Content(episodes) + !StringCompare(Container.FolderName,ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]:</value>
@@ -142,6 +144,8 @@
 		<value condition="Window.IsActive(TVRecordings) | Window.IsActive(RadioRecordings)">$VAR[BreadcrumbsFillerVar,, $LOCALIZE[19163]]</value>
 		<value condition="Window.IsActive(TVTimers) | Window.IsActive(RadioTimers)">$VAR[BreadcrumbsFillerVar,, $LOCALIZE[19040]]</value>
 		<value condition="Window.IsActive(TVSearch) | Window.IsActive(RadioSearch)">$VAR[BreadcrumbsFillerVar,, $LOCALIZE[137]]</value>
+		<value condition="Window.IsActive(eventlog)">$LOCALIZE[14111]$INFO[Control.GetLabel(21),[COLOR grey3] | , [/COLOR]]</value>
+		<value condition="Window.IsActive(SettingsCategory.xml)">$INFO[System.CurrentWindow]$INFO[Control.GetLabel(20),[COLOR grey3] | , [/COLOR]]</value>
 		<value>$VAR[BreadcrumbsFillerVar]$INFO[Container.FolderName]</value>
 	</variable>
 	<variable name="LibraryStatsVar">
@@ -223,8 +227,8 @@
 	<variable name="VideoPlotVar">
 		<value condition="Container.Content(seasons)">$INFO[Container.ShowPlot]</value>
 		<value condition="!IsEmpty(Window(home).Property(Set.Movies.ExtendedPlot))">$INFO[Window(home).Property(Set.Movies.ExtendedPlot)]</value>
-		<value condition="!IsEmpty(ListItem.PlotOutline) + !Skin.HasSetting(VideoInfoPlotToggle)">$INFO[ListItem.Tagline,[COLOR labelheader],[/COLOR] - ]$INFO[ListItem.PlotOutline]</value>
-		<value condition="System.GetBool(videolibrary.showunwatchedplots)">$INFO[ListItem.Tagline,[COLOR labelheader],[/COLOR] - ]$INFO[ListItem.Plot]</value>
+		<value condition="!IsEmpty(ListItem.PlotOutline) + !Skin.HasSetting(VideoInfoPlotToggle)">$INFO[ListItem.PlotOutline]</value>
+		<value condition="System.GetBool(videolibrary.showunwatchedplots)">$INFO[ListItem.Plot]</value>
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="VideoPlotVar2">
@@ -234,10 +238,8 @@
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<variable name="VideoPlotVar3">
-		<value condition="Control.IsVisible(700) + !IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR $VAR[RightListThemeLabelColor]]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.PlotOutline]</value>
-		<value condition="Control.IsVisible(700) + IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR $VAR[RightListThemeLabelColor]]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.Plot]</value>
-		<value condition="Control.IsVisible(701) + !IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR $VAR[MyFlixThemeLabelColor]]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.PlotOutline]</value>
-		<value condition="Control.IsVisible(701) + IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">[COLOR $VAR[MyFlixThemeLabelColor]]$INFO[ListItem.Tagline] - [/COLOR]$INFO[ListItem.Plot]</value>
+		<value condition="!IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">$INFO[ListItem.PlotOutline]</value>
+		<value condition="IsEmpty(ListItem.PlotOutline) + !IsEmpty(ListItem.Tagline)">$INFO[ListItem.Plot]</value>
 		<value condition="!IsEmpty(Window(home).Property(Set.Movies.ExtendedPlot))">$INFO[Window(home).Property(Set.Movies.ExtendedPlot)]</value>
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
@@ -541,6 +543,10 @@
 		<value condition="Container.Content(seasons) | Container.Content(episodes)">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
 		<value>$INFO[ListItem.Art(clearlogo)]</value>
 	</variable>
+	<variable name="ListItemArtistLogoVar">
+		<value condition="!System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(pathlogosartists))">$INFO[Skin.String(pathlogosartists)]$INFO[ListItem.Artist,,/logo.png]</value>
+		<value condition="System.HasAddon(script.skin.helper.service)">$INFO[Window(Home).Property(SkinHelper.Music.ClearLogo)]</value>
+	</variable>
 	<variable name="PlayerTitleLabelVar">
 		<value condition="Player.ChapterCount">$INFO[player.chapter,$LOCALIZE[21396] ]$INFO[player.chaptercount, / ,] • $INFO[Player.Title]</value>
 		<value>$INFO[Player.Title]</value>
@@ -584,9 +590,9 @@
 		<value condition="Control.HasFocus(601)">$LOCALIZE[31982]</value>
 		<value condition="Control.HasFocus(602)">$LOCALIZE[31167]</value>
 		<value condition="Control.HasFocus(607)">$LOCALIZE[31174]</value>
-		<value condition="Control.HasFocus(1100) | Control.HasFocus(1101) | Control.HasFocus(1102) | Control.HasFocus(1103) | Control.HasFocus(1104) | Control.HasFocus(1200) | Control.HasFocus(1201) | Control.HasFocus(1202) | Control.HasFocus(1203) | Control.HasFocus(1204) | Control.HasFocus(1205)">This script is REQUIRED</value>
-		<value condition="Control.HasFocus(1106) | Control.HasFocus(1107) | Control.HasFocus(1206) | Control.HasFocus(1207)">This script is HIGHLY RECOMMENDED [COLOR invalid]*Disclaimer*[/COLOR][CR]Some recommended scripts may be unsuitable for low performance devices</value>
-		<value condition="Control.HasFocus(1108) | Control.HasFocus(1109) | Control.HasFocus(1110) | Control.HasFocus(1111) | Control.HasFocus(1112) | Control.HasFocus(1113) | Control.HasFocus(1114) | Control.HasFocus(1115) | Control.HasFocus(1208) | Control.HasFocus(1209) | Control.HasFocus(1210) | Control.HasFocus(1211) | Control.HasFocus(1212) | Control.HasFocus(1213) | Control.HasFocus(1214) | Control.HasFocus(1215)">This script is RECOMMENDED [COLOR invalid]*Disclaimer*[/COLOR][CR]Some recommended scripts may be unsuitable for low performance devices</value>
+		<value condition="Control.HasFocus(1100) | Control.HasFocus(1101) | Control.HasFocus(1102) | Control.HasFocus(1200) | Control.HasFocus(1201)">This script is [COLOR FF00991F]REQUIRED[/COLOR]</value>
+		<value condition="Control.HasFocus(1103)  | Control.HasFocus(1202) | Control.HasFocus(1203) | Control.HasFocus(1204)">This script is [COLOR FF007ACD]HIGHLY RECOMMENDED[/COLOR][CR]Some recommended scripts may be unsuitable for low performance devices</value>
+		<value condition="Control.HasFocus(1104) | Control.HasFocus(1105) | Control.HasFocus(1106) | Control.HasFocus(1107) | Control.HasFocus(1205) | Control.HasFocus(1206) | Control.HasFocus(1207)">This script is [COLOR FFB38E00]RECOMMENDED[/COLOR][CR]Some recommended scripts may be unsuitable for low performance devices</value>
 		<value condition="Control.HasFocus(90012)">$LOCALIZE[31925]</value>
 		<value condition="Control.HasFocus(90013)">$LOCALIZE[31926]</value>
 		<value condition="Control.HasFocus(90014)">$LOCALIZE[31930]</value>
@@ -875,7 +881,7 @@
 		<value>$INFO[ListItem.Icon,views/list/]</value>
 	</variable>
 	<variable name="StarRatingDiffuseVar">
-		<value condition="ListItem.IsSelected | ListItem.IsPlaying">selected</value>
+		<value condition="ListItem.IsSelected | ListItem.IsPlaying">$VAR[ThemeLabelColor]</value>
 		<value condition="!IsEmpty(ListItem.UserRating)">$VAR[ThemeLabelColor]</value>
 		<value>white</value>
 	</variable>
@@ -1080,13 +1086,18 @@
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Logo) + Container.Content(tvshows)  + StringCompare(Skin.String(59.TV.MediaflagsLayout),$LOCALIZE[571])">Skin.Reset(59.TV.MediaflagsLayout)</value>
 	</variable>
 	<variable name="NoTopBarLabelVar">
+		<value condition="StringCompare(Window(home).Property(actualViewtype),List) + !IsEmpty(Skin.String(50.NoTopBar))">$INFO[Skin.String(50.NoTopBar)]</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),InfoWall) + !IsEmpty(Skin.String(51.NoTopBar))">$INFO[Skin.String(51.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Landscape) + !IsEmpty(Skin.String(52.NoTopBar))">$INFO[Skin.String(52.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),ShowCaseMovies) + !IsEmpty(Skin.String(53.NoTopBar))">$INFO[Skin.String(53.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),ShowCaseSquare) + !IsEmpty(Skin.String(54.NoTopBar))">$INFO[Skin.String(54.NoTopBar)]</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),TriPanel) + !IsEmpty(Skin.String(55.NoTopBar))">$INFO[Skin.String(55.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Posters) + !IsEmpty(Skin.String(56.NoTopBar))">$INFO[Skin.String(56.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Shift) + !IsEmpty(Skin.String(57.NoTopBar))">$INFO[Skin.String(57.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Logo) + !IsEmpty(Skin.String(59.NoTopBar))">$INFO[Skin.String(59.NoTopBar)]</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),BannerWall) + !IsEmpty(Skin.String(58.NoTopBar))">$INFO[Skin.String(58.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),SmallIcons) + !IsEmpty(Skin.String(499.NoTopBar))">$INFO[Skin.String(499.NoTopBar)]</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),Icons) + !IsEmpty(Skin.String(500.NoTopBar))">$INFO[Skin.String(500.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),LowList) + !IsEmpty(Skin.String(501.NoTopBar))">$INFO[Skin.String(501.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Episode) + !IsEmpty(Skin.String(502.NoTopBar))">$INFO[Skin.String(502.NoTopBar)]</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Wall) + !IsEmpty(Skin.String(503.NoTopBar))">$INFO[Skin.String(503.NoTopBar)]</value>
@@ -1103,20 +1114,30 @@
 		<value>$LOCALIZE[16041]</value>
 	</variable>
 	<variable name="NoTopBarOnClickVar">
+		<value condition="StringCompare(Window(home).Property(actualViewtype),List) + IsEmpty(Skin.String(50.NoTopBar))">Skin.SetString(50.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),List) + !IsEmpty(Skin.String(50.NoTopBar))">Skin.Reset(50.NoTopBar)</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),InfoWall) + IsEmpty(Skin.String(51.NoTopBar))">Skin.SetString(51.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),InfoWall) + !IsEmpty(Skin.String(51.NoTopBar))">Skin.Reset(51.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Landscape) + IsEmpty(Skin.String(52.NoTopBar))">Skin.SetString(52.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Landscape) + !IsEmpty(Skin.String(52.NoTopBar))">Skin.Reset(52.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),ShowCaseMovies) + IsEmpty(Skin.String(53.NoTopBar))">Skin.SetString(53.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),ShowCaseMovies) + !IsEmpty(Skin.String(53.NoTopBar))">Skin.Reset(53.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),ShowCaseSquare) + IsEmpty(Skin.String(54.NoTopBar))">Skin.SetString(54.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),ShowCaseSquare) + !IsEmpty(Skin.String(54.NoTopBar))">Skin.Reset(54.NoTopBar)</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),TriPanel) + IsEmpty(Skin.String(55.NoTopBar))">Skin.SetString(55.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),TriPanel) + !IsEmpty(Skin.String(55.NoTopBar))">Skin.Reset(55.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Posters) + IsEmpty(Skin.String(56.NoTopBar))">Skin.SetString(56.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Posters) + !IsEmpty(Skin.String(56.NoTopBar))">Skin.Reset(56.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Shift) + IsEmpty(Skin.String(57.NoTopBar))">Skin.SetString(57.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Shift) + !IsEmpty(Skin.String(57.NoTopBar))">Skin.Reset(57.NoTopBar)</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),BannerWall) + IsEmpty(Skin.String(58.NoTopBar))">Skin.SetString(58.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),BannerWall) + !IsEmpty(Skin.String(58.NoTopBar))">Skin.Reset(58.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Logo) + IsEmpty(Skin.String(59.NoTopBar))">Skin.SetString(59.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Logo) + !IsEmpty(Skin.String(59.NoTopBar))">Skin.Reset(59.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),SmallIcons) + IsEmpty(Skin.String(499.NoTopBar))">Skin.SetString(499.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),SmallIcons) + !IsEmpty(Skin.String(499.NoTopBar))">Skin.Reset(499.NoTopBar)</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),Icons) + IsEmpty(Skin.String(500.NoTopBar))">Skin.SetString(500.NoTopBar,$LOCALIZE[351])</value>
+		<value condition="StringCompare(Window(home).Property(actualViewtype),Icons) + !IsEmpty(Skin.String(500.NoTopBar))">Skin.Reset(500.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),LowList) + IsEmpty(Skin.String(501.NoTopBar))">Skin.SetString(501.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),LowList) + !IsEmpty(Skin.String(501.NoTopBar))">Skin.Reset(501.NoTopBar)</value>
 		<value condition="StringCompare(Window(home).Property(actualViewtype),Episode) + IsEmpty(Skin.String(502.NoTopBar))">Skin.SetString(502.NoTopBar,$LOCALIZE[351])</value>
@@ -2122,6 +2143,28 @@
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(RightListThemeLabelColor)) + !StringCompare(Skin.String(RightListThemeLabelColor),None)">$INFO[Skin.String(RightListThemeLabelColor)]</value>
 		<value>$VAR[ThemeLabelColor]</value>
 	</variable>
+	<variable name="RightListUnWatchedEpColor">
+		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(RightListUnWatchedEpColor)) + !StringCompare(Skin.String(RightListUnWatchedEpColor),None)">$INFO[Skin.String(RightListUnWatchedEpColor)]</value>
+		<value>grey</value>
+	</variable>
+	<!-- FanartList -->
+	<variable name="FanartListThemeLabelColor">
+		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(FanartListThemeLabelColor)) + !StringCompare(Skin.String(FanartListThemeLabelColor),None)">$INFO[Skin.String(FanartListThemeLabelColor)]</value>
+		<value>$VAR[ThemeLabelColor]</value>
+	</variable>
+	<variable name="FanartListUnWatchedEpColor">
+		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(FanartListUnWatchedEpColor)) + !StringCompare(Skin.String(FanartListUnWatchedEpColor),None)">$INFO[Skin.String(FanartListUnWatchedEpColor)]</value>
+		<value>grey</value>
+	</variable>
+	<!-- LowList -->
+	<variable name="LowListThemeLabelColor">
+		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(LowListThemeLabelColor)) + !StringCompare(Skin.String(LowListThemeLabelColor),None)">$INFO[Skin.String(LowListThemeLabelColor)]</value>
+		<value>$VAR[ThemeLabelColor]</value>
+	</variable>
+	<variable name="LowListUnWatchedEpColor">
+		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(LowListUnWatchedEpColor)) + !StringCompare(Skin.String(LowListUnWatchedEpColor),None)">$INFO[Skin.String(LowListUnWatchedEpColor)]</value>
+		<value>grey</value>
+	</variable>
 	<!-- BigList -->
 	<variable name="BigListFocusedLabelColor">
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(BigListFocusedLabelColor)) + !StringCompare(Skin.String(BigListFocusedLabelColor),None)">$INFO[Skin.String(BigListFocusedLabelColor)]</value>
@@ -2135,8 +2178,18 @@
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(BigListThemeLabelColor)) + !StringCompare(Skin.String(BigListThemeLabelColor),None)">$INFO[Skin.String(BigListThemeLabelColor)]</value>
 		<value>$VAR[ThemeLabelColor]</value>
 	</variable>
+	<!-- MyFlix -->
 	<variable name="MyFlixThemeLabelColor">
 		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(MyFlixThemeLabelColor)) + !StringCompare(Skin.String(MyFlixThemeLabelColor),None)">$INFO[Skin.String(MyFlixThemeLabelColor)]</value>
+		<value>$VAR[ThemeLabelColor]</value>
+	</variable>
+	<variable name="MyFlixUnWatchedEpColor">
+		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(MyFlixUnWatchedEpColor)) + !StringCompare(Skin.String(MyFlixUnWatchedEpColor),None)">$INFO[Skin.String(MyFlixUnWatchedEpColor)]</value>
+		<value>grey</value>
+	</variable>
+	<!-- TriPanel -->
+	<variable name="TriPanelThemeLabelColor">
+		<value condition="System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(TriPanelThemeLabelColor)) + !StringCompare(Skin.String(TriPanelThemeLabelColor),None)">$INFO[Skin.String(TriPanelThemeLabelColor)]</value>
 		<value>$VAR[ThemeLabelColor]</value>
 	</variable>
 </includes>

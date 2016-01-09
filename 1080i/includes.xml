@@ -53,7 +53,7 @@
 	<include name="SideBladeLeft">
 		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="IsEmpty(Window(home).Property(MediaMenu))">Conditional</animation>
 		<animation effect="slide" start="0,0" end="-440,0" time="400" tween="quadratic" easing="out">WindowClose</animation>
-		<!--<top>44</top>-->
+		<!-- <top>44</top> -->
 		<control type="image">
 			<left>0</left>
 			<top>0</top>
@@ -175,7 +175,7 @@
 			<onclick condition="Container.Content(artists)">SetProperty(Area,Artists,home)</onclick>
 			<onclick condition="Container.Content(addons)">SetProperty(Area,Addons,home)</onclick>
 			<onclick>ActivateWindow(1131)</onclick>
-			<visible>[Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(59) | Control.IsVisible(700) | Control.IsVisible(701) | Control.IsVisible(500) | Control.IsVisible(501) | Control.IsVisible(503) | Control.IsVisible(507) | Control.IsVisible(602) | Control.IsVisible(499) | Control.IsVisible(502) | Control.IsVisible(504) | Control.IsVisible(505) | Control.IsVisible(508) | Control.IsVisible(591) | Control.IsVisible(592) | Control.IsVisible(601) | Control.IsVisible(609)]</visible>
+			<visible>[Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(59) | Control.IsVisible(700) | Control.IsVisible(701) | Control.IsVisible(500) | Control.IsVisible(501) | Control.IsVisible(503) | Control.IsVisible(507) | Control.IsVisible(602) | Control.IsVisible(499) | Control.IsVisible(502) | Control.IsVisible(504) | Control.IsVisible(505) | Control.IsVisible(508) | Control.IsVisible(591) | Control.IsVisible(592) | Control.IsVisible(601) | Control.IsVisible(609)]</visible>
 		</control>
 		<control type="togglebutton" id="6055">
 			<description>LowList Toggle</description>
@@ -340,7 +340,8 @@
 		<height>1080</height>
 		<onleft>9050</onleft>
 		<onright>ClearProperty(MediaMenu,Home)</onright>
-		<onright>50</onright>
+		<onright condition="!Window.IsActive(SettingsCategory.xml)">50</onright>
+		<onright condition="Window.IsActive(SettingsCategory.xml)">3</onright>
 		<onup>9050</onup>
 		<ondown>9050</ondown>
 		<onback>ClearProperty(MediaMenu,Home)</onback>
@@ -361,6 +362,24 @@
 			<include>ButtonCommonValues</include>
 			<label>$LOCALIZE[19190]</label>
 			<onclick>ActivateWindow(1128)</onclick>
+		</control>
+		<control type="button" id="203">
+			<description>Settings level</description>
+			<textwidth>352</textwidth>
+			<font>font13_title</font>
+			<include>ButtonCommonValues</include>
+			<label>$LOCALIZE[31142]</label>
+			<enable>no</enable>
+			<disabledcolor>$VAR[ThemeLabelColor]</disabledcolor>
+			<visible>Window.IsActive(SettingsCategory.xml)</visible>
+		</control>
+		<control type="button" id="20">
+			<description>Change settings level</description>
+			<label>19019</label>
+			<textwidth>352</textwidth>
+			<include>ButtonCommonValues</include>
+			<onclick>SettingsLevelChange</onclick>
+			<visible>Window.IsActive(SettingsCategory.xml)</visible>
 		</control>
 	</include>
 	<!-- Scroll Label -->
@@ -411,7 +430,7 @@
 				<animation effect="slide" start="0,0" end="0,-90" time="800" tween="cubic" condition="Control.IsVisible(609) + IsEmpty(Skin.String(609.NoTopBar)) + !System.IdleTime(2)">Conditional</animation>
 				<animation effect="slide" start="0,-90" end="0,0" delay="800" time="480" condition="Window.Previous(home)">WindowOpen</animation>
 				<animation effect="slide" end="0,-90" start="0,0" time="480" condition="Window.Next(home)">WindowClose</animation>
-				<visible>[Control.IsVisible(52) + IsEmpty(Skin.String(52.NoTopBar))] | [Control.IsVisible(53) + IsEmpty(Skin.String(53.NoTopBar))] | [Control.IsVisible(54) + IsEmpty(Skin.String(54.NoTopBar))] | [Control.IsVisible(56) + IsEmpty(Skin.String(56.NoTopBar))] | [Control.IsVisible(57) + IsEmpty(Skin.String(57.NoTopBar))] | [Control.IsVisible(59) + IsEmpty(Skin.String(59.NoTopBar))] | [Control.IsVisible(501) + IsEmpty(Skin.String(501.NoTopBar))] | [Control.IsVisible(502) + IsEmpty(Skin.String(502.NoTopBar))] | [Control.IsVisible(503) + IsEmpty(Skin.String(503.NoTopBar))] | [Control.IsVisible(504) + IsEmpty(Skin.String(504.NoTopBar))] | [Control.IsVisible(505) + IsEmpty(Skin.String(505.NoTopBar))] | [Control.IsVisible(507) + IsEmpty(Skin.String(507.NoTopBar))] | [Control.IsVisible(508) + IsEmpty(Skin.String(508.NoTopBar))] | [Control.IsVisible(591) + IsEmpty(Skin.String(591.NoTopBar))] | [Control.IsVisible(592) + IsEmpty(Skin.String(592.NoTopBar))] | [Control.IsVisible(601) + IsEmpty(Skin.String(601.NoTopBar))] | [Control.IsVisible(609) + IsEmpty(Skin.String(609.NoTopBar))] | [Control.IsVisible(700) + IsEmpty(Skin.String(700.NoTopBar))] | [Control.IsVisible(701) + IsEmpty(Skin.String(701.NoTopBar))] | Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(55) | Control.IsVisible(58) | [Control.IsVisible(499) + IsEmpty(Skin.String(499.NoTopBar))] | Control.IsVisible(500) | Control.IsVisible(602) | Window.IsActive(weather) | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(SettingsCategory.xml)</visible>
+				<visible>[Control.IsVisible(50) + IsEmpty(Skin.String(50.NoTopBar))] | [Control.IsVisible(51) + IsEmpty(Skin.String(51.NoTopBar))] | [Control.IsVisible(52) + IsEmpty(Skin.String(52.NoTopBar))] | [Control.IsVisible(53) + IsEmpty(Skin.String(53.NoTopBar))] | [Control.IsVisible(54) + IsEmpty(Skin.String(54.NoTopBar))] | [Control.IsVisible(55) + IsEmpty(Skin.String(55.NoTopBar))] | [Control.IsVisible(56) + IsEmpty(Skin.String(56.NoTopBar))] | [Control.IsVisible(57) + IsEmpty(Skin.String(57.NoTopBar))] | [Control.IsVisible(58) + IsEmpty(Skin.String(58.NoTopBar))] | [Control.IsVisible(59) + IsEmpty(Skin.String(59.NoTopBar))] | [Control.IsVisible(499) + IsEmpty(Skin.String(499.NoTopBar))] | [Control.IsVisible(500) + IsEmpty(Skin.String(500.NoTopBar))] | [Control.IsVisible(501) + IsEmpty(Skin.String(501.NoTopBar))] | [Control.IsVisible(502) + IsEmpty(Skin.String(502.NoTopBar))] | [Control.IsVisible(503) + IsEmpty(Skin.String(503.NoTopBar))] | [Control.IsVisible(504) + IsEmpty(Skin.String(504.NoTopBar))] | [Control.IsVisible(505) + IsEmpty(Skin.String(505.NoTopBar))] | [Control.IsVisible(507) + IsEmpty(Skin.String(507.NoTopBar))] | [Control.IsVisible(508) + IsEmpty(Skin.String(508.NoTopBar))] | [Control.IsVisible(591) + IsEmpty(Skin.String(591.NoTopBar))] | [Control.IsVisible(592) + IsEmpty(Skin.String(592.NoTopBar))] | [Control.IsVisible(601) + IsEmpty(Skin.String(601.NoTopBar))] | [Control.IsVisible(609) + IsEmpty(Skin.String(609.NoTopBar))] | [Control.IsVisible(700) + IsEmpty(Skin.String(700.NoTopBar))] | [Control.IsVisible(701) + IsEmpty(Skin.String(701.NoTopBar))] | Control.IsVisible(602) | Window.IsActive(weather) | Window.IsActive(script-globalsearch-main.xml) | Window.IsActive(SettingsCategory.xml)</visible>
 				<control type="button" id="90022">
 					<label>-</label>
 					<left>-30</left>
@@ -524,7 +543,7 @@
 			<textoffsetx>15</textoffsetx>
 			<textcolor>grey2</textcolor>
 			<focusedcolor>white</focusedcolor>
-			<texturefocus border="5">button_middle_focus.png</texturefocus>
+			<texturefocus colordiffuse="$VAR[ThemeLabelColor]" border="5">button_middle_focus.png</texturefocus>
 			<texturenofocus border="5">button_middle3.png</texturenofocus>
 			<onclick>PlayMedia($ESCINFO[ListItem.Trailer])</onclick>
 			<visible>!IsEmpty(ListItem.Trailer)</visible>
@@ -540,7 +559,7 @@
 			<textoffsetx>15</textoffsetx>
 			<textcolor>grey2</textcolor>
 			<focusedcolor>white</focusedcolor>
-			<texturefocus border="5">button_middle_focus.png</texturefocus>
+			<texturefocus colordiffuse="$VAR[ThemeLabelColor]" border="5">button_middle_focus.png</texturefocus>
 			<texturenofocus border="5">button_middle3.png</texturenofocus>
 			<onclick condition="!IsEmpty(ListItem.Trailer)">PlayMedia($ESCINFO[ListItem.Trailer])</onclick>
 			<onclick condition="IsEmpty(ListItem.Trailer)">ActivateWindow(videos,$ESCINFO[ListItem.Label,plugin://plugin.video.youtube/?path=/root/search&amp;feed=search&amp;search=, Trailer],return)</onclick>
@@ -669,7 +688,7 @@
 					<control type="image">
 						<width>320</width>
 						<height>80</height>
-						<texture border="4">button_middle_focus.png</texture>
+						<texture colordiffuse="$VAR[ThemeLabelColor]" border="5">listselect_fo.png</texture>
 						<visible>Control.HasFocus(5000)</visible>
 					</control>
 					<control type="label">
@@ -693,7 +712,7 @@
 			<width>1256</width>
 			<height>840</height>
 			<font>font15_textbox</font>
-			<align>center</align>
+			<align>left</align>
 			<textcolor>grey2</textcolor>
 			<pagecontrol>61</pagecontrol>
 		</control>
@@ -702,10 +721,10 @@
 		<control type="textbox" id="5">
 			<description>textarea</description>
 			<left>552</left>
-			<top>92</top>
+			<top>72</top>
 			<width>1256</width>
 			<height>800</height>
-			<font>font16_textbox</font>
+			<font>font15_textbox</font>
 			<align>left</align>
 			<textcolor>grey2</textcolor>
 			<pagecontrol>61</pagecontrol>
@@ -1287,13 +1306,34 @@
 	<include name="ColorCustomizerSwatchimage">
 		<param name="ColorString"/>
 		<param name="SwatchSize" default="70"/>
+		<param name="visible" />
 		<definition>
-			<control type="image">
-				<width>$PARAM[SwatchSize]</width>
-				<height>$PARAM[SwatchSize]</height>
-				<texture>color_swatch.png</texture>
-				<colordiffuse>$INFO[Skin.String($PARAM[ColorString])]</colordiffuse>
-				<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout" condition="IsEmpty(Skin.String($PARAM[ColorString])) | StringCompare(Skin.String($PARAM[ColorString]),None)">Conditional</animation>
+			<width>$PARAM[SwatchSize]</width>
+			<height>$PARAM[SwatchSize]</height>
+			<texture>color_swatch.png</texture>
+			<colordiffuse>$INFO[Skin.String($PARAM[ColorString])]</colordiffuse>
+			<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout" condition="IsEmpty(Skin.String($PARAM[ColorString])) | StringCompare(Skin.String($PARAM[ColorString]),None)">Conditional</animation>
+			$PARAM[visible]
+		</definition>
+	</include>
+	<include name="AddonStatusRadioButton">
+		<param name="ButtonID"/>
+		<param name="AddonID" />
+		<definition>
+			<control type="radiobutton" id="$PARAM[ButtonID]">
+				<width>658</width>
+				<height>90</height>
+				<textoffsetx>30</textoffsetx>
+				<font>font15</font>
+				<label>$PARAM[AddonID]</label>
+				<textureradioonfocus colordiffuse="FF00991F">android/btn_radio_on_holo_dark.png</textureradioonfocus>
+				<textureradioonnofocus colordiffuse="FF00991F">android/btn_radio_on_holo_dark.png</textureradioonnofocus>
+				<textureradioofffocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradioofffocus>
+				<textureradiooffnofocus colordiffuse="invalid">android/btn_radio_on_holo_dark.png</textureradiooffnofocus>
+				<onclick condition="!System.HasAddon($PARAM[AddonID])">RunPlugin(plugin://$PARAM[AddonID])</onclick>
+				<onclick condition="System.HasAddon($PARAM[AddonID])">noop</onclick>
+				<selected>System.HasAddon($PARAM[AddonID])</selected>
+				<texturenofocus border="1">separator5.png</texturenofocus>
 			</control>
 		</definition>
 	</include>
