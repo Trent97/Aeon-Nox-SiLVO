@@ -326,7 +326,7 @@
 							<height>40</height>
 							<font>font15</font>
 							<textcolor>grey</textcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<label>$INFO[ListItem.Label]</label>
 							<textoffsetx>36</textoffsetx>
 						</control>
@@ -336,7 +336,7 @@
 							<height>40</height>
 							<font>font15</font>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<label>$INFO[ListItem.Label2]</label>
 							<textoffsetx>36</textoffsetx>
 						</control>
@@ -362,7 +362,7 @@
 							<height>40</height>
 							<font>font15</font>
 							<textcolor>white</textcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<label>$INFO[ListItem.Label]</label>
 							<textoffsetx>36</textoffsetx>
 						</control>
@@ -372,7 +372,7 @@
 							<height>40</height>
 							<font>font15</font>
 							<textcolor>white</textcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<label>$INFO[ListItem.Label2]</label>
 							<textoffsetx>36</textoffsetx>
 						</control>
@@ -646,7 +646,7 @@
 								<font>font14</font>
 								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
-								<selectedcolor>selected</selectedcolor>
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 								<label>$INFO[ListItem.Label]</label>
 							</control>
 							<control type="label">
@@ -658,7 +658,7 @@
 								<font>font14</font>
 								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
-								<selectedcolor>selected</selectedcolor>
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 								<label>$INFO[ListItem.Property(character)]</label>
 						</control>							
 						</itemlayout>
@@ -737,7 +737,7 @@
 								<font>font13</font>
 								<textcolor>white2</textcolor>									
 								<shadowcolor>black</shadowcolor>
-								<selectedcolor>selected</selectedcolor>									
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>									
 								<label>$INFO[ListItem.Year]</label>				
 							</control>									
 							<control type="image">
@@ -754,7 +754,7 @@
 								<font>font14</font>
 								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
-								<selectedcolor>selected</selectedcolor>
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 								<label>$INFO[ListItem.Label]</label>
 							</control>
 							<control type="label">
@@ -766,7 +766,7 @@
 								<font>font14</font>
 								<textcolor>grey2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
-								<selectedcolor>selected</selectedcolor>
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 								<label>$INFO[ListItem.Property(Job)]</label>
 							</control>
 							<control type="image">
@@ -884,7 +884,7 @@
 							<font>font13</font>
 							<textcolor>white2</textcolor>									
 							<shadowcolor>black</shadowcolor>
-							<selectedcolor>selected</selectedcolor>									
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>									
 							<label>$INFO[ListItem.Year]</label>				
 						</control>									
 						<control type="image">
@@ -901,7 +901,7 @@
 							<font>font14</font>
 							<textcolor>white2</textcolor>
 							<shadowcolor>shadow</shadowcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 						<control type="image">
@@ -1005,7 +1005,7 @@
 							<font>font13</font>
 							<textcolor>white2</textcolor>									
 							<shadowcolor>black</shadowcolor>
-							<selectedcolor>selected</selectedcolor>									
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>									
 							<label>$INFO[ListItem.Year]</label>				
 						</control>									
 						<control type="image">
@@ -1022,7 +1022,7 @@
 							<font>font14</font>
 							<textcolor>white2</textcolor>
 							<shadowcolor>shadow</shadowcolor>
-							<selectedcolor>selected</selectedcolor>
+							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 							<label>$INFO[ListItem.Label]</label>
 						</control>
 						<control type="image">
@@ -1125,7 +1125,7 @@
 								<font>font14</font>
 								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
-								<selectedcolor>selected</selectedcolor>
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 								<label>[B]$INFO[ListItem.Property(Type),,:][/B]</label>
 							</control>
 							<control type="label">
@@ -1137,7 +1137,7 @@
 								<font>font14</font>
 								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
-								<selectedcolor>selected</selectedcolor>
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 								<label>$INFO[ListItem.Label]</label>
 							</control>
 						</itemlayout>
@@ -1218,7 +1218,7 @@
 								<font>font14</font>
 								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
-								<selectedcolor>selected</selectedcolor>
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 								<label>$INFO[ListItem.Property(Type),[B],: [/B]]$INFO[ListItem.Label]</label>
 							</control>
 						</itemlayout>
