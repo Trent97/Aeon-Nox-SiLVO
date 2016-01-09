@@ -703,9 +703,8 @@
 					<left>400</left>
 					<top>75</top>
 					<width>1120</width>
-					<align>center</align>
-		<!-- Change color of Unwatched Episodes - Logo(59) -->					
-					<label>[COLOR=grey2]$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)][/COLOR] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]</label>
+					<align>center</align>				
+					<label>$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)][COLOR $VAR[LogoUnWatchedEpColor]]$INFO[ListItem.Property(UnWatchedEpisodes),  ($LOCALIZE[16101]: ,)][/COLOR]</label>
 					<font>font14_bold</font>
 					<textcolor>$VAR[ThemeLabelColor]</textcolor>
 					<visible>Container.Content(tvshows) + !IsEmpty(ListItem.Title)</visible>
