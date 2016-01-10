@@ -1,6 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- Fullscreen Wall -->
+	<include name="Movie_Info">
+		<control type="group">
+			<animation effect="slide" start="-2620,0" end="0,0" time="250" tween="sine" easing="out">VisibleChange</animation>
+			<control type="image">
+				<posy>388</posy>
+				<posx>375</posx>
+				<width>1165</width>
+				<height>427</height>
+				<aspectratio>scale</aspectratio>
+				<texture background="true">views/fullscreen_wall/wall_bg.png</texture>
+				<fadetime>400</fadetime>
+			</control>
+			<control type="image">   
+				<top>355</top>
+				<left>332</left>
+				<width>1251</width>
+				<height>554</height>
+				<texture background="true">views/fullscreen_wall/listpanel_back_glow.png</texture>
+				<bordersize>18</bordersize>
+			</control>
+			<control type="image">
+				<posy>389</posy>
+				<posx>384</posx>
+				<width>254</width>
+				<height>423</height>
+				<aspectratio>stretch</aspectratio>
+				<texture background="true" fallback="">$VAR[PosterVar]</texture>
+				<fadetime>400</fadetime>
+			</control>
+			<control type="image">
+				<left>-420</left>
+				<posy>395</posy>
+				<height>75</height>
+				<aspectratio aligny="bottom">keep</aspectratio>
+				<texture background="true">$VAR[ArtworkLogoVar]</texture>
+			</control>			
+			<control type="label">
+				<left>655</left>
+				<posy>423</posy>
+				<width>415</width>
+				<height>15</height>
+				<textcolor>$VAR[ThemeLabelColor]</textcolor>
+				<label>$INFO[ListItem.Label]</label>
+				<scroll>true</scroll>
+				<visible>IsEmpty(ListItem.Art(clearlogo))</visible>
+			</control>
+			<control type="label">
+				<left>1090</left>
+				<posy>423</posy>
+				<width>420</width>
+				<height>15</height>
+				<align>right</align>
+				<textcolor>grey2</textcolor>
+				<label>$INFO[ListItem.RatingAndVotes]$INFO[ListItem.Top250, / $LOCALIZE[13409] #]</label>
+				<scroll>true</scroll>
+			</control>			
+			<control type="image">
+				<posx>630</posx>
+				<posy>470</posy>
+				<width>900</width>
+				<height>2</height>
+				<align>left</align>
+				<texture flipx="true">views/fullscreen_wall/divider.png</texture>
+			</control>
+			<control type="textbox">
+				<posx>655</posx>
+				<posy>475</posy>
+				<width>855</width>
+				<height>283</height>
+				<label>$VAR[VideoPlotVar]</label>
+				<font>noop</font>
+				<autoscroll delay="10000" time="4000" repeat="8000"></autoscroll>
+			</control>
+			<control type="image">
+				<posx>630</posx>
+				<posy>742</posy>
+				<width>900</width>
+				<height>2</height>
+				<align>left</align>
+				<texture flipx="true">views/fullscreen_wall/divider.png</texture>
+			</control>
+			<control type="grouplist">
+				<posx>655</posx>
+				<posy>741</posy>
+				<width>855</width>
+				<height>35</height>
+				<itemgap>15</itemgap>
+				<orientation>horizontal</orientation>				
+				<control type="label">
+					<width>auto</width>		
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
+					<label>Director:</label>
+				</control>
+				<control type="label">
+					<width>auto</width>			
+					<label>$INFO[ListItem.Director]</label>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
+					<label>Year:</label>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<label>$INFO[ListItem.Year]</label>
+				</control>					
+			</control>	
+			<control type="grouplist">
+				<posx>655</posx>
+				<posy>774</posy>
+				<width>855</width>
+				<height>35</height>
+				<itemgap>15</itemgap>
+				<orientation>horizontal</orientation>				
+				<control type="label">
+					<width>auto</width>
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
+					<label>Runtime:</label>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<label>$INFO[ListItem.Duration,, minutes]</label>
+				</control>		
+				<control type="label">
+					<width>auto</width>
+					<textcolor>$VAR[ThemeLabelColor]</textcolor>
+					<label>Genre:</label>
+				</control>
+				<control type="label">
+					<width>485</width>
+					<label>$INFO[ListItem.Genre]</label>
+					<scroll>true</scroll>
+				</control>
+			</control>				
+		</control>
+	</include>
+	<include name="Wall_Dimmer">
+		<animation effect="fade" start="100" end="25" time="300" condition="System.IdleTime(4) + Control.HasFocus(609) + Container.Content(movies) + !StringCompare(ListItem.Label,..)">conditional</animation>
+	</include>	
 	<include name="View_609_Fullscreen_Wall">
 		<control type="group">
 			<visible>Control.IsVisible(609)</visible>
@@ -22,6 +161,7 @@
 				</control>
 			</control>
 			<control type="panel" id="609">
+				<include>Wall_Dimmer</include>			
 				<width>1920</width>
 				<height>1080</height>
 				<onleft>SetProperty(MediaMenu,True,home)</onleft>
@@ -239,6 +379,11 @@
 					</control>
 				</focusedlayout>
 			</control>
+			<control type="group">
+				<visible>Container.Content(movies)</visible>
+				<visible>[System.IdleTime(4) + Control.HasFocus(609) + Container.Content(movies) + !StringCompare(ListItem.Label,..)]</visible>
+				<include>Movie_Info</include>
+			</control>			
 			<control type="scrollbar" id="60">
 				<left>1906</left>
 				<top>0</top>
