@@ -7,8 +7,8 @@
 			<control type="image">
 				<posy>388</posy>
 				<posx>375</posx>
-				<width>1165</width>
-				<height>427</height>
+				<width>1205</width>
+				<height>499</height>
 				<aspectratio>scale</aspectratio>
 				<texture background="true">views/fullscreen_wall/wall_bg.png</texture>
 				<fadetime>400</fadetime>
@@ -16,31 +16,31 @@
 			<control type="image">   
 				<top>355</top>
 				<left>332</left>
-				<width>1251</width>
-				<height>554</height>
+				<width>1294</width>
+				<height>635</height>
 				<texture background="true">views/fullscreen_wall/listpanel_back_glow.png</texture>
 				<bordersize>18</bordersize>
 			</control>
 			<control type="image">
 				<posy>389</posy>
 				<posx>384</posx>
-				<width>254</width>
-				<height>423</height>
+				<width>294</width>
+				<height>490</height>
 				<aspectratio>stretch</aspectratio>
 				<texture background="true" fallback="">$VAR[PosterVar]</texture>
 				<fadetime>400</fadetime>
 			</control>
 			<control type="image">
-				<left>-420</left>
+				<left>-340</left>
 				<posy>395</posy>
 				<height>75</height>
 				<aspectratio aligny="bottom">keep</aspectratio>
 				<texture background="true">$VAR[ArtworkLogoVar]</texture>
 			</control>			
 			<control type="label">
-				<left>655</left>
-				<posy>423</posy>
-				<width>415</width>
+				<left>695</left>
+				<posy>425</posy>
+				<width>375</width>
 				<height>15</height>
 				<textcolor>$VAR[ThemeLabelColor]</textcolor>
 				<label>$INFO[ListItem.Label]</label>
@@ -48,9 +48,9 @@
 				<visible>IsEmpty(ListItem.Art(clearlogo))</visible>
 			</control>
 			<control type="label">
-				<left>1090</left>
-				<posy>423</posy>
-				<width>420</width>
+				<left>1125</left>
+				<posy>425</posy>
+				<width>425</width>
 				<height>15</height>
 				<align>right</align>
 				<textcolor>grey2</textcolor>
@@ -58,33 +58,16 @@
 				<scroll>true</scroll>
 			</control>			
 			<control type="image">
-				<posx>630</posx>
-				<posy>470</posy>
-				<width>900</width>
-				<height>2</height>
-				<align>left</align>
-				<texture flipx="true">views/fullscreen_wall/divider.png</texture>
-			</control>
-			<control type="textbox">
-				<posx>655</posx>
+				<posx>670</posx>
 				<posy>475</posy>
-				<width>855</width>
-				<height>283</height>
-				<label>$VAR[VideoPlotVar]</label>
-				<font>noop</font>
-				<autoscroll delay="10000" time="4000" repeat="8000"></autoscroll>
-			</control>
-			<control type="image">
-				<posx>630</posx>
-				<posy>742</posy>
-				<width>900</width>
+				<width>940</width>
 				<height>2</height>
 				<align>left</align>
 				<texture flipx="true">views/fullscreen_wall/divider.png</texture>
 			</control>
 			<control type="grouplist">
-				<posx>655</posx>
-				<posy>741</posy>
+				<posx>695</posx>
+				<posy>480</posy>
 				<width>855</width>
 				<height>35</height>
 				<itemgap>15</itemgap>
@@ -109,8 +92,8 @@
 				</control>					
 			</control>	
 			<control type="grouplist">
-				<posx>655</posx>
-				<posy>774</posy>
+				<posx>695</posx>
+				<posy>513</posy>
 				<width>855</width>
 				<height>35</height>
 				<itemgap>15</itemgap>
@@ -134,8 +117,90 @@
 					<label>$INFO[ListItem.Genre]</label>
 					<scroll>true</scroll>
 				</control>
-			</control>				
-		</control>
+			</control>	
+			<control type="image">
+				<posx>670</posx>
+				<posy>555</posy>
+				<width>940</width>
+				<height>2</height>
+				<align>left</align>
+				<texture flipx="true">views/fullscreen_wall/divider.png</texture>
+			</control>		
+			<control type="textbox">
+				<posx>695</posx>
+				<posy>565</posy>
+				<width>855</width>
+				<height>216</height>
+				<label>$VAR[VideoPlotVar]</label>
+				<font>noop</font>
+				<autoscroll delay="10000" time="4000" repeat="8000"></autoscroll>
+			</control>
+			<control type="image">
+				<posx>670</posx>
+				<posy>803</posy>
+				<width>940</width>
+				<height>2</height>
+				<align>left</align>
+				<texture flipx="true">views/fullscreen_wall/divider.png</texture>
+			</control>
+			<control type="grouplist">
+				<left>695</left>
+				<top>800</top>
+				<width>855</width>
+				<height>90</height>
+				<align>left</align>
+				<aligny>center</aligny>
+				<itemgap>20</itemgap>
+				<orientation>horizontal</orientation>
+				<control type="image">
+					<width>120</width>
+					<height>80</height>
+					<colordiffuse>grey</colordiffuse>
+					<include>MediaFlagVars</include>
+					<texture>$VAR[PathFlagsResolution]</texture>
+					<visible>!IsEmpty(ListItem.VideoResolution)</visible>
+				</control>		
+				<control type="image">
+					<width>120</width>
+					<height>80</height>
+					<colordiffuse>grey</colordiffuse>
+					<include>MediaFlagVars</include>
+					<texture>$VAR[SourceFlagVar,flags/video/,.png]</texture>
+					<visible>!Skin.HasSetting(coloredflags) + !IsEmpty(ListItem.VideoCodec)</visible>
+				</control>
+				<control type="image">
+					<width>120</width>
+					<height>80</height>
+					<colordiffuse>grey</colordiffuse>
+					<include>MediaFlagVars</include>
+					<texture>$VAR[SourceFlagVar,flags/colored/source/,.png]</texture>
+					<visible>Skin.HasSetting(coloredflags) + !IsEmpty(ListItem.VideoCodec)</visible>
+				</control>						
+				<control type="image">
+					<width>120</width>
+					<height>80</height>
+					<colordiffuse>grey</colordiffuse>
+					<include>MediaFlagVars</include>
+					<texture>$VAR[PathFlagsAspect]</texture>
+				</control>
+				<control type="image">
+					<width>120</width>
+					<height>80</height>
+					<colordiffuse>grey</colordiffuse>
+					<include>MediaFlagVars</include>
+					<texture>$VAR[PathFlagsAudio]</texture>
+					<visible>!IsEmpty(ListItem.AudioCodec)</visible>
+				</control>
+				<control type="image">
+					<width>120</width>
+					<height>80</height>
+					<colordiffuse>grey</colordiffuse>
+					<include>MediaFlagVars</include>
+					<texture>$VAR[PathFlagsAudioChannels]</texture>
+					<visible>!IsEmpty(ListItem.AudioChannels)</visible>
+				</control>		
+			</control>	
+		</control>			
 	</include>
 	<include name="Wall_Dimmer">
 		<animation effect="fade" start="100" end="25" time="300" condition="System.IdleTime(4) + Control.HasFocus(609) + Container.Content(movies) + !StringCompare(ListItem.Label,..)">conditional</animation>
@@ -381,7 +446,7 @@
 			</control>
 			<control type="group">
 				<visible>Container.Content(movies)</visible>
-				<visible>[System.IdleTime(4) + Control.HasFocus(609) + Container.Content(movies) + !StringCompare(ListItem.Label,..)]</visible>
+				<visible>System.IdleTime(4) + Control.HasFocus(609) + Container.Content(movies) + !StringCompare(ListItem.Label,..)</visible>
 				<include>Movie_Info</include>
 			</control>			
 			<control type="scrollbar" id="60">
