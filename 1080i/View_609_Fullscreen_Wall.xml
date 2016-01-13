@@ -3,28 +3,28 @@
 	<!-- Fullscreen Wall -->
 	<include name="Movie_Info">
 		<control type="group">
-			<top>222</top>
-			<left>293</left>
+			<top>264</top>
+			<left>310</left>
 			<animation effect="fade" start="0" end="293,222" time="2000" tween="cubic" easing="inout">Focus</animation>	
 			<control type="image">
 				<top>35</top>
 				<left>52</left>
-				<width>1228</width>
-				<height>494</height>
+				<width>1221</width>
+				<height>492</height>
 				<aspectratio>scale</aspectratio>
 				<texture background="true">views/fullscreen_wall/wall_bg_blue.png</texture>
 				<fadetime>400</fadetime>
 			</control>
 			<control type="image">   
-				<top>0</top>
-				<left>0</left>
-				<width>1332</width>
-				<height>635</height>
-				<texture background="true">views/fullscreen_wall/listpanel_back_glow.png</texture>
+				<top>-17</top>
+				<left>4</left>
+				<width>1317</width>
+				<height>594</height>
+				<texture border="36">dialog_context.png</texture>
 				<bordersize>18</bordersize>
 			</control>
 			<control type="image">
-				<top>34</top>
+				<top>35</top>
 				<left>53</left>
 				<width>327</width>
 				<height>491</height>
@@ -34,7 +34,7 @@
 			</control>
 			<control type="image">
 				<top>40</top>			
-				<left>-615</left>
+				<left>-593</left>
 				<height>87</height>
 				<aspectratio aligny="bottom">keep</aspectratio>
 				<texture background="true">$VAR[ArtworkLogoVar]</texture>
@@ -52,7 +52,7 @@
 			</control>
 			<control type="label">
 				<top>75</top>			
-				<left>782</left>
+				<left>787</left>
 				<width>470</width>
 				<height>15</height>
 				<align>right</align>
@@ -85,7 +85,8 @@
 				</control>
 				<control type="label">
 					<width>auto</width>
-					<font>font14</font>						
+					<font>font14</font>	
+					<textcolor>grey</textcolor>					
 					<label>$INFO[ListItem.Director]</label>				
 				</control>			
 				<control type="label">
@@ -96,7 +97,8 @@
 				</control>
 				<control type="label">
 					<width>auto</width>
-					<font>font14</font>						
+					<font>font14</font>	
+					<textcolor>grey</textcolor>					
 					<label>$INFO[ListItem.Year]</label>				
 				</control>					
 			</control>
@@ -116,7 +118,8 @@
 				</control>
 				<control type="label">
 					<width>auto</width>
-					<font>font14</font>						
+					<font>font14</font>
+					<textcolor>grey</textcolor>							
 					<label>$INFO[Window(home).Property(Set.Movies.Director)]</label>				
 				</control>				
 				<control type="label">
@@ -127,7 +130,8 @@
 				</control>
 				<control type="label">
 					<width>auto</width>
-					<font>font14</font>						
+					<font>font14</font>	
+					<textcolor>grey</textcolor>							
 					<label>$INFO[Window(home).Property(Set.Movies.Years)]</label>			
 				</control>					
 			</control>	
@@ -148,6 +152,7 @@
 				<control type="label">
 					<width>auto</width>
 					<font>font14</font>	
+					<textcolor>grey</textcolor>							
 					<label>$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[16101]]</label>				
 				</control>					
 			</control>			
@@ -167,7 +172,8 @@
 				</control>
 				<control type="label">
 					<width>auto</width>
-					<font>font14</font>						
+					<font>font14</font>	
+					<textcolor>grey</textcolor>					
 					<label>$INFO[ListItem.Duration,, minutes]</label>
 				</control>		
 				<control type="label">
@@ -178,7 +184,8 @@
 				</control>
 				<control type="label">
 					<width>485</width>
-					<font>font14</font>						
+					<font>font14</font>	
+					<textcolor>grey</textcolor>					
 					<label>$INFO[ListItem.Genre]</label>
 					<scroll>true</scroll>
 				</control>
@@ -199,7 +206,8 @@
 				</control>
 				<control type="label">
 					<width>185</width>
-					<font>font14</font>						
+					<font>font14</font>	
+					<textcolor>grey</textcolor>							
 					<label>$INFO[Window(home).Property(Set.Movies.Runtime),, minutes]</label>
 				</control>		
 				<control type="label">
@@ -210,7 +218,8 @@
 				</control>
 				<control type="label">
 					<width>auto</width>
-					<font>font14</font>						
+					<font>font14</font>	
+					<textcolor>grey</textcolor>							
 					<label>$INFO[Window(home).Property(Set.Movies.Genre)]</label>
 					<scroll>true</scroll>
 				</control>
@@ -230,8 +239,9 @@
 					<label>$LOCALIZE[31011]:</label>
 				</control>	
 				<control type="label">
-					<width>auto</width>
-					<font>font14</font>					
+					<width>650</width>
+					<font>font14</font>
+					<textcolor>grey</textcolor>							
 					<label>$INFO[Window(Home).Property(NextAired.LatestNumber),, - ]$INFO[Window(Home).Property(NextAired.LatestTitle)]</label>
 					<scroll>true</scroll>			
 				</control>				
@@ -251,8 +261,9 @@
 					<label>$LOCALIZE[31010]:</label>
 				</control>	
 				<control type="label">
-					<width>500</width>
-					<font>font14</font>						
+					<width>700</width>
+					<font>font14</font>	
+					<textcolor>grey</textcolor>							
 					<label>$INFO[Window(Home).Property(NextAired.NextDate),,: ]$INFO[Window(Home).Property(NextAired.NextTitle)]</label>
 					<scroll>true</scroll>
 				</control>				
@@ -269,13 +280,14 @@
 				<top>224</top>
 				<left>397</left>
 				<width>855</width>
-				<height>216</height>
+				<height>217</height>
+				<font>font14_textbox2</font>
+				<textcolor>grey</textcolor>
 				<label>$VAR[VideoPlotVar]</label>
-				<font>font14_textbox2</font>		
 				<autoscroll delay="10000" time="4000" repeat="8000"></autoscroll>
 			</control>
 			<control type="image">
-				<top>451</top>			
+				<top>449</top>			
 				<left>372</left>
 				<width>940</width>
 				<height>2</height>
@@ -349,7 +361,7 @@
 				</control>					
 			</control>
 			<control type="group"> <!-- TV Shows Studio Bottom Row -->
-				<top>447</top>			
+				<top>446</top>			
 				<left>397</left>
 				<width>120</width>
 				<height>90</height>
@@ -402,7 +414,7 @@
 		</control>			
 	</include>
 	<include name="Wall_Dimmer">
-		<animation effect="fade" start="100" end="25" time="300" condition="System.IdleTime(3) + Control.HasFocus(609) +  Skin.HasSetting(Enable.moviedetails) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows)] + !StringCompare(ListItem.Label,..)">conditional</animation>
+		<animation effect="fade" start="100" end="50" time="300" condition="System.IdleTime(3) + Control.HasFocus(609) +  Skin.HasSetting(Enable.moviedetails) + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows)] + !StringCompare(ListItem.Label,..)">conditional</animation>
 	</include>	
 	<include name="View_609_Fullscreen_Wall">
 		<control type="group">
