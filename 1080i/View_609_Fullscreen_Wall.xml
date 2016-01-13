@@ -20,7 +20,7 @@
 				<left>4</left>
 				<width>1317</width>
 				<height>594</height>
-				<texture border="36">dialog_context.png</texture>
+				<texture border="36">views/fullscreen_wall/dialog_context.png</texture>
 				<bordersize>18</bordersize>
 			</control>
 			<control type="image">
