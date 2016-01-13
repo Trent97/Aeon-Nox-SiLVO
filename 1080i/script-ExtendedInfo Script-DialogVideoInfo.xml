@@ -121,7 +121,7 @@
 						<texture border="1">separator3.png</texture>
 					</control>
 					<control type="group">
-						<visible>!IntegerGreaterThan(Container(1450).NumItems,0)</visible>
+						<visible>!IntegerGreaterThan(Container(1450).NumItems,0) + !Skin.HasSetting(coloredflags)</visible>
 						<width>198</width>
 						<control type="image"  id="8000011">
 							<colordiffuse>grey</colordiffuse>
@@ -143,9 +143,31 @@
 						</control>
 					</control>
 					<control type="group">
-						<visible>IntegerGreaterThan(Container(1450).NumItems,0)</visible>
+						<visible>!IntegerGreaterThan(Container(1450).NumItems,0) + Skin.HasSetting(coloredflags)</visible>
 						<width>198</width>
 						<control type="image"  id="8000012">
+							<colordiffuse>grey</colordiffuse>
+							<width>198</width>
+							<include>MediaFlagVars</include>
+							<bordersize>2</bordersize>
+							<texture>$INFO[Container(550).ListItem.Label,resource://resource.images.studios.coloured/,.png]</texture>
+						</control>
+						<control type="label">
+							<left>0</left>
+							<width>198</width>
+							<height>90</height>
+							<align>center</align>
+							<label>$INFO[ListItem.Label]</label>
+							<font>font10</font>
+							<textcolor>grey</textcolor>
+							<wrapmultiline>true</wrapmultiline>
+							<visible>IsEmpty(Control.GetLabel(8000012))</visible>
+						</control>
+					</control>
+					<control type="group">
+						<visible>IntegerGreaterThan(Container(1450).NumItems,0) + !Skin.HasSetting(coloredflags)</visible>
+						<width>198</width>
+						<control type="image"  id="8000013">
 							<colordiffuse>grey</colordiffuse>
 							<width>198</width>
 							<include>MediaFlagVars</include>
@@ -161,7 +183,29 @@
 							<font>font10</font>
 							<textcolor>grey</textcolor>
 							<wrapmultiline>true</wrapmultiline>
-							<visible>IsEmpty(Control.GetLabel(8000012))</visible>
+							<visible>IsEmpty(Control.GetLabel(8000013))</visible>
+						</control>
+					</control>
+					<control type="group">
+						<visible>IntegerGreaterThan(Container(1450).NumItems,0) + Skin.HasSetting(coloredflags)</visible>
+						<width>198</width>
+						<control type="image"  id="8000014">
+							<colordiffuse>grey</colordiffuse>
+							<width>198</width>
+							<include>MediaFlagVars</include>
+							<bordersize>2</bordersize>
+							<texture>$INFO[Container(1450).ListItem.Label,resource://resource.images.studios.coloured/,.png]</texture>
+						</control>
+						<control type="label">
+							<left>0</left>
+							<width>198</width>
+							<height>90</height>
+							<align>center</align>
+							<label>$INFO[ListItem.Label]</label>
+							<font>font10</font>
+							<textcolor>grey</textcolor>
+							<wrapmultiline>true</wrapmultiline>
+							<visible>IsEmpty(Control.GetLabel(8000014))</visible>
 						</control>
 					</control>
 					<control type="image">
@@ -174,6 +218,14 @@
 						<colordiffuse>grey</colordiffuse>
 						<include>MediaFlagVars</include>
 						<texture fallback="flags/mpaa/NR.png">$INFO[Window.Property(mpaa),flags/mpaa/,.png]</texture>
+						<visible>!Skin.HasSetting(coloredflags)</visible>
+					</control>
+					<control type="image">
+						<width>198</width>
+						<colordiffuse>grey</colordiffuse>
+						<include>MediaFlagVars</include>
+						<texture fallback="flags/mpaa/NR.png">$INFO[Window.Property(mpaa),flags/colored/rating/,.png]</texture>
+						<visible>Skin.HasSetting(coloredflags)</visible>
 					</control>
 					<control type="image">
 						<width>2</width>

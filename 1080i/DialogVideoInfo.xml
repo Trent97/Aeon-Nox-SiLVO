@@ -243,14 +243,18 @@
 							<texture fallback="flags/mpaa/NR.png">$VAR[RatingFlagVar]</texture>
 							<visible>!Skin.HasSetting(coloredflags)</visible>
 						</control>
-						<control type="label">
+						<control type="image">
 							<width>198</width>
-							<include>HiddenObject</include>
+							<colordiffuse>grey</colordiffuse>
+							<include>MediaFlagVars</include>
+							<texture fallback="flags/colored/rating/NR.png">$VAR[ColoredRatingFlagVar]</texture>
 							<visible>Skin.HasSetting(coloredflags) + !Skin.HasSetting(Enable.MPAAInfoRating)</visible>
 						</control>
-						<control type="label">
+						<control type="image">
 							<width>255</width>
-							<include>HiddenObject</include>
+							<include>MediaFlagVars</include>
+							<aspectratio align="center">keep</aspectratio>
+							<texture fallback="flags/colored/rating/info/MPAA_NR_Certificate_US.png">$VAR[ColoredRatingInfoFlagVar]</texture>
 							<visible>Skin.HasSetting(coloredflags) + Skin.HasSetting(Enable.MPAAInfoRating)</visible>
 						</control>
 						<control type="image">
