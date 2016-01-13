@@ -17,7 +17,7 @@
 		<height>525</height>
 		<onleft>53</onleft>
 		<onright>53</onright>
-		<onup>62</onup>
+		<onup>4401</onup>
 		<ondown condition="Control.IsVisible(95360)">95360</ondown>
 		<ondown condition="!Control.IsVisible(95360)">4400</ondown>
 		<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(musicvideos) | Container.Content(seasons) | Container.Content(genres) | Container.Content(sets)</visible>
@@ -61,7 +61,7 @@
 			<control type="group">
 				<left>28</left>
 				<top>22</top>
-				<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon0</include>
+				<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
 			</control>
 		</itemlayout>
 		<focusedlayout height="525" width="294" condition="Skin.HasSetting(noshowcaseflow)">
@@ -98,7 +98,7 @@
 					<control type="group">
 						<left>28</left>
 						<top>22</top>
-						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon0</include>
+						<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
 					</control>
 					<control type="image">
 						<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png" fallback="DefaultVideo.png">$VAR[ShowcaseItem0Var]</texture>
@@ -640,6 +640,15 @@
 				<texture background="true" flipy="true" diffuse="thumbs/thumb_diffuse.png" fallback="$VAR[CaseTypePathVar]p.png">$VAR[CaseTypePathVar]$VAR[ShowcaseRes$PARAM[ListItem.Position]Var]</texture>
 				<include>MovieShowcaseCaseReflection</include>
 			</control>
+			<control type="image">
+				<texture background="true">$VAR[IconOverlay$PARAM[ListItem.Position]Var]</texture>
+				<include>WatchedOverlayShowCase</include>
+			</control>
+			<control type="group">
+				<left>28</left>
+				<top>22</top>
+				<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon$PARAM[ListItem.Position]</include>
+			</control>
 		</definition>
 	</include>
 	<include name="MovieShowCaseItem-7">
@@ -746,7 +755,7 @@
 			<control type="group">
 				<left>28</left>
 				<top>22</top>
-				<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon0</include>
+				<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
 			</control>
 		</control>
 		<include>BoxsetMod</include>
@@ -1087,16 +1096,6 @@
 			<control type="label">
 				<include>UnwatchedIconVars</include>
 				<label>$INFO[ListItem(1).Property(UnWatchedEpisodes)]</label>
-			</control>
-		</control>
-	</include>
-	<include name="UnwatchedIcon0">
-		<control type="group">
-			<visible>[Container.Content(tvshows) | Container.Content(seasons)] + IntegerGreaterThan(ListItem.Property(UnWatchedEpisodes),0)</visible>
-			<include>UnwatchedIconCircle</include>
-			<control type="label">
-				<include>UnwatchedIconVars</include>
-				<label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
 			</control>
 		</control>
 	</include>

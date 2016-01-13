@@ -2,13 +2,6 @@
 <fonts>
 	<fontset id="Default" idloc="31390">
 		<!-- Normal Fonts -->
-        <font>
-            <name>CDLabel</name>
-            <filename>fafers.ttf</filename>
-            <style>uppercase</style>
-            <size>36</size>
-            <linespacing>.8</linespacing>
-        </font>		
 		<font>
 			<name>fontArial15</name>
 			<filename>Arial.ttf</filename>

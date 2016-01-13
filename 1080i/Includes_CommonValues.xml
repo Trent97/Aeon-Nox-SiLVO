@@ -85,16 +85,15 @@
 		<left>-123</left>
 		<width>320</width>
 		<height>80</height>
-		<texturefocus colordiffuse="$VAR[ThemeLabelColor]" border="4">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texturefocus>
 		<texturenofocus border="4">thumbs/panel_border.png</texturenofocus>
-		<texturefocus colordiffuse="$VAR[ThemeLabelColor]" border="4">listselect_fo.png</texturefocus>
 		<alttexturenofocus border="4">thumbs/panel_border.png</alttexturenofocus>
 		<include>Objects_KeyOffVars</include>
 	</include>
 	<include name="Objects_SingleKeyOff">
 		<width>80</width>
 		<height>80</height>
-		<texturefocus colordiffuse="$VAR[ThemeLabelColor]" border="4">listselect_fo.png</texturefocus>
+		<texturefocus colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texturefocus>
 		<texturenofocus border="4">thumbs/panel_border.png</texturenofocus>
 		<include>Objects_KeyOffVars</include>
 	</include>
@@ -108,6 +107,18 @@
 		<focusedcolor>white2</focusedcolor>
 		<texturefocus border="1">separator5.png</texturefocus>
 		<texturenofocus border="1">separator5.png</texturenofocus>
+		<onclick>noop</onclick>
+	</include>
+	<include name="NewInfoPanelButtonsValues">
+		<height>90</height>
+		<width>1200</width>
+		<textoffsetx>15</textoffsetx>
+		<aligny>top</aligny>
+		<font>font14</font>
+		<textcolor>white2</textcolor>
+		<focusedcolor>white2</focusedcolor>
+		<texturefocus />
+		<texturenofocus />
 		<onclick>noop</onclick>
 	</include>
 	<include name="DefaultButtonsValues">

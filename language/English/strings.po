@@ -617,7 +617,7 @@ msgid "View settings"
 msgstr ""
 
 msgctxt "#31152"
-msgid "Hide poster"
+msgid "Poster"
 msgstr ""
 
 msgctxt "#31153"
@@ -973,7 +973,7 @@ msgid "Mediaflags"
 msgstr ""
 
 msgctxt "#31256"
-msgid "Hide boxset brochure"
+msgid "Brochure"
 msgstr ""
 
 msgctxt "#31257"
@@ -982,6 +982,14 @@ msgstr ""
 
 msgctxt "#31258"
 msgid "Blur background (ExtendedInfo)"
+msgstr ""
+
+msgctxt "#31259"
+msgid "Center"
+msgstr ""
+
+msgctxt "#31260"
+msgid "Set background rotation speed"
 msgstr ""
 
 msgctxt "#31300"
