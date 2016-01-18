@@ -117,10 +117,6 @@
 							<left>0</left>
 							<width>192</width>
 							<height>270</height>
-<<<<<<< HEAD
-							<aspectratio scalediffuse="false">scale</aspectratio>
-=======
->>>>>>> 3e29179f407b6ce621ef7ab240cd1da12d131d58
 							<texture background="true">$VAR[PosterThumbVar]</texture>
 						</control>
 						<control type="image">
