@@ -501,11 +501,11 @@ msgid "TMDb"
 msgstr ""
 
 msgctxt "#31121"
-msgid "Disable autocomplete"
+msgid "Enable autocomplete"
 msgstr ""
 
 msgctxt "#31122"
-msgid "Disables the autocomplete feature of the virtual keyboard"
+msgid "Enables the autocomplete feature of the virtual keyboard"
 msgstr ""
 
 msgctxt "#31123"
@@ -606,6 +606,14 @@ msgstr ""
 
 msgctxt "#31147"
 msgid "Change rating"
+msgstr ""
+
+msgctxt "#31148"
+msgid "List local library items"
+msgstr ""
+
+msgctxt "#31149"
+msgid "Online information from TMDb"
 msgstr ""
 
 msgctxt "#31150"
@@ -788,7 +796,7 @@ msgid "Video info"
 msgstr ""
 
 msgctxt "#31191"
-msgid "Enable cases for live background"
+msgid "Enable cases for live backgrounds"
 msgstr ""
 
 msgctxt "#31192"
