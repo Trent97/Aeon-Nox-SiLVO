@@ -243,18 +243,14 @@
 							<texture fallback="flags/mpaa/NR.png">$VAR[RatingFlagVar]</texture>
 							<visible>!Skin.HasSetting(coloredflags)</visible>
 						</control>
-						<control type="image">
+						<control type="label">
 							<width>198</width>
-							<colordiffuse>grey</colordiffuse>
-							<include>MediaFlagVars</include>
-							<texture fallback="flags/colored/rating/NR.png">$VAR[ColoredRatingFlagVar]</texture>
+							<include>HiddenObject</include>
 							<visible>Skin.HasSetting(coloredflags) + !Skin.HasSetting(Enable.MPAAInfoRating)</visible>
 						</control>
-						<control type="image">
+						<control type="label">
 							<width>255</width>
-							<include>MediaFlagVars</include>
-							<aspectratio align="center">keep</aspectratio>
-							<texture fallback="flags/colored/rating/info/MPAA_NR_Certificate_US.png">$VAR[ColoredRatingInfoFlagVar]</texture>
+							<include>HiddenObject</include>
 							<visible>Skin.HasSetting(coloredflags) + Skin.HasSetting(Enable.MPAAInfoRating)</visible>
 						</control>
 						<control type="image">
@@ -519,12 +515,6 @@
 								<onclick>noop</onclick>
 								<visible>!IsEmpty(ListItem.Genre)</visible>
 							</item>
-							<item>
-								<label>$INFO[Window(Home).Property(SkinHelper.RottenTomatoesRating),,%]</label>
-								<label2>Rotten Tomatoes:</label2>
-								<onclick>noop</onclick>
-								<visible>!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesRating)) + Container.Content(movies)</visible>
-							</item>						
 							<item>
 								<label>$INFO[ListItem.Premiered]</label>
 								<label2>$LOCALIZE[20416]:</label2>
@@ -1097,7 +1087,7 @@
 							<height>420</height>
 							<orientation>horizontal</orientation>
 							<scrolltime tween="quadratic" easing="out">300</scrolltime>
-							<visible>!StringCompare(Window(Home).Property(SimilarMovies.Count),0) + System.HasAddon(script.extendedinfo) + !IsEmpty(Window(Home).Property(SimilarMovies.Count))</visible>
+							<visible>!StringCompare(Window(Home).Property(SimilarMovies.Count),0) + System.HasAddon(script.extendedinfo)</visible>
 							<visible>Container.Content(movies)</visible>
 							<itemlayout height="420" width="280">
 								<control type="image">
