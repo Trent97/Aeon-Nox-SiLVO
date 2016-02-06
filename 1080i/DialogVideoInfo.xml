@@ -485,12 +485,6 @@
 								<visible>!IsEmpty(Window(Home).Property(SkinHelper.TMDB.Revenue.mln)) + Container.Content(movies)</visible>
 							</item>
 							<item>
-								<label>$INFO[Window(Home).Property(SkinHelper.RottenTomatoesRating),,%]</label>
-								<label2>$LOCALIZE[31271]</label2>
-								<onclick>noop</onclick>
-								<visible>!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesRating)) + Container.Content(movies)</visible>
-							</item>	
-							<item>
 								<label>$INFO[ListItem.OriginalTitle]</label>
 								<label2>$LOCALIZE[20376]:</label2>
 								<onclick>noop</onclick>
@@ -532,7 +526,13 @@
 								<label2>$LOCALIZE[515]:</label2>
 								<onclick>noop</onclick>
 								<visible>!IsEmpty(ListItem.Genre)</visible>
-							</item>						
+							</item>	
+							<item>
+								<label>$INFO[Window(Home).Property(SkinHelper.RottenTomatoesRating),,%]</label>
+								<label2>$LOCALIZE[31271]</label2>
+								<onclick>noop</onclick>
+								<visible>!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesRating)) + Container.Content(movies)</visible>
+							</item>								
 							<item>
 								<label>$INFO[ListItem.Premiered]</label>
 								<label2>$LOCALIZE[20416]:</label2>
