@@ -91,7 +91,7 @@
 							<top>10</top>
 							<width>85</width>
 							<height>60</height>
-							<aspectratio>keep</aspectratio>
+							<aspectratio>scale</aspectratio>
 							<texture background="true">oscars.png</texture>
 							<visible>Skin.HasSetting(oscars609) + [SubString(ListItem.FileName,.oscars) | StringCompare(Container.FolderPath,special://profile/playlists/video/BestPicture.xsp)]</visible>
 						</control>

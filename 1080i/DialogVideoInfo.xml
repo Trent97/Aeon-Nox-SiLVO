@@ -1959,7 +1959,7 @@
 						<visible>ControlGroup(9001).HasFocus</visible>
 						<include>SettingsFadeEffect</include>
 						<control type="label">
-							<width>1190</width>
+							<width>900</width>
 							<height>90</height>
 							<aligny>center</aligny>
 							<font>font15</font>
