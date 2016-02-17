@@ -81,7 +81,7 @@
 							<left>0</left>
 							<width>240</width>
 							<height>360</height>
-							<aspectratio scalediffuse="false">scale</aspectratio>
+							<aspectratio scalediffuse="false">keep</aspectratio>
 							<texture background="true">$VAR[PosterThumbInLayoutVar]</texture>
 							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="9">thumbs/thumbnail_focused.png</bordertexture>
 							<bordersize>8</bordersize>
@@ -237,7 +237,7 @@
 						</control>
 					</control>
 				</focusedlayout>
-			</control>
+			</control>z
 			<control type="scrollbar" id="60">
 				<left>1906</left>
 				<top>0</top>
