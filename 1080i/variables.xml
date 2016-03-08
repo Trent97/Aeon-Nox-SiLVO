@@ -562,6 +562,10 @@
 		<value>$INFO[ListItem.Label2]</value>
 	</variable>
 	<variable name="RightListSubLabelVar">
+		<value condition="!IsEmpty(ListItem.Title) + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration,, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,][/COLOR]</value>
+		<value condition="!IsEmpty(ListItem.Title) + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,][/COLOR]</value>
+		<value condition="!IsEmpty(ListItem.Title) + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration,, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,][/COLOR]</value>
+		<value condition="!IsEmpty(ListItem.Title) + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[19127]: ,][/COLOR]</value>
 		<value condition="[Container.Content(tvshows) + !Skin.HasSetting(rightlistalternatetv)]">$INFO[ListItem.RatingAndVotes]</value>
 		<value condition="[Container.Content(tvshows) + Skin.HasSetting(rightlistalternatetv)]">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ,]</value>
 		<value condition="Container.Content(episodes)">$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Endtime,$LOCALIZE[19127]: ,]</value>
@@ -633,7 +637,7 @@
 		<value>$INFO[ListItem.Art(clearlogo)]</value>
 	</variable>
 	<variable name="ListItemArtistLogoVar">
-		<value condition="!System.HasAddon(script.skin.helper.service) + !IsEmpty(Skin.String(pathlogosartists))">$INFO[Skin.String(pathlogosartists)]$INFO[ListItem.Artist,,/logo.png]</value>
+		<value condition="!IsEmpty(Skin.String(pathlogosartists))">$INFO[Skin.String(pathlogosartists)]$INFO[ListItem.Artist,,/logo.png]</value>
 		<value condition="System.HasAddon(script.skin.helper.service)">$INFO[Window(Home).Property(SkinHelper.Music.ClearLogo)]</value>
 	</variable>
 	<variable name="PlayerTitleLabelVar">
@@ -1033,7 +1037,7 @@
 	<!-- DialogVideoInfo -->
 	<variable name="VideoInfoDetailsLabelVar">
 		<value condition="Control.HasFocus(900171)">$LOCALIZE[207]</value>
-		<value condition="ControlGroup(9001).HasFocus(90010)">$LOCALIZE[206]$INFO[Container(50).NumItems, [COLOR grey2](,)[/COLOR]]</value>
+		<value condition="ControlGroup(9001).HasFocus(90050)">$LOCALIZE[206]$INFO[Container(50).NumItems, [COLOR grey2](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(90011)">$LOCALIZE[31111]$INFO[Container(90011).NumItems, [COLOR grey2](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(90012)">$INFO[ListItem.Director,$LOCALIZE[31112] ]$INFO[Container(90012).NumItems, [COLOR grey2](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(90013)">$INFO[ListItem.Writer,$LOCALIZE[31113] ]$INFO[Container(90013).NumItems, [COLOR grey2](,)[/COLOR]]</value>
@@ -1082,6 +1086,10 @@
 		<value condition="ControlGroup(9001).HasFocus(550)">$ADDON[script.extendedinfo 32122]$INFO[Container(550).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(650)">$ADDON[script.extendedinfo 32123]$INFO[Container(650).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 		<value condition="ControlGroup(9001).HasFocus(750)">$LOCALIZE[20445]$INFO[Container(750).NumItems, [COLOR grey3](,)[/COLOR]]</value>
+	</variable>
+	<variable name="ExtendedInfo.ActorPlotVar">
+		<value condition="!IsEmpty(Window.Property(Biography))">$INFO[Window.Property(Biography)]</value>
+		<value>$LOCALIZE[547]</value>
 	</variable>
 	<!-- Select dialog -->
 	<variable name="DialogSelectLabel2Var">
@@ -2461,6 +2469,14 @@
 		<value condition="!IsEmpty(Skin.String(UnFocusedMainMenuIconLabelColor)) + !StringCompare(Skin.String(UnFocusedMainMenuIconLabelColor),None)">$INFO[Skin.String(UnFocusedMainMenuIconLabelColor)]</value>
 		<value>grey3</value>
 	</variable>
+	<variable name="ThemeHomeMenuBarColor">
+		<value condition="!IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !StringCompare(Skin.String(ThemeHomeMenuBarColor),None)">$INFO[Skin.String(ThemeHomeMenuBarColor)]</value>
+		<value>grey</value>
+	</variable>
+	<variable name="ThemeHomeSystemBarsColor">
+		<value condition="!IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !StringCompare(Skin.String(ThemeHomeSystemBarsColor),None)">$INFO[Skin.String(ThemeHomeSystemBarsColor)]</value>
+		<value>$VAR[ThemeHomeMenuBarColor]</value>
+	</variable>
 	<variable name="RSSFeedColor">
 		<value condition="!IsEmpty(Skin.String(RSSFeedColor)) + !StringCompare(Skin.String(RSSFeedColor),None)">$INFO[Skin.String(RSSFeedColor)]</value>
 		<value>grey</value>
@@ -2484,6 +2500,10 @@
 	<variable name="UnWatchedEpColor">
 		<value condition="!IsEmpty(Skin.String(UnWatchedEpColor)) + !StringCompare(Skin.String(UnWatchedEpColor),None)">$INFO[Skin.String(UnWatchedEpColor)]</value>
 		<value>white</value>
+	</variable>
+	<variable name="TopBarColor">
+		<value condition="!IsEmpty(Skin.String(TopBarColor)) + !StringCompare(Skin.String(TopBarColor),None)">$INFO[Skin.String(TopBarColor)]</value>
+		<value>black</value>
 	</variable>
 	<!-- RightList -->
 	<variable name="RightListThemeLabelColor">
