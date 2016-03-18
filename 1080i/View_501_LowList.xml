@@ -154,7 +154,13 @@
 						<label>[COLOR $VAR[LowListThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration,, $LOCALIZE[12391]]</label>
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!IsEmpty(ListItem.Duration)</visible>
+						<visible>!IsEmpty(ListItem.Duration) + !Skin.HasSetting(Enable.HourMinuteDuration)</visible>
+					</control>
+					<control type="button">
+						<label>[COLOR $VAR[LowListThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$VAR[ItemDurationVar]</label>
+						<width>650</width>
+						<include>DefaultButtonsValues</include>
+						<visible>!IsEmpty(ListItem.Duration) + Skin.HasSetting(Enable.HourMinuteDuration)</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[LowListThemeLabelColor]]$LOCALIZE[31019]:[/COLOR][CR]$INFO[ListItem.Studio]</label>
@@ -208,7 +214,13 @@
 						<label>[COLOR $VAR[LowListThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$INFO[ListItem.Duration,, $LOCALIZE[12391]]</label>
 						<width>650</width>
 						<include>DefaultButtonsValues</include>
-						<visible>!IsEmpty(ListItem.Duration)</visible>
+						<visible>!IsEmpty(ListItem.Duration) + !Skin.HasSetting(Enable.HourMinuteDuration)</visible>
+					</control>
+					<control type="button">
+						<label>[COLOR $VAR[LowListThemeLabelColor]]$LOCALIZE[2050]:[/COLOR][CR]$VAR[ItemDurationVar]</label>
+						<width>650</width>
+						<include>DefaultButtonsValues</include>
+						<visible>!IsEmpty(ListItem.Duration) + Skin.HasSetting(Enable.HourMinuteDuration)</visible>
 					</control>
 					<control type="button">
 						<label>[COLOR $VAR[LowListThemeLabelColor]]$LOCALIZE[515]:[/COLOR][CR]$INFO[ListItem.Genre]</label>
@@ -1341,7 +1353,7 @@
 				<ondown>501</ondown>
 				<pagecontrol>60</pagecontrol>
 				<viewtype label="LowList">list</viewtype>
-				<visible>Container.Content(albums) | Container.Content(artists) | Container.Content(songs)</visible>
+				<visible>Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | [Window.IsActive(musiclibrary) + Container.Content(files)]</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<itemlayout height="68" width="806" condition="Container.Content(albums)">
 					<control type="image">

@@ -71,41 +71,13 @@
         <value condition="Skin.HasSetting(weatherfanart.multi)">/</value>
         <value>$INFO[Skin.String(weatherfanart.ext)]</value>
     </variable>
-	<variable name="WeatherCurrentConditionIconVar">
-		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]$INFO[Window(weather).Property(Current.FanartCode),,.png]</value>
-		<value>$INFO[Window(weather).Property(Current.ConditionIcon)]</value>
-	</variable>
-	<variable name="WeatherOverviewIcon0Var">
-		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]$INFO[Window(weather).Property(Day0.FanartCode),,.png]</value>
-		<value>$INFO[Window(weather).Property(Day0.OutlookIcon)]</value>
-	</variable>
-	<variable name="WeatherOverviewIcon1Var">
-		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]$INFO[Window(weather).Property(Day1.FanartCode),,.png]</value>
-		<value>$INFO[Window(weather).Property(Day1.OutlookIcon)]</value>
-	</variable>
-	<variable name="WeatherOverviewIcon2Var">
-		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]$INFO[Window(weather).Property(Day2.FanartCode),,.png]</value>
-		<value>$INFO[Window(weather).Property(Day2.OutlookIcon)]</value>
-	</variable>
-	<variable name="WeatherOverviewIcon3Var">
-		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]$INFO[Window(weather).Property(Day3.FanartCode),,.png]</value>
-		<value>$INFO[Window(weather).Property(Day3.OutlookIcon)]</value>
-	</variable>
-	<variable name="WeatherOverviewIcon4Var">
-		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]$INFO[Window(weather).Property(Day4.FanartCode),,.png]</value>
-		<value>$INFO[Window(weather).Property(Day4.OutlookIcon)]</value>
-	</variable>
-	<variable name="WeatherOverviewIcon5Var">
-		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]$INFO[Window(weather).Property(Day5.FanartCode),,.png]</value>
-		<value>$INFO[Window(weather).Property(Day5.OutlookIcon)]</value>
-	</variable>
-	<variable name="WeatherOverviewIcon6Var">
-		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]$INFO[Window(weather).Property(Day6.FanartCode),,.png]</value>
-		<value>$INFO[Window(weather).Property(Day6.OutlookIcon)]</value>
-	</variable>
 	<variable name="WeatherIconsPathVar">
 		<value condition="!IsEmpty(Skin.String(weathericons.path))">$INFO[Skin.String(weathericons.path)]</value>
 		<value>resource://resource.images.weathericons.default/</value>
+	</variable>
+	<variable name="WeatherIconsExtVar">
+		<value condition="!IsEmpty(Skin.String(weathericons.ext))">$INFO[Skin.String(weathericons.ext)]</value>
+		<value>.png</value>
 	</variable>
 	<variable name="OverlayVar">
 		<value condition="Container.ListItem.IsResumable + !IsEmpty(Window(Home).Property(Overlay.Resumable))">overlays/showcase/resumable.png</value>
@@ -164,7 +136,10 @@
 		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31058]) + PVR.HasNonRecordingTimer">$LOCALIZE[19157] $INFO[PVR.NextRecordingDateTime, [B][COLOR=white], [/COLOR][/B]$LOCALIZE[19126] - ] | $INFO[PVR.NextRecordingTitle, [B][COLOR=white],[/COLOR][/B]]$INFO[PVR.NextRecordingChannel, - [B][COLOR=white],[/COLOR][/B]]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31058])">$INFO[Pvr.BackendChannels,[COLOR grey]$LOCALIZE[19019]:[/COLOR] ]$INFO[Pvr.BackendRecordings,[COLOR grey]  |  $LOCALIZE[19163]:[/COLOR] ]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[20088])">$INFO[Weather.Location,[COLOR grey],:[/COLOR] ]$INFO[Weather.Conditions]</value>
-		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31061])">$INFO[Window(Home).Property(RandomAddon.Count),[COLOR grey]$LOCALIZE[20161] $LOCALIZE[24001]: [/COLOR],[COLOR grey]  |  [/COLOR]]$INFO[Window(home).Property(favourite.count), [COLOR grey]$LOCALIZE[1036]:[/COLOR] ]</value>
+		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31061])">$INFO[Window(Home).Property(SkinHelper.TotalAddons),[COLOR grey]$LOCALIZE[20161] $LOCALIZE[24001]: [/COLOR],[COLOR grey]  |  [/COLOR]]$INFO[Window(Home).Property(SkinHelper.TotalFavourites), [COLOR grey]$LOCALIZE[1036]:[/COLOR] ]</value>
+		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31802])">$INFO[Window(Home).Property(SkinHelper.TotalVideoAddons),[COLOR grey]$LOCALIZE[31800]: [/COLOR],[COLOR grey]  |  [/COLOR]]$INFO[Window(Home).Property(SkinHelper.TotalAudioAddons),[COLOR grey]$LOCALIZE[31801]: [/COLOR]]</value>
+		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31800])">$INFO[Window(Home).Property(SkinHelper.TotalVideoAddons),[COLOR grey]$LOCALIZE[31800]: [/COLOR]]</value>
+		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31801])">$INFO[Window(Home).Property(SkinHelper.TotalAudioAddons),[COLOR grey]$LOCALIZE[31801]: [/COLOR]]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31085])">$INFO[Window(Home).Property(MusicVideos.Count),[COLOR grey]$LOCALIZE[20389]:[/COLOR] ]$INFO[Window(Home).Property(MusicVideos.Watched),[COLOR grey]  |  $LOCALIZE[16102]:[/COLOR] ]$INFO[Window(Home).Property(MusicVideos.UnWatched),[COLOR grey]  |  $LOCALIZE[16101]:[/COLOR] ]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[130])">$INFO[System.memory(used.percent),[COLOR grey]$LOCALIZE[31309][/COLOR] ]$INFO[System.CPUUsage,[COLOR grey] | $LOCALIZE[13271][/COLOR] ]</value>
 		<value condition="StringCompare(Container(9000).ListItem.Property(InfoLine),$LOCALIZE[31097])">$INFO[Window(Home).Property(PlaylistCount),[COLOR grey]$LOCALIZE[20342]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistWatched),[COLOR grey]  |  $LOCALIZE[16102]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistUnWatched),[COLOR grey]  |  $LOCALIZE[16101]:[/COLOR] ]$INFO[Window(Home).Property(PlaylistInProgress),[COLOR grey]  |  $LOCALIZE[575]:[/COLOR] ]</value>
@@ -237,6 +212,11 @@
 		<value condition="StringCompare(ListItem.Property(TotalEpisodes),1)">$LOCALIZE[20359]</value>
 		<value>$LOCALIZE[20360]</value>
 	</variable>
+	<!-- <variable name="VideoInfoSublabelContentVar">
+		<value condition="!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesAwards))">$INFO[Window(Home).Property(SkinHelper.RottenTomatoesAwards)]</value>
+		<value condition="!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesConsensus))">$INFO[Window(Home).Property(SkinHelper.RottenTomatoesConsensus)]</value>
+		<value condition="!IsEmpty(Window(Home).Property(SkinHelper.TMDB.Status))">$INFO[Window(Home).Property(SkinHelper.TMDB.Status)]</value>
+	</variable> -->
 	<variable name="VideoInfoPlotVar">
 		<value condition="Skin.HasSetting(VideoInfoPlotToggle) + !IsEmpty(ListItem.PlotOutline)">$INFO[ListItem.PlotOutline]</value>
 		<value>$INFO[ListItem.Plot]</value>
@@ -577,10 +557,10 @@
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="SeekLabelVar">
-		<value condition="Player.Playing + !Player.Seeking + !Player.DisplayAfterSeek | [Player.Paused + !Player.Caching] | [Player.ShowTime + !Player.Seeking]">$INFO[System.Time]$INFO[player.FinishTime, [,]]</value>
-		<value condition="[Player.Paused + Player.Caching] + !Player.Seeking + !Player.DisplayAfterSeek">$INFO[Player.CacheLevel,$LOCALIZE[15107] ,%]</value>
 		<value condition="Player.Seeking">$INFO[Player.SeekStepSize]</value>
 		<value condition="Player.DisplayAfterSeek + ![player.forwarding | player.rewinding]">$INFO[Player.SeekOffset,$LOCALIZE[31046] ,]</value>
+		<value condition="Player.Playing + !Player.Seeking + !Player.DisplayAfterSeek | [Player.Paused + !Player.Caching] | [Player.ShowTime + !Player.Seeking]">$INFO[System.Time]$INFO[player.FinishTime, [,]]</value>
+		<value condition="[Player.Paused + Player.Caching] + !Player.Seeking + !Player.DisplayAfterSeek">$INFO[Player.CacheLevel,$LOCALIZE[15107] ,%]</value>
 	</variable>
 	<variable name="OSDRightLabelVar">
 		<value condition="Player.ShowTime + !VideoPlayer.Content(livetv)">$INFO[Player.Time]$INFO[Player.TimeRemaining, / ]</value>
@@ -1783,6 +1763,66 @@
 		<value condition="StringCompare(ListItem.Duration,298)">4h58m</value>
 		<value condition="StringCompare(ListItem.Duration,299)">4h59m</value>
 		<value condition="StringCompare(ListItem.Duration,300)">5h</value>
+		<value condition="StringCompare(ListItem.Duration,301)">5h1m</value>
+		<value condition="StringCompare(ListItem.Duration,302)">5h2m</value>
+		<value condition="StringCompare(ListItem.Duration,303)">5h3m</value>
+		<value condition="StringCompare(ListItem.Duration,304)">5h4m</value>
+		<value condition="StringCompare(ListItem.Duration,305)">5h5m</value>
+		<value condition="StringCompare(ListItem.Duration,306)">5h6m</value>
+		<value condition="StringCompare(ListItem.Duration,307)">5h7m</value>
+		<value condition="StringCompare(ListItem.Duration,308)">5h8m</value>
+		<value condition="StringCompare(ListItem.Duration,309)">5h9m</value>
+		<value condition="StringCompare(ListItem.Duration,310)">5h10m</value>
+		<value condition="StringCompare(ListItem.Duration,311)">5h11m</value>
+		<value condition="StringCompare(ListItem.Duration,312)">5h12m</value>
+		<value condition="StringCompare(ListItem.Duration,313)">5h13m</value>
+		<value condition="StringCompare(ListItem.Duration,314)">5h14m</value>
+		<value condition="StringCompare(ListItem.Duration,315)">5h15m</value>
+		<value condition="StringCompare(ListItem.Duration,316)">5h16m</value>
+		<value condition="StringCompare(ListItem.Duration,317)">5h17m</value>
+		<value condition="StringCompare(ListItem.Duration,318)">5h18m</value>
+		<value condition="StringCompare(ListItem.Duration,319)">5h19m</value>
+		<value condition="StringCompare(ListItem.Duration,320)">5h20m</value>
+		<value condition="StringCompare(ListItem.Duration,321)">5h21m</value>
+		<value condition="StringCompare(ListItem.Duration,322)">5h22m</value>
+		<value condition="StringCompare(ListItem.Duration,323)">5h23m</value>
+		<value condition="StringCompare(ListItem.Duration,324)">5h24m</value>
+		<value condition="StringCompare(ListItem.Duration,325)">5h25m</value>
+		<value condition="StringCompare(ListItem.Duration,326)">5h26m</value>
+		<value condition="StringCompare(ListItem.Duration,327)">5h27m</value>
+		<value condition="StringCompare(ListItem.Duration,328)">5h28m</value>
+		<value condition="StringCompare(ListItem.Duration,329)">5h29m</value>
+		<value condition="StringCompare(ListItem.Duration,330)">5h30m</value>
+		<value condition="StringCompare(ListItem.Duration,331)">5h31m</value>
+		<value condition="StringCompare(ListItem.Duration,332)">5h32m</value>
+		<value condition="StringCompare(ListItem.Duration,333)">5h33m</value>
+		<value condition="StringCompare(ListItem.Duration,334)">5h34m</value>
+		<value condition="StringCompare(ListItem.Duration,335)">5h35m</value>
+		<value condition="StringCompare(ListItem.Duration,336)">5h36m</value>
+		<value condition="StringCompare(ListItem.Duration,337)">5h37m</value>
+		<value condition="StringCompare(ListItem.Duration,338)">5h38m</value>
+		<value condition="StringCompare(ListItem.Duration,339)">5h39m</value>
+		<value condition="StringCompare(ListItem.Duration,340)">5h40m</value>
+		<value condition="StringCompare(ListItem.Duration,341)">5h41m</value>
+		<value condition="StringCompare(ListItem.Duration,342)">5h42m</value>
+		<value condition="StringCompare(ListItem.Duration,343)">5h43m</value>
+		<value condition="StringCompare(ListItem.Duration,344)">5h44m</value>
+		<value condition="StringCompare(ListItem.Duration,345)">5h45m</value>
+		<value condition="StringCompare(ListItem.Duration,346)">5h46m</value>
+		<value condition="StringCompare(ListItem.Duration,347)">5h47m</value>
+		<value condition="StringCompare(ListItem.Duration,348)">5h48m</value>
+		<value condition="StringCompare(ListItem.Duration,349)">5h49m</value>
+		<value condition="StringCompare(ListItem.Duration,350)">5h50m</value>
+		<value condition="StringCompare(ListItem.Duration,351)">5h51m</value>
+		<value condition="StringCompare(ListItem.Duration,352)">5h52m</value>
+		<value condition="StringCompare(ListItem.Duration,353)">5h53m</value>
+		<value condition="StringCompare(ListItem.Duration,354)">5h54m</value>
+		<value condition="StringCompare(ListItem.Duration,355)">5h55m</value>
+		<value condition="StringCompare(ListItem.Duration,356)">5h56m</value>
+		<value condition="StringCompare(ListItem.Duration,357)">5h57m</value>
+		<value condition="StringCompare(ListItem.Duration,358)">5h58m</value>
+		<value condition="StringCompare(ListItem.Duration,359)">5h59m</value>
+		<value condition="StringCompare(ListItem.Duration,360)">6h</value>
 	</variable>
 	<variable name="VideoFullscreenImagesLabelVar">
 		<value condition="!IsEmpty(Skin.String(VideoOSDImages))">$INFO[Skin.String(VideoOSDImages)]</value>
@@ -2491,7 +2531,7 @@
 	</variable>
 	<variable name="ThemeLabelColor">
 		<value condition="!IsEmpty(Skin.String(ThemeLabelColor)) + !StringCompare(Skin.String(ThemeLabelColor),None)">$INFO[Skin.String(ThemeLabelColor)]</value>
-		<value>FF6db9e5</value>
+		<value>FF6DB9E5</value>
 	</variable>
 	<variable name="ThemeHomeLabelColor">
 		<value condition="!IsEmpty(Skin.String(ThemeHomeLabelColor)) + !StringCompare(Skin.String(ThemeHomeLabelColor),None)">$INFO[Skin.String(ThemeHomeLabelColor)]</value>

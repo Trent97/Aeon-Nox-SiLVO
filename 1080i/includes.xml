@@ -649,6 +649,7 @@
 	<include name="ExtendedInfoAutoComplete">
 		<control type="group">
 			<animation effect="fade" start="100" end="0" time="300" condition="IsEmpty(Container(5000).ListItem.Label)">conditional</animation>
+			<visible>!System.HasHiddenInput</visible>
 			<control type="image">
 				<description>background image</description>
 				<left>0</left>
@@ -747,7 +748,7 @@
 		<control type="panel" id="90050">
 			<left>-36</left>
 			<top>550</top>
-			<width>1190</width>
+			<width>1250</width>
 			<height>420</height>
 			<viewtype label="">list</viewtype>
 			<pagecontrol>61</pagecontrol>
