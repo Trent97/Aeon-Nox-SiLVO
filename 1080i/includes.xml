@@ -748,28 +748,30 @@
 		<control type="panel" id="90050">
 			<left>-36</left>
 			<top>550</top>
-			<width>1250</width>
+			<width>1188</width>
 			<height>420</height>
 			<viewtype label="">list</viewtype>
 			<pagecontrol>61</pagecontrol>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
 			<orientation>horizontal</orientation>
-			<itemlayout height="420" width="280">
+			<itemlayout height="420" width="297">
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
 				</control>
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>325</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -779,9 +781,9 @@
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>368</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -791,27 +793,29 @@
 					<label>$INFO[ListItem.Label2]</label>
 				</control>
 			</itemlayout>
-			<focusedlayout height="420" width="280">
+			<focusedlayout height="420" width="297">
 				<control type="group">
 					<animation type="Focus" reversible="false">
 						<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 						<effect type="fade" start="80" end="100" time="300" />
 					</animation>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>325</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -821,9 +825,9 @@
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90050)">Conditional</animation>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>368</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -916,28 +920,30 @@
 			<description>Similar movies</description>
 			<left>0</left>
 			<top>0</top>
-			<width>1190</width>
+			<width>1188</width>
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
 			<visible>!StringCompare(Window(Home).Property(SimilarMovies.Count),0) + System.HasAddon(script.extendedinfo) + !IsEmpty(Window(Home).Property(SimilarMovies.Count))</visible>
 			<visible>Container.Content(movies)</visible>
-			<itemlayout height="420" width="280">
+			<itemlayout height="420" width="297">
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
-					<height>422</height>
+					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 				</control>
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>325</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -947,9 +953,9 @@
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>368</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -967,25 +973,27 @@
 					<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 				</control>
 			</itemlayout>
-			<focusedlayout height="420" width="280">
+			<focusedlayout height="420" width="297">
 				<control type="group">
 					<animation type="Focus" reversible="false">
 						<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 						<effect type="fade" start="80" end="100" time="300" />
 					</animation>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 					</control>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>325</top>
 						<width>260</width>
 						<height>43</height>
@@ -998,9 +1006,9 @@
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90011)">Conditional</animation>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>368</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1026,28 +1034,30 @@
 			<description>Movies from director</description>
 			<left>0</left>
 			<top>0</top>
-			<width>1190</width>
+			<width>1188</width>
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
 			<visible>!StringCompare(Window(Home).Property(DirectorMovies.Count),0) + System.HasAddon(script.extendedinfo)</visible>
 			<visible>Container.Content(movies)</visible>
-			<itemlayout height="420" width="280">
+			<itemlayout height="420" width="297">
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 				</control>
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>325</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1057,9 +1067,9 @@
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>368</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1077,27 +1087,29 @@
 					<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 				</control>
 			</itemlayout>
-			<focusedlayout height="420" width="280">
+			<focusedlayout height="420" width="297">
 				<control type="group">
 					<animation type="Focus" reversible="false">
 						<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 						<effect type="fade" start="80" end="100" time="300" />
 					</animation>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 					</control>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>325</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1108,9 +1120,9 @@
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90012)">Conditional</animation>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>368</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1136,28 +1148,30 @@
 			<description>Movies from writers</description>
 			<left>0</left>
 			<top>0</top>
-			<width>1190</width>
+			<width>1188</width>
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
 			<visible>!StringCompare(Window(Home).Property(WriterMovies.Count),0) + System.HasAddon(script.extendedinfo)</visible>
 			<visible>Container.Content(movies)</visible>
-			<itemlayout height="420" width="280">
+			<itemlayout height="420" width="297">
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 				</control>
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>325</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1167,9 +1181,9 @@
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>368</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1187,27 +1201,29 @@
 					<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 				</control>
 			</itemlayout>
-			<focusedlayout height="420" width="280">
+			<focusedlayout height="420" width="297">
 				<control type="group">
 					<animation type="Focus" reversible="false">
 						<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 						<effect type="fade" start="80" end="100" time="300" />
 					</animation>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 					</control>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>325</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1218,9 +1234,9 @@
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90013)">Conditional</animation>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>368</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1246,28 +1262,30 @@
 			<description>Movies from studio</description>
 			<left>0</left>
 			<top>0</top>
-			<width>1190</width>
+			<width>1188</width>
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
 			<visible>!StringCompare(Window(Home).Property(StudioInfo.Count),0) + System.HasAddon(script.extendedinfo)</visible>
 			<visible>Container.Content(movies)</visible>
-			<itemlayout height="420" width="280">
+			<itemlayout height="420" width="297">
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 				</control>
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>325</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1277,9 +1295,9 @@
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>368</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1297,27 +1315,29 @@
 					<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 				</control>
 			</itemlayout>
-			<focusedlayout height="420" width="280">
+			<focusedlayout height="420" width="297">
 				<control type="group">
 					<animation type="Focus" reversible="false">
 						<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 						<effect type="fade" start="80" end="100" time="300" />
 					</animation>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 					</control>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>325</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1328,9 +1348,9 @@
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90014)">Conditional</animation>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>368</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1356,28 +1376,30 @@
 			<description>Similar TV Shows</description>
 			<left>0</left>
 			<top>0</top>
-			<width>1190</width>
+			<width>1188</width>
 			<height>420</height>
 			<orientation>horizontal</orientation>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
 			<visible>!StringCompare(Window(Home).Property(SimilarTVShows.Count),0) + System.HasAddon(script.extendedinfo)</visible>
 			<visible>Container.Content(tvshows)</visible>
-			<itemlayout height="420" width="280">
+			<itemlayout height="420" width="297">
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 				</control>
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>325</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1387,9 +1409,9 @@
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>368</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1407,27 +1429,29 @@
 					<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 				</control>
 			</itemlayout>
-			<focusedlayout height="420" width="280">
+			<focusedlayout height="420" width="297">
 				<control type="group">
 					<animation type="Focus" reversible="false">
 						<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 						<effect type="fade" start="80" end="100" time="300" />
 					</animation>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 					</control>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>325</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1437,9 +1461,9 @@
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(90015)">Conditional</animation>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>368</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1465,28 +1489,30 @@
 		<control type="panel" id="50">
 			<left>-36</left>
 			<top>550</top>
-			<width>1190</width>
+			<width>1188</width>
 			<height>420</height>
 			<viewtype label="">list</viewtype>
 			<pagecontrol>61</pagecontrol>
 			<scrolltime tween="quadratic" easing="out">300</scrolltime>
 			<orientation>horizontal</orientation>
-			<itemlayout height="420" width="280">
+			<itemlayout height="420" width="297">
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<aspectratio aligny="top">scale</aspectratio>
 					<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
 				</control>
 				<control type="image">
+					<left>8.5</left>
 					<width>280</width>
 					<height>420</height>
 					<texture>logo_back.png</texture>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>325</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1496,9 +1522,9 @@
 					<label>$INFO[ListItem.Label]</label>
 				</control>
 				<control type="label">
-					<left>10</left>
+					<left>11.5</left>
 					<top>368</top>
-					<width>260</width>
+					<width>274</width>
 					<height>43</height>
 					<align>center</align>
 					<font>font14</font>
@@ -1508,27 +1534,29 @@
 					<label>$INFO[ListItem.Label2]</label>
 				</control>
 			</itemlayout>
-			<focusedlayout height="420" width="280">
+			<focusedlayout height="420" width="297">
 				<control type="group">
 					<animation type="Focus" reversible="false">
 						<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
 						<effect type="fade" start="80" end="100" time="300" />
 					</animation>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<aspectratio aligny="top">scale</aspectratio>
 						<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Icon]</texture>
 					</control>
 					<control type="image">
+						<left>8.5</left>
 						<width>280</width>
 						<height>420</height>
 						<texture>logo_back.png</texture>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>325</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
@@ -1538,9 +1566,9 @@
 						<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
 					</control>
 					<control type="label">
-						<left>10</left>
+						<left>11.5</left>
 						<top>368</top>
-						<width>260</width>
+						<width>274</width>
 						<height>43</height>
 						<align>center</align>
 						<font>font14</font>
