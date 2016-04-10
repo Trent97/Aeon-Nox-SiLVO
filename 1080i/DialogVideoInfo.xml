@@ -528,11 +528,11 @@
 								<visible>!IsEmpty(ListItem.Genre)</visible>
 							</item>	
 							<item>
-								<label>$INFO[Window(Home).Property(SkinHelper.RottenTomatoesRating),,%]</label>
+								<label>$INFO[Window(Home).Property(SkinHelper.RottenTomatoesMeter),,%]</label>
 								<label2>$LOCALIZE[31271]</label2>
 								<onclick>noop</onclick>
 								<visible>!IsEmpty(Window(Home).Property(SkinHelper.RottenTomatoesRating)) + Container.Content(movies)</visible>
-							</item>								
+							</item>							
 							<item>
 								<label>$INFO[ListItem.Premiered]</label>
 								<label2>$LOCALIZE[20416]:</label2>
