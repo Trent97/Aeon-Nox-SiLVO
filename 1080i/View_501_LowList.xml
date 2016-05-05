@@ -204,6 +204,7 @@
 				</control>
 				<control type="grouplist">
 					<visible>Container.Content(movies)</visible>
+					<visible>![Skin.HasSetting(nohighlist) + Skin.HasSetting(Enable.LowListMoviePlot)]</visible>
 					<control type="button">
 						<label>[COLOR $VAR[LowListThemeLabelColor]]$LOCALIZE[20339]:[/COLOR][CR]$INFO[ListItem.Director]</label>
 						<width>650</width>
@@ -235,7 +236,7 @@
 				<top>733</top>
 				<width>650</width>
 				<height>360</height>
-				<visible>Skin.HasSetting(nohighlist) + ListItem.IsCollection</visible>
+				<visible>Skin.HasSetting(nohighlist) + ListItem.IsCollection + !Skin.HasSetting(Enable.LowListMoviePlot)</visible>
 				<control type="button">
 					<label>[COLOR $VAR[LowListThemeLabelColor]]$LOCALIZE[20339]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Director)]</label>
 					<width>650</width>
@@ -258,6 +259,7 @@
 					<label>[COLOR $VAR[LowListThemeLabelColor]]$LOCALIZE[20342]:[/COLOR][CR]$INFO[Window(home).Property(Set.Movies.Count)]</label>
 					<width>650</width>
 					<include>DefaultButtonsValues</include>
+					<visible>!IsEmpty(Window(home).Property(Set.Movies.Count)) + [Container.Content(movies) | Container.Content(sets)]</visible>
 				</control>
 			</control>
 			<control type="grouplist">
@@ -478,6 +480,70 @@
 			</control>
 			<control type="group">
 				<left>1270</left>
+				<top>733</top>
+				<visible>[Skin.HasSetting(nohighlist) + Skin.HasSetting(Enable.LowListMoviePlot) + Container.Content(movies)] + !ListItem.IsCollection</visible>
+				<include>VisibleFadeEffect</include>
+				<control type="textbox" id="70">
+					<label>$VAR[VideoPlotVar]</label>
+					<left>15</left>
+					<top>8</top>
+					<width>615</width>
+					<height>255</height>
+					<font>font14_textbox</font>
+					<pagecontrol>50161</pagecontrol>
+					<include>DefaultButtonsValues</include>
+					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(50161)</autoscroll>
+				</control>
+				<control type="scrollbar" id="50161">
+					<left>636</left>
+					<top>0</top>
+					<width>14</width>
+					<height>245</height>
+					<onup>PageUp(70)</onup>
+					<ondown>PageUp(70)</ondown>
+					<onleft>50</onleft>
+					<onright>4400</onright>
+					<texturesliderbackground>scrollbar/texturesliderbackground3.png</texturesliderbackground>
+					<texturesliderbar colordiffuse="55ffffff" border="1">scrollbar/texturesliderbar3.png</texturesliderbar>
+					<texturesliderbarfocus border="1">scrollbar/texturesliderbar3.png</texturesliderbarfocus>
+					<showonepage>false</showonepage>
+					<orientation>vertical</orientation>
+				</control>
+			</control>
+			<control type="group">
+				<left>1270</left>
+				<top>733</top>
+				<visible>[Skin.HasSetting(nohighlist) + Skin.HasSetting(Enable.LowListMoviePlot) + ListItem.IsCollection]</visible>
+				<include>VisibleFadeEffect</include>
+				<control type="textbox" id="70">
+					<label>$VAR[VideoPlotVar]</label>
+					<left>15</left>
+					<top>8</top>
+					<width>615</width>
+					<height>350</height>
+					<font>font14_textbox</font>
+					<pagecontrol>50161</pagecontrol>
+					<include>DefaultButtonsValues</include>
+					<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(50161)</autoscroll>
+				</control>
+				<control type="scrollbar" id="50161">
+					<left>636</left>
+					<top>0</top>
+					<width>14</width>
+					<height>348</height>
+					<onup>PageUp(70)</onup>
+					<ondown>PageUp(70)</ondown>
+					<onleft>50</onleft>
+					<onright>4400</onright>
+					<texturesliderbackground>scrollbar/texturesliderbackground3.png</texturesliderbackground>
+					<texturesliderbar colordiffuse="55ffffff" border="1">scrollbar/texturesliderbar3.png</texturesliderbar>
+					<texturesliderbarfocus border="1">scrollbar/texturesliderbar3.png</texturesliderbarfocus>
+					<showonepage>false</showonepage>
+					<orientation>vertical</orientation>
+				</control>
+			</control>
+			<control type="group">
+				<left>1270</left>
 				<top>1000</top>
 				<width>1840</width>
 				<control type="group">
@@ -650,7 +716,7 @@
 				<onup>501</onup>
 				<ondown>501</ondown>
 				<pagecontrol>50160</pagecontrol>
-				<viewtype label="LowList">list</viewtype>
+				<viewtype label="$LOCALIZE[31241]">list</viewtype>
 				<visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<animation effect="slide" end="0,-170" time="120" condition="!Skin.HasSetting(nohighlist)">Conditional</animation>
@@ -1352,7 +1418,7 @@
 				<onup>501</onup>
 				<ondown>501</ondown>
 				<pagecontrol>60</pagecontrol>
-				<viewtype label="LowList">list</viewtype>
+				<viewtype label="$LOCALIZE[31241]">list</viewtype>
 				<visible>Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | [Window.IsActive(musiclibrary) + Container.Content(files)]</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<itemlayout height="68" width="806" condition="Container.Content(albums)">
@@ -1776,7 +1842,7 @@
 				<onup>501</onup>
 				<ondown>501</ondown>
 				<pagecontrol>60</pagecontrol>
-				<viewtype label="LowList">list</viewtype>
+				<viewtype label="$LOCALIZE[31241]">list</viewtype>
 				<visible>SubString(Container.FolderPath,plugin.program.advanced.launcher)</visible>
 				<scrolltime tween="quadratic" easing="out">200</scrolltime>
 				<animation effect="slide" end="0,-170" time="120" condition="!Skin.HasSetting(nohighlistgame)">Conditional</animation>
