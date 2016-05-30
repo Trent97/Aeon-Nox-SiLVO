@@ -148,6 +148,10 @@ msgctxt "#31222"
 msgid "Small"
 msgstr "சிறிய"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "சின்னங்கள்"
+
 msgctxt "#31301"
 msgid "Last Updated"
 msgstr "கடைசியாக புதுபித்தது"
@@ -171,6 +175,10 @@ msgstr "கடைசியாக உள்நுழைந்தது"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "கரோக்கி பாடல் தொகுப்பான்"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "வாசிக்கப்பட்டுள்ளது"
 
 msgctxt "#31328"
 msgid "Recently Added"

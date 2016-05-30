@@ -144,6 +144,10 @@ msgctxt "#31222"
 msgid "Small"
 msgstr "کوچک"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "دیوار"
+
 msgctxt "#31301"
 msgid "Last Updated"
 msgstr "آخرین بروزرسانی"
@@ -167,6 +171,10 @@ msgstr "آخرین ورود"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "انتخاب آهنگ کاراوکه"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "پخش شده"
 
 msgctxt "#31328"
 msgid "Recently Added"

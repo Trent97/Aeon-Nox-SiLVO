@@ -156,6 +156,10 @@ msgctxt "#31222"
 msgid "Small"
 msgstr "Klein"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "Ikone"
+
 msgctxt "#31301"
 msgid "Last Updated"
 msgstr "Laas Opdateer"
@@ -179,6 +183,10 @@ msgstr "Laaste IngeLog"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "Karaoke Liedjie Selekteerder"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "Gelug"
 
 msgctxt "#31328"
 msgid "Recently Added"

@@ -444,6 +444,22 @@ msgctxt "#31230"
 msgid "Panel"
 msgstr "Paneel"
 
+msgctxt "#31242"
+msgid "BigList"
+msgstr "SuurNimekiri"
+
+msgctxt "#31245"
+msgid "Wall"
+msgstr "Sein"
+
+msgctxt "#31247"
+msgid "InfoWall"
+msgstr "InfoSein"
+
+msgctxt "#31251"
+msgid "Gallery"
+msgstr "Galerii"
+
 msgctxt "#31300"
 msgid "Overview"
 msgstr "Ülevaade"
@@ -460,6 +476,10 @@ msgctxt "#31309"
 msgid "Memory Used:"
 msgstr "Mälukasutus:"
 
+msgctxt "#31314"
+msgid "Panel"
+msgstr "Paneel"
+
 msgctxt "#31317"
 msgid "Set Fanart Path"
 msgstr "Määra fännipiltide asukoht"
@@ -471,6 +491,10 @@ msgstr "Viimane sisselogimine"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "Karaoke lauluvalija"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "Eetris"
 
 msgctxt "#31328"
 msgid "Recently Added"

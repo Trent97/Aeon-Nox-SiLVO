@@ -240,6 +240,22 @@ msgctxt "#31230"
 msgid "Panel"
 msgstr "面板"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "牆"
+
+msgctxt "#31247"
+msgid "InfoWall"
+msgstr "資訊牆"
+
+msgctxt "#31248"
+msgid "BannerPlex"
+msgstr "橫幅方式"
+
+msgctxt "#31251"
+msgid "Gallery"
+msgstr "圖庫"
+
 msgctxt "#31300"
 msgid "Overview"
 msgstr "概覽"
@@ -256,6 +272,10 @@ msgctxt "#31309"
 msgid "Memory Used:"
 msgstr "已使用記憶體："
 
+msgctxt "#31314"
+msgid "Panel"
+msgstr "面板"
+
 msgctxt "#31317"
 msgid "Set Fanart Path"
 msgstr "設定 Fanart 路徑"
@@ -267,6 +287,10 @@ msgstr "上次登入在"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "卡拉OK歌曲選擇器"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "首播"
 
 msgctxt "#31328"
 msgid "Recently Added"

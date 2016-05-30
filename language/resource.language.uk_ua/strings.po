@@ -176,6 +176,10 @@ msgctxt "#31230"
 msgid "Panel"
 msgstr "Панель"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "Стіна"
+
 msgctxt "#31301"
 msgid "Last Updated"
 msgstr "Останнє оновлення"
@@ -188,6 +192,10 @@ msgctxt "#31309"
 msgid "Memory Used:"
 msgstr "Використано пам'яті"
 
+msgctxt "#31314"
+msgid "Panel"
+msgstr "Панель"
+
 msgctxt "#31317"
 msgid "Set Fanart Path"
 msgstr "Вибрати розташування фанарту"
@@ -199,6 +207,10 @@ msgstr "Останній вхід"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "Вибір пісень для караоке"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "Прем'єра"
 
 msgctxt "#31328"
 msgid "Recently Added"

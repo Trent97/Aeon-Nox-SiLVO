@@ -488,6 +488,30 @@ msgctxt "#31230"
 msgid "Panel"
 msgstr "פנל"
 
+msgctxt "#31241"
+msgid "LowList"
+msgstr "רשימה נמוכה"
+
+msgctxt "#31242"
+msgid "BigList"
+msgstr "רשימה גדולה"
+
+msgctxt "#31245"
+msgid "Wall"
+msgstr "קיר"
+
+msgctxt "#31247"
+msgid "InfoWall"
+msgstr "קיר מידע"
+
+msgctxt "#31248"
+msgid "BannerPlex"
+msgstr "BannerPlex"
+
+msgctxt "#31251"
+msgid "Gallery"
+msgstr "גלריה"
+
 msgctxt "#31300"
 msgid "Overview"
 msgstr "סקירה"
@@ -504,6 +528,10 @@ msgctxt "#31309"
 msgid "Memory Used:"
 msgstr "זכרון בשימוש:"
 
+msgctxt "#31314"
+msgid "Panel"
+msgstr "פנל"
+
 msgctxt "#31317"
 msgid "Set Fanart Path"
 msgstr "הגדרת נתיב פאנארט"
@@ -515,6 +543,10 @@ msgstr "חובר לאחרונה"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "בוחר שיר קריוקי"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "שודר"
 
 msgctxt "#31328"
 msgid "Recently Added"

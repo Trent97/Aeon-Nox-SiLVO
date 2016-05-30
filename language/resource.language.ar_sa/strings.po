@@ -144,6 +144,10 @@ msgctxt "#31222"
 msgid "Small"
 msgstr "صغير"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "رموز"
+
 msgctxt "#31301"
 msgid "Last Updated"
 msgstr "اخر تحديث"
@@ -167,6 +171,10 @@ msgstr "آخر تسجيل دخول في"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "محدد أغاني الكاريوكي"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "المبث"
 
 msgctxt "#31328"
 msgid "Recently Added"

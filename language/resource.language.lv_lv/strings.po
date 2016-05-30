@@ -152,6 +152,10 @@ msgctxt "#31230"
 msgid "Panel"
 msgstr "Panelis"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "Ikonas"
+
 msgctxt "#31301"
 msgid "Last Updated"
 msgstr "Pēdējie atjaunotie"
@@ -164,6 +168,10 @@ msgctxt "#31309"
 msgid "Memory Used:"
 msgstr "Atmiņa izmantota:"
 
+msgctxt "#31314"
+msgid "Panel"
+msgstr "Panelis"
+
 msgctxt "#31317"
 msgid "Set Fanart Path"
 msgstr "Iestatīt fanumākslas ceļu"
@@ -175,6 +183,10 @@ msgstr "Pēdējoreiz pieteicies"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "Karaoke dziesmas izvēlētājs"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "Ēterā"
 
 msgctxt "#31328"
 msgid "Recently Added"

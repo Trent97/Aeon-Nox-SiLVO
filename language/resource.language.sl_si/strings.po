@@ -164,6 +164,10 @@ msgctxt "#31230"
 msgid "Panel"
 msgstr "Podokno"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "Ikone"
+
 msgctxt "#31301"
 msgid "Last Updated"
 msgstr "Nazadnje posodobljeno"
@@ -176,6 +180,10 @@ msgctxt "#31309"
 msgid "Memory Used:"
 msgstr "Poraba pomnilnika:"
 
+msgctxt "#31314"
+msgid "Panel"
+msgstr "Podokno"
+
 msgctxt "#31317"
 msgid "Set Fanart Path"
 msgstr "Nastavi pot ozadij"
@@ -187,6 +195,10 @@ msgstr "Zadnja prijava"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "Izbira pesmi za karaoke"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "Predvajano"
 
 msgctxt "#31328"
 msgid "Recently Added"

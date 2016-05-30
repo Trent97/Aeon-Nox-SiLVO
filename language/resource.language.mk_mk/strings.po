@@ -144,6 +144,10 @@ msgctxt "#31222"
 msgid "Small"
 msgstr "Мало"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "Икони"
+
 msgctxt "#31301"
 msgid "Last Updated"
 msgstr "Последно ажурирање"
@@ -167,6 +171,10 @@ msgstr "Последна пријава"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "Бирач на караоке песни"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "Емитирано"
 
 msgctxt "#31328"
 msgid "Recently Added"

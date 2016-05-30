@@ -152,6 +152,10 @@ msgctxt "#31222"
 msgid "Small"
 msgstr "小さく"
 
+msgctxt "#31245"
+msgid "Wall"
+msgstr "アイコン"
+
 msgctxt "#31301"
 msgid "Last Updated"
 msgstr "最終更新時刻"
@@ -175,6 +179,10 @@ msgstr "最終ログイン"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "カラオケソングセレクター"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "放映日"
 
 msgctxt "#31328"
 msgid "Recently Added"

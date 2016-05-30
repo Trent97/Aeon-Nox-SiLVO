@@ -1909,6 +1909,14 @@
 		<value>$LOCALIZE[351]</value>
 	</variable>
 	<!-- Widget Settings -->
+	<variable name="Widget1DisplayTitleVar">
+		<value condition="!IsEmpty(Window.Property(widgetStyle))">$INFO[Window.Property(widgetName)]</value>
+		<value>$LOCALIZE[231]</value>
+	</variable>
+	<variable name="Widget2DisplayTitleVar">
+		<value condition="!IsEmpty(Window.Property(widgetStyle.2))">$INFO[Window.Property(widgetName.2)]</value>
+		<value>$LOCALIZE[231]</value>
+	</variable>
 	<variable name="WidgetStyleLabelVar">
 		<value condition="StringCompare(Window.Property(widgetStyle),List)">$LOCALIZE[535]</value>
 		<value condition="StringCompare(Window.Property(widgetStyle),Extended List)">$LOCALIZE[31711]</value>
@@ -2508,6 +2516,11 @@
 	<variable name="TopBarColor">
 		<value condition="!IsEmpty(Skin.String(TopBarColor)) + !StringCompare(Skin.String(TopBarColor),None)">$INFO[Skin.String(TopBarColor)]</value>
 		<value>black</value>
+	</variable>
+	<variable name="ThemeOSDProgressColor">
+		<value condition="!IsEmpty(Skin.String(ThemeOSDProgressColor)) + !StringCompare(Skin.String(ThemeOSDProgressColor),None)">$INFO[Skin.String(ThemeOSDProgressColor)]</value>
+		<value condition="!IsEmpty(Skin.String(ThemeLabelColor)) + !StringCompare(Skin.String(ThemeLabelColor),None)">$INFO[Skin.String(ThemeLabelColor)]</value>
+		<value>FF6DB9E5</value>
 	</variable>
 	<!-- RightList -->
 	<variable name="RightListThemeLabelColor">

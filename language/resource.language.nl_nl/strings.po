@@ -816,6 +816,30 @@ msgctxt "#31234"
 msgid "Next aired"
 msgstr "Volgende uitzending"
 
+msgctxt "#31241"
+msgid "LowList"
+msgstr "LowList"
+
+msgctxt "#31242"
+msgid "BigList"
+msgstr "Grote lijst"
+
+msgctxt "#31245"
+msgid "Wall"
+msgstr "Muur"
+
+msgctxt "#31247"
+msgid "InfoWall"
+msgstr "InfoWall"
+
+msgctxt "#31248"
+msgid "BannerPlex"
+msgstr "BannerPlex"
+
+msgctxt "#31251"
+msgid "Gallery"
+msgstr "Gallerij"
+
 msgctxt "#31255"
 msgid "Mediaflags"
 msgstr "Mediavlaggen"
@@ -900,6 +924,10 @@ msgctxt "#31309"
 msgid "Memory Used:"
 msgstr "Geheugenverbruik:"
 
+msgctxt "#31314"
+msgid "Panel"
+msgstr "Paneel"
+
 msgctxt "#31317"
 msgid "Set Fanart Path"
 msgstr "Fanartpad opgeven"
@@ -911,6 +939,10 @@ msgstr "Laatste Login"
 msgctxt "#31321"
 msgid "Karaoke Song Selector"
 msgstr "Karaokeliedjeskeuze"
+
+msgctxt "#31324"
+msgid "Aired"
+msgstr "Uitgezonden"
 
 msgctxt "#31328"
 msgid "Recently Added"
@@ -1047,6 +1079,10 @@ msgstr "Selecteer de itemafbeelding die wordt gebruikt voor de lay-out van het i
 msgctxt "#31685"
 msgid "Choose a widget to display for this home menu item."
 msgstr "Kies een widget om weer te geven voor dit hoofdmenu item"
+
+msgctxt "#31701"
+msgid "Widget style"
+msgstr "Widget stijl"
 
 msgctxt "#31706"
 msgid "Art"
