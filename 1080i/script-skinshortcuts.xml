@@ -55,7 +55,7 @@
 						<width>66</width>
 						<height>66</height>
 						<texture colordiffuse="grey2">$INFO[ListItem.Icon]</texture>
-						<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
+						<visible>StringCompare(Window.Property(groupname),mainmenu) + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
 					</control>
 				</itemlayout>
 				<focusedlayout height="90" width="356">
@@ -104,7 +104,7 @@
 						<width>66</width>
 						<height>66</height>
 						<texture>$INFO[ListItem.Icon]</texture>
-						<visible>StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
+						<visible>StringCompare(Window.Property(groupname),mainmenu) + StringCompare(Skin.String(MainMenu.Layout),$LOCALIZE[536])</visible>
 						<animation effect="fade" start="100" end="50" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(211)">Conditional</animation>
 					</control>
 				</focusedlayout>
@@ -118,7 +118,7 @@
 				<font>font15_textbox</font>
 				<align>left</align>
 				<textcolor>grey2</textcolor>
-				<label>$VAR[MainMenuCustomizerDescriptionVar]</label>
+				<label>[I]$VAR[MainMenuCustomizerDescriptionVar][/I]</label>
 				<autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
 				<animation effect="fade" start="0" end="100" time="300" tween="sine" easing="inout">Visible</animation>
 				<animation effect="fade" start="100" end="0" time="0" tween="sine" easing="inout">Hidden</animation>

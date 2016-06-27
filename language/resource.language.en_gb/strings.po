@@ -1089,7 +1089,7 @@ msgid "Hide Time & Date"
 msgstr ""
 
 msgctxt "#31268"
-msgid "Hide Album & CD"
+msgid "Hide Album"
 msgstr ""
 
 msgctxt "#31269"
@@ -1317,15 +1317,95 @@ msgctxt "#31324"
 msgid "Aired"
 msgstr ""
 
-#empty strings from id 31325 to 31327
+msgctxt "#31325"
+msgid "This script is [B]REQUIRED[/B][CR]Required scripts are necessary for basic skin functions"
+msgstr ""
+
+msgctxt "#31326"
+msgid "This script is [B]HIGHLY RECOMMENDED[/B][CR]Some recommended scripts may be unsuitable for low performance devices"
+msgstr ""
+
+msgctxt "#31327"
+msgid "This script is [B]OPTIONAL[/B][CR]Some optional scripts may be unsuitable for low performance devices"
+msgstr ""
 
 msgctxt "#31328"
 msgid "Recently Added"
 msgstr ""
 
-#empty strings from id 31329 to 31389
+msgctxt "#31329"
+msgid "Taking a Screenshot"
+msgstr ""
 
-#empty strings from id 31331 to 31389
+msgctxt "#31330"
+msgid "This script is not available in the default Kodi repositiory. The Aeon Nox SiLVO repo is needed to use the click to install feature, without it this script must be installed manually."
+msgstr ""
+
+msgctxt "#31331"
+msgid "Installed"
+msgstr ""
+
+msgctxt "#31332"
+msgid "Not Installed"
+msgstr ""
+
+msgctxt "#31333"
+msgid "The default behavior is to display Music information for 10 seconds after a song is played or the next track in your queue begins. To display permanently reactivate the info and do not toggle it off a second time."
+msgstr ""
+
+msgctxt "#31334"
+msgid "Required"
+msgstr ""
+
+msgctxt "#31335"
+msgid "Recommended"
+msgstr ""
+
+msgctxt "#31336"
+msgid "Optional"
+msgstr ""
+
+msgctxt "#31337"
+msgid "Check status of supported scripts"
+msgstr ""
+
+msgctxt "#31338"
+msgid "Enable or disable system debug logging"
+msgstr ""
+
+msgctxt "#31339"
+msgid "Enable or disable skin debug info"
+msgstr ""
+
+msgctxt "#31340"
+msgid "Color customization"
+msgstr ""
+
+msgctxt "#31341"
+msgid "NOT SUPPORTED"
+msgstr ""
+
+msgctxt "#31342"
+msgid "Use to display the status of some of the scripts supported in Aeon Nox SiLVO. Selecting any missing scripts will ask to install or if installed clicking it will open the settings (if available)."
+msgstr ""
+
+msgctxt "#31343"
+msgid "Display background name"
+msgstr ""
+
+msgctxt "#31344"
+msgid "Display title of movie/tvshow/artist on home screen if the background has a fanart slideshow as background"
+msgstr ""
+
+msgctxt "#31345"
+msgid "Main Menu Customization"
+msgstr ""
+
+msgctxt "#31346"
+msgid "OSD Progress Bar"
+msgstr ""
+
+#empty strings from id 31347 to 31389
 
 msgctxt "#31390"
 msgid "Skin default"
@@ -1364,7 +1444,7 @@ msgid "[B]MONITOR YOUR SYSTEM[/B][CR][CR]Check out your hardware · Monitor CPU 
 msgstr ""
 
 msgctxt "#31406"
-msgid "[B]CONFIGURE SYSTEM SETTINGS[/B][CR][CR]Setup and calibrate displays · Configure audio output · Setup remote controls[CR]Set power saving options · Enable debugging · Setup master lock"
+msgid "[B]CONFIGURE SYSTEM SETTINGS[/B][CR][CR]Setup and calibrate displays · Configure audio output · [CR]Set power saving options · Enable debugging"
 msgstr ""
 
 msgctxt "#31407"
@@ -1376,7 +1456,7 @@ msgid "[B]CONFIGURE ADD-ONS[/B][CR][CR]Manage your installed Add-ons · Browse f
 msgstr ""
 
 msgctxt "#31409"
-msgid "[B]CONFIGURE TV SETTINGS[/B][CR][CR]Change full screen info · Manage EPG data settings"
+msgid "[B]CONFIGURE LIVE TV SETTINGS[/B][CR][CR]Change full screen info · Manage EPG data settings"
 msgstr ""
 
 msgctxt "#31410"
@@ -1763,7 +1843,13 @@ msgctxt "#31759"
 msgid "If enabled widgets will not be visible throughout the home screen until they are focused."
 msgstr ""
 
-#empty strings from id 31760 to 31799
+msgctxt "#31760"
+msgid "Configure custom Widget 1"
+msgstr ""
+
+msgctxt "#31761"
+msgid "Configure custom Widget 2"
+msgstr ""
 
 #empty strings from id 31762 to 31799
 
