@@ -85,11 +85,11 @@
 					</control>
 				</control>
 				<control type="image">
-					<left>1042</left>
-					<top>0</top>
-					<width>149</width>
-					<height>60</height>
-					<texture>special://home/addons/script.extendedinfo/resources/skins/Default/media/moviedb.png</texture>
+					<left>995</left>
+					<top>-10</top>
+					<width>200</width>
+					<height>100</height>
+					<texture>logos/tmdb-logo2.png</texture>
 					<aspectratio align="left" aligny="center">keep</aspectratio>
 				</control>
 				<control type="image">
@@ -429,23 +429,17 @@
 							<textoffsetx>36</textoffsetx>
 						</control>
 					</focusedlayout>
-					<content>			
+					<content>
 						<item>
-							<label>$INFO[Window.Property(Budget),$]</label>
-							<label2>$ADDON[script.extendedinfo 32109]:</label2>
+							<label>$INFO[Window.Property(originaltitle)]</label>
+							<label2>$LOCALIZE[20376]:</label2>
 							<onclick>noop</onclick>
-							<visible>!IsEmpty(Window.Property(Budget))</visible>
+							<visible>!IsEmpty(Window.Property(originaltitle)) + !StringCompare(Window.Property(originaltitle),Window.Property(Title))</visible>
 						</item>
-						<item>
-							<label>$INFO[Window.Property(Revenue),$]</label>
-							<label2>$ADDON[script.extendedinfo 32108]:</label2>
-							<onclick>noop</onclick>
-							<visible>!IsEmpty(Window.Property(Revenue))</visible>
-						</item>						
 						<item>
 							<label>$INFO[Window.Property(director)]</label>
 							<label2>$LOCALIZE[20339]:</label2>
-							<onclick>RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[Container(300).ListItem.Label])</onclick>
+							<onclick>noop</onclick>
 							<visible>!IsEmpty(Window.Property(director))</visible>
 						</item>
 						<item>
@@ -459,24 +453,31 @@
 							<label2>$LOCALIZE[515]:</label2>
 							<onclick>noop</onclick>
 							<visible>!IsEmpty(Window.Property(genre))</visible>
-						</item>	
+						</item>
 						<item>
-							<label>$INFO[Window.Property(release_date)]</label>
-							<label2>Release Date:</label2>
+							<label>$INFO[Window.Property(releasedate)]</label>
+							<label2 fallback="$LOCALIZE[172]:">$INFO[Window.Property(Status),,:]</label2>
 							<onclick>noop</onclick>
-							<visible>!IsEmpty(Window.Property(release_date))</visible>
-						</item>							
+							<visible>!IsEmpty(Window.Property(releasedate))</visible>
+						</item>
 						<item>
-							<label>$INFO[Window.Property(Status)]</label>
-							<label2>Status:</label2>
+							<label>$INFO[Window.Property(country)]</label>
+							<label2>$LOCALIZE[574]:</label2>
 							<onclick>noop</onclick>
-							<visible>!IsEmpty(Window.Property(Status))</visible>
-						</item>							
+							<visible>!IsEmpty(Window.Property(country))</visible>
+						</item>
 						<item>
 							<label>$INFO[Window.Property(lastplayed)]</label>
 							<label2>$LOCALIZE[568]:</label2>
 							<onclick>noop</onclick>
 							<visible>!IsEmpty(Window.Property(DBID)) + !IsEmpty(Window.Property(lastplayed))</visible>
+						</item>
+						<item>
+							<label>$INFO[Window.Property(FilenameAndPath)]</label>
+							<label2>$LOCALIZE[573]:</label2>
+							<onclick>Dialog.Close(movieinformation)</onclick>
+							<onclick>ActivateWindow(Videos,$INFO[ListItem.Path],return)</onclick>
+							<visible>!IsEmpty(Window.Property(DBID)) + !IsEmpty(Window.Property(FilenameAndPath))</visible>
 						</item>
 						<item>
 							<label>$INFO[Window.Property(playcount)]</label>
@@ -486,22 +487,34 @@
 						</item>
 						<item>
 							<label>$INFO[Window.Property(PercentPlayed),(,%)]</label>
-							<label2 fallback="-">$LOCALIZE[575]:</label2>
+							<label2>$LOCALIZE[575]:</label2>
 							<onclick>noop</onclick>
-							<visible>!IsEmpty(Window.Property(DBID)) + Window.Property(PercentPlayed)</visible>
+							<visible>!IsEmpty(Window.Property(DBID)) + IntegerGreaterThan(Window.Property(PercentPlayed),0)</visible>
+						</item>
+						<item>
+							<label>$INFO[Window.Property(Budget),$]</label>
+							<label2>$ADDON[script.extendedinfo 32109]:</label2>
+							<onclick>noop</onclick>
+							<visible>!IsEmpty(Window.Property(Budget))</visible>
+						</item>
+						<item>
+							<label>$INFO[Window.Property(Revenue),$]</label>
+							<label2>$ADDON[script.extendedinfo 32108]:</label2>
+							<onclick>noop</onclick>
+							<visible>!IsEmpty(Window.Property(Revenue))</visible>
 						</item>
 						<item>
 							<label>[UPPERCASE]$INFO[Window.Property(AudioLanguage.1)][/UPPERCASE]</label>
 							<label2>$LOCALIZE[21447]:</label2>
 							<onclick>noop</onclick>
-							<visible>!IsEmpty(Window.Property(AudioLanguage.1))</visible>
+							<visible>!IsEmpty(Window.Property(DBID)) + !IsEmpty(Window.Property(AudioLanguage.1))</visible>
 						</item>
 						<item>
 							<label>[UPPERCASE]$INFO[Window.Property(SubtitleLanguage.1)][/UPPERCASE]</label>
 							<label2>$LOCALIZE[21448]:</label2>
 							<onclick>noop</onclick>
-							<visible>!IsEmpty(Window.Property(SubtitleLanguage.1))</visible>
-						</item>					
+							<visible>!IsEmpty(Window.Property(DBID)) + !IsEmpty(Window.Property(SubtitleLanguage.1))</visible>
+						</item>
 					</content>
 				</control>
 				<control type="group">
@@ -529,12 +542,18 @@
 							<colordiffuse>grey</colordiffuse>
 							<include>MediaFlagVars</include>
 							<texture>$INFO[Window.Property(VideoResolution),flags/resolution/,.png]</texture>
-							<visible>!IsEmpty(Window.Property(VideoResolution))</visible>
+							<visible>!IsEmpty(Window.Property(VideoResolution)) + !Skin.HasSetting(coloredflags)</visible>
+						</control>
+						<control type="image">
+							<width>198</width>
+							<colordiffuse>grey</colordiffuse>
+							<include>MediaFlagVars</include>
+							<texture>$INFO[Window.Property(VideoResolution),flags/colored/resolution/,.png]</texture>
+							<visible>!IsEmpty(Window.Property(VideoResolution)) + Skin.HasSetting(coloredflags)</visible>
 						</control>
 						<control type="image">
 							<width>2</width>
 							<height>90</height>
-							<visible>!Container.Content(tvshows)</visible>								
 							<texture border="1">separator3.png</texture>
 						</control>
 						<control type="image">
@@ -542,12 +561,18 @@
 							<colordiffuse>grey</colordiffuse>
 							<include>MediaFlagVars</include>
 							<texture>$INFO[Window.Property(AudioCodec),flags/audio/,.png]</texture>
-							<visible>!IsEmpty(Window.Property(AudioCodec))</visible>
+							<visible>!IsEmpty(Window.Property(AudioCodec)) + !Skin.HasSetting(coloredflags)</visible>
+						</control>
+						<control type="image">
+							<width>198</width>
+							<colordiffuse>grey</colordiffuse>
+							<include>MediaFlagVars</include>
+							<texture>$INFO[Window.Property(AudioCodec),flags/colored/audio/,.png]</texture>
+							<visible>!IsEmpty(Window.Property(AudioCodec)) + Skin.HasSetting(coloredflags)</visible>
 						</control>
 						<control type="image">
 							<width>2</width>
 							<height>90</height>
-							<visible>!Container.Content(tvshows)</visible>								
 							<texture border="1">separator3.png</texture>
 						</control>
 						<control type="image">
@@ -555,12 +580,18 @@
 							<colordiffuse>grey</colordiffuse>
 							<include>MediaFlagVars</include>
 							<texture>$INFO[Window.Property(AudioChannels),flags/channels/,.png]</texture>
-							<visible>!IsEmpty(Window.Property(AudioChannels))</visible>
+							<visible>!IsEmpty(Window.Property(AudioChannels)) + !Skin.HasSetting(coloredflags)</visible>
+						</control>
+						<control type="image">
+							<width>198</width>
+							<colordiffuse>grey</colordiffuse>
+							<include>MediaFlagVars</include>
+							<texture>$INFO[Window.Property(AudioChannels),flags/colored/channels/,.png]</texture>
+							<visible>!IsEmpty(Window.Property(AudioChannels)) + Skin.HasSetting(coloredflags)</visible>
 						</control>
 						<control type="image">
 							<width>2</width>
 							<height>90</height>
-							<visible>!Container.Content(tvshows)</visible>	
 							<texture border="1">separator3.png</texture>
 						</control>
 						<control type="image">
@@ -568,11 +599,18 @@
 							<colordiffuse>grey</colordiffuse>
 							<include>MediaFlagVars</include>
 							<texture>$INFO[Window.Property(VideoCodec),flags/video/,.png]</texture>
+							<visible>!IsEmpty(Window.Property(VideoCodec)) + !Skin.HasSetting(coloredflags)</visible>
+						</control>
+						<control type="image">
+							<width>198</width>
+							<colordiffuse>grey</colordiffuse>
+							<include>MediaFlagVars</include>
+							<texture>$INFO[Window.Property(VideoCodec),flags/colored/source/,.png]</texture>
+							<visible>!IsEmpty(Window.Property(VideoCodec)) + Skin.HasSetting(coloredflags)</visible>
 						</control>
 						<control type="image">
 							<width>2</width>
 							<height>90</height>
-							<visible>!Container.Content(tvshows)</visible>								
 							<texture border="1">separator3.png</texture>
 						</control>
 						<control type="image">
@@ -580,11 +618,18 @@
 							<colordiffuse>grey</colordiffuse>
 							<include>MediaFlagVars</include>
 							<texture>$INFO[Window.Property(VideoAspect),flags/aspectratio/,.png]</texture>
+							<visible>!IsEmpty(Window.Property(VideoAspect)) + !Skin.HasSetting(coloredflags)</visible>
+						</control>
+						<control type="image">
+							<width>198</width>
+							<colordiffuse>grey</colordiffuse>
+							<include>MediaFlagVars</include>
+							<texture>$INFO[Window.Property(VideoAspect),flags/colored/aspectratio/,.png]</texture>
+							<visible>!IsEmpty(Window.Property(VideoAspect)) + Skin.HasSetting(coloredflags)</visible>
 						</control>
 						<control type="image">
 							<width>2</width>
 							<height>90</height>
-							<visible>!Container.Content(tvshows)</visible>								
 							<texture border="1">separator3.png</texture>
 						</control>
 						<control type="image">
@@ -592,7 +637,14 @@
 							<colordiffuse>grey</colordiffuse>
 							<include>MediaFlagVars</include>
 							<texture>flags/cc.png</texture>
-							<visible>!IsEmpty(Window.Property(SubtitleLanguage))</visible>
+							<visible>!IsEmpty(Window.Property(SubtitleLanguage)) + !Skin.HasSetting(coloredflags)</visible>
+						</control>
+						<control type="image">
+							<width>198</width>
+							<colordiffuse>grey</colordiffuse>
+							<include>MediaFlagVars</include>
+							<texture>flags/colored/cc.png</texture>
+							<visible>!IsEmpty(Window.Property(SubtitleLanguage)) + Skin.HasSetting(coloredflags)</visible>
 						</control>
 					</control>
 					<control type="image">
@@ -625,48 +677,46 @@
 							<ondown>1000</ondown>
 							<include>ButtonInfoDialogsCommonValues</include>
 						</control>
-						<control type="textbox" id="800">
+						<control type="textbox" id="400">
 							<description>Plot</description>
 							<left>36</left>
-							<top>10</top>
-							<width>1132</width>
-							<height>400</height>
-							<font>font15_textbox</font>
-							<align>left</align>
-							<label>$INFO[Window.Property(Plot)]</label>
-							<textcolor>white</textcolor>
-							<pagecontrol>-</pagecontrol>
-							<visible>IsEmpty(Window.Property(discart))</visible>								
-							<autoscroll time="3000" delay="6000" repeat="6000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
-							<animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>
-							<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(132)">Conditional</animation>
-						</control>
-		<!-- Add Plot with Disc Art -->							
-						<control type="textbox" id="800">
-							<description>Plot</description>
-							<left>36</left>
-							<top>10</top>
+							<top>20</top>
 							<width>788</width>
-							<height>400</height>
+							<height>345</height>
 							<font>font15_textbox</font>
 							<align>left</align>
 							<label>$INFO[Window.Property(Plot)]</label>
 							<textcolor>white</textcolor>
 							<pagecontrol>-</pagecontrol>
-							<visible>!IsEmpty(Window.Property(discart))</visible>							
-							<autoscroll time="3000" delay="6000" repeat="6000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
+							<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(132)</autoscroll>
 							<animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>
 							<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(132)">Conditional</animation>
-						</control>	
+							<visible>Skin.HasSetting(discartoninfo) + !IsEmpty(Window.Property(discart))</visible>
+						</control>
+						<control type="textbox" id="401">
+							<description>Plot</description>
+							<left>36</left>
+							<top>20</top>
+							<width>1132</width>
+							<height>345</height>
+							<font>font15_textbox</font>
+							<align>left</align>
+							<label>$INFO[Window.Property(Plot)]</label>
+							<textcolor>white</textcolor>
+							<pagecontrol>-</pagecontrol>
+							<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(132)</autoscroll>
+							<animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(132)">Conditional</animation>
+							<visible>!Skin.HasSetting(discartoninfo) | IsEmpty(Window.Property(discart))</visible>
+						</control>
 						<control type="image">
 							<left>845</left>
 							<top>50</top>
 							<width>320</width>
 							<height>320</height>
-							<aspect>keep</aspect>
-							<texture background="true">$INFO[Window.Property(discart)]</texture>							
-							<visible>!IsEmpty(Window.Property(discart))</visible>
-						</control>							
+							<aspectratio>keep</aspectratio>
+							<texture background="true">$INFO[Window.Property(discart)]</texture>
+							<visible>Skin.HasSetting(discartoninfo) + !IsEmpty(Window.Property(discart))</visible>
+						</control>
 					</control>
 					<control type="panel" id="1000">
 						<description>Cast</description>
@@ -708,11 +758,11 @@
 								<height>43</height>
 								<align>center</align>
 								<font>font14</font>
-								<textcolor>white2</textcolor>
+								<textcolor>grey</textcolor>
 								<shadowcolor>shadow</shadowcolor>
 								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 								<label>$INFO[ListItem.Property(character)]</label>
-						</control>							
+							</control>
 						</itemlayout>
 						<focusedlayout height="420" width="280">
 							<control type="group">
@@ -775,24 +825,6 @@
 								<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Thumb]</texture>
 							</control>
 							<control type="image">
-								<top>-200</top>								
-								<width>280</width>
-								<height>420</height>
-								<texture flipy="true">logo_back.png</texture>
-							</control>									
-							<control type="textbox">
-								<left>8</left>
-								<top>-2</top>
-								<width>73</width>
-								<height>43</height>
-								<align>left</align>
-								<font>font13</font>
-								<textcolor>white2</textcolor>									
-								<shadowcolor>black</shadowcolor>
-								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>									
-								<label>$INFO[ListItem.Year]</label>				
-							</control>									
-							<control type="image">
 								<width>280</width>
 								<height>420</height>
 								<texture>logo_back.png</texture>
@@ -807,7 +839,7 @@
 								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
 								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-								<label>$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
 							</control>
 							<control type="label">
 								<left>10</left>
@@ -816,17 +848,17 @@
 								<height>43</height>
 								<align>center</align>
 								<font>font14</font>
-								<textcolor>grey2</textcolor>
+								<textcolor>grey</textcolor>
 								<shadowcolor>shadow</shadowcolor>
 								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 								<label>$INFO[ListItem.Property(Job)]</label>
 							</control>
 							<control type="image">
-								<left>192</left>
-								<top>-10</top>
-								<width>100</width>
-								<height>100</height>
-								<texture>overlays/addons/extendedinfo.png</texture>
+								<left>228</left>
+								<top>-8</top>
+								<width>60</width>
+								<height>60</height>
+								<texture>overlays/showcase/4/OverlayWatched.png</texture>
 								<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 							</control>
 						</itemlayout>
@@ -843,25 +875,6 @@
 									<texture background="true" fallback="DefaultActor.png">$INFO[ListItem.Thumb]</texture>
 								</control>
 								<control type="image">
-									<top>-200</top>								
-									<width>280</width>
-									<height>420</height>
-									<texture flipy="true">logo_back.png</texture>
-								</control>										
-								<control type="textbox">
-									<left>8</left>
-									<top>-2</top>
-									<width>73</width>
-									<height>43</height>
-									<align>left</align>
-									<font>font13</font>
-									<textcolor>$VAR[ThemeLabelColor]</textcolor>
-									<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>										
-									<shadowcolor>black</shadowcolor>
-									<label>$INFO[ListItem.Year]</label>		
-									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(750)">Conditional</animation>										
-								</control>										
-								<control type="image">
 									<width>280</width>
 									<height>420</height>
 									<texture>logo_back.png</texture>
@@ -876,7 +889,7 @@
 									<textcolor>$VAR[ThemeLabelColor]</textcolor>
 									<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 									<shadowcolor>shadow</shadowcolor>
-									<label>$INFO[ListItem.Label]</label>
+									<label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
 									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(750)">Conditional</animation>
 								</control>
 								<control type="label">
@@ -893,11 +906,11 @@
 									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(750)">Conditional</animation>
 								</control>
 								<control type="image">
-									<left>192</left>
-									<top>-10</top>
-									<width>100</width>
-									<height>100</height>
-									<texture>overlays/addons/extendedinfo.png</texture>
+									<left>228</left>
+									<top>-8</top>
+									<width>60</width>
+									<height>60</height>
+									<texture>overlays/showcase/4/OverlayWatched.png</texture>
 									<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 								</control>
 							</control>
@@ -915,62 +928,6 @@
 						<scrolltime tween="quadratic" easing="out">300</scrolltime>
 						<visible>IntegerGreaterThan(Container(150).NumItems,0)</visible>
 						<itemlayout height="420" width="280">
-						<control type="image">
-							<width>280</width>
-							<height>420</height>
-							<aspectratio aligny="top">scale</aspectratio>
-							<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-						</control>
-						<control type="image">
-							<top>-200</top>								
-							<width>280</width>
-							<height>420</height>
-							<texture flipy="true">logo_back.png</texture>
-						</control>									
-						<control type="textbox">
-							<left>8</left>
-							<top>-2</top>
-							<width>73</width>
-							<height>43</height>
-							<align>left</align>
-							<font>font13</font>
-							<textcolor>white2</textcolor>									
-							<shadowcolor>black</shadowcolor>
-							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>									
-							<label>$INFO[ListItem.Year]</label>				
-						</control>									
-						<control type="image">
-							<width>280</width>
-							<height>420</height>
-							<texture>logo_back.png</texture>
-						</control>
-						<control type="label">
-							<left>10</left>
-							<top>345</top>
-							<width>260</width>
-							<height>43</height>
-							<align>center</align>
-							<font>font14</font>
-							<textcolor>white2</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="image">
-							<left>192</left>
-							<top>-10</top>
-							<width>100</width>
-							<height>100</height>
-							<texture>overlays/addons/extendedinfo.png</texture>
-							<visible>!IsEmpty(ListItem.Property(DBID))</visible>
-						</control>
-						</itemlayout>
-						<focusedlayout height="420" width="280">
-						<control type="group">
-								<animation type="Focus" reversible="false">
-									<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
-									<effect type="fade" start="80" end="100" time="300" />
-								</animation>
 							<control type="image">
 								<width>280</width>
 								<height>420</height>
@@ -978,24 +935,11 @@
 								<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 							</control>
 							<control type="image">
-								<top>-200</top>								
+								<top>-200</top>
 								<width>280</width>
 								<height>420</height>
 								<texture flipy="true">logo_back.png</texture>
-							</control>										
-							<control type="textbox">
-								<left>8</left>
-								<top>-2</top>
-								<width>73</width>
-								<height>43</height>
-								<align>left</align>
-								<font>font13</font>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>										
-								<shadowcolor>black</shadowcolor>
-								<label>$INFO[ListItem.Year]</label>	
-								<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(150)">Conditional</animation>										
-							</control>										
+							</control>
 							<control type="image">
 								<width>280</width>
 								<height>420</height>
@@ -1008,22 +952,60 @@
 								<height>43</height>
 								<align>center</align>
 								<font>font14</font>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
-								<label>$INFO[ListItem.Label]</label>
-								<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(150)">Conditional</animation>
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
 							</control>
 							<control type="image">
-								<left>192</left>
-								<top>-10</top>
-								<width>100</width>
-								<height>100</height>
-								<texture>overlays/addons/extendedinfo.png</texture>
+								<left>228</left>
+								<top>-8</top>
+								<width>60</width>
+								<height>60</height>
+								<texture>overlays/showcase/4/OverlayWatched.png</texture>
 								<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 							</control>
-						</control>
-						</focusedlayout>					
+						</itemlayout>
+						<focusedlayout height="420" width="280">
+							<control type="group">
+								<animation type="Focus" reversible="false">
+									<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
+									<effect type="fade" start="80" end="100" time="300" />
+								</animation>
+								<control type="image">
+									<width>280</width>
+									<height>420</height>
+									<aspectratio aligny="top">scale</aspectratio>
+									<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
+								</control>
+								<control type="image">
+									<width>280</width>
+									<height>420</height>
+									<texture>logo_back.png</texture>
+								</control>
+								<control type="label">
+									<left>10</left>
+									<top>345</top>
+									<width>260</width>
+									<height>43</height>
+									<align>center</align>
+									<font>font14</font>
+									<textcolor>$VAR[ThemeLabelColor]</textcolor>
+									<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+									<shadowcolor>shadow</shadowcolor>
+									<label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
+									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(150)">Conditional</animation>
+								</control>
+								<control type="image">
+									<left>228</left>
+									<top>-8</top>
+									<width>60</width>
+									<height>60</height>
+									<texture>overlays/showcase/4/OverlayWatched.png</texture>
+									<visible>!IsEmpty(ListItem.Property(DBID))</visible>
+								</control>
+							</control>
+						</focusedlayout>
 					</control>
 					<control type="panel" id="250">
 						<description>Set</description>
@@ -1036,87 +1018,12 @@
 						<visible>IntegerGreaterThan(Container(250).NumItems,0)</visible>
 						<animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>
 						<itemlayout height="420" width="280">
-						<control type="image">
-							<width>280</width>
-							<height>420</height>
-							<aspectratio aligny="top">scale</aspectratio>
-							<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-						</control>
-						<control type="image">
-							<top>-200</top>								
-							<width>280</width>
-							<height>420</height>
-							<texture flipy="true">logo_back.png</texture>
-						</control>									
-						<control type="textbox">
-							<left>8</left>
-							<top>-2</top>
-							<width>73</width>
-							<height>43</height>
-							<align>left</align>
-							<font>font13</font>
-							<textcolor>white2</textcolor>									
-							<shadowcolor>black</shadowcolor>
-							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>									
-							<label>$INFO[ListItem.Year]</label>				
-						</control>									
-						<control type="image">
-							<width>280</width>
-							<height>420</height>
-							<texture>logo_back.png</texture>
-						</control>
-						<control type="label">
-							<left>10</left>
-							<top>345</top>
-							<width>260</width>
-							<height>43</height>
-							<align>center</align>
-							<font>font14</font>
-							<textcolor>white2</textcolor>
-							<shadowcolor>shadow</shadowcolor>
-							<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-							<label>$INFO[ListItem.Label]</label>
-						</control>
-						<control type="image">
-							<left>192</left>
-							<top>-10</top>
-							<width>100</width>
-							<height>100</height>
-							<texture>overlays/addons/extendedinfo.png</texture>
-							<visible>!IsEmpty(ListItem.Property(DBID))</visible>
-						</control>
-						</itemlayout>
-						<focusedlayout height="420" width="280">
-						<control type="group">
-								<animation type="Focus" reversible="false">
-									<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
-									<effect type="fade" start="80" end="100" time="300" />
-								</animation>
 							<control type="image">
 								<width>280</width>
 								<height>420</height>
 								<aspectratio aligny="top">scale</aspectratio>
 								<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 							</control>
-							<control type="image">
-								<top>-200</top>								
-								<width>280</width>
-								<height>420</height>
-								<texture flipy="true">logo_back.png</texture>
-							</control>										
-							<control type="textbox">
-								<left>8</left>
-								<top>-2</top>
-								<width>73</width>
-								<height>43</height>
-								<align>left</align>
-								<font>font13</font>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>										
-								<shadowcolor>black</shadowcolor>
-								<label>$INFO[ListItem.Year]</label>	
-								<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(250)">Conditional</animation>										
-							</control>										
 							<control type="image">
 								<width>280</width>
 								<height>420</height>
@@ -1129,21 +1036,59 @@
 								<height>43</height>
 								<align>center</align>
 								<font>font14</font>
-								<textcolor>$VAR[ThemeLabelColor]</textcolor>
-								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
-								<label>$INFO[ListItem.Label]</label>
-								<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(250)">Conditional</animation>
+								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+								<label>$INFO[ListItem.Label]$INFO[ListItem.Year, (,)]</label>
 							</control>
 							<control type="image">
-								<left>192</left>
-								<top>-10</top>
-								<width>100</width>
-								<height>100</height>
-								<texture>overlays/addons/extendedinfo.png</texture>
+								<left>228</left>
+								<top>-8</top>
+								<width>60</width>
+								<height>60</height>
+								<texture>overlays/showcase/4/OverlayWatched.png</texture>
 								<visible>!IsEmpty(ListItem.Property(DBID))</visible>
 							</control>
-						</control>
+						</itemlayout>
+						<focusedlayout height="420" width="280">
+							<control type="group">
+								<animation type="Focus" reversible="false">
+									<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
+									<effect type="fade" start="80" end="100" time="300" />
+								</animation>
+								<control type="image">
+									<width>280</width>
+									<height>420</height>
+									<aspectratio aligny="top">scale</aspectratio>
+									<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
+								</control>
+								<control type="image">
+									<width>280</width>
+									<height>420</height>
+									<texture>logo_back.png</texture>
+								</control>
+								<control type="label">
+									<left>10</left>
+									<top>345</top>
+									<width>260</width>
+									<height>43</height>
+									<align>center</align>
+									<font>font14</font>
+									<textcolor>$VAR[ThemeLabelColor]</textcolor>
+									<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+									<shadowcolor>shadow</shadowcolor>
+									<label>$INFO[ListItem.Label]</label>
+									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(250)">Conditional</animation>
+								</control>
+								<control type="image">
+									<left>228</left>
+									<top>-8</top>
+									<width>60</width>
+									<height>60</height>
+									<texture>overlays/showcase/4/OverlayWatched.png</texture>
+									<visible>!IsEmpty(ListItem.Property(DBID))</visible>
+								</control>
+							</control>
 						</focusedlayout>
 					</control>
 					<control type="panel" id="1150">
@@ -1156,44 +1101,32 @@
 						<preloaditems>2</preloaditems>
 						<scrolltime tween="quadratic" easing="out">300</scrolltime>
 						<visible>IntegerGreaterThan(Container(1150).NumItems,0)</visible>
-						<itemlayout height="387" width="594">
+						<itemlayout height="420" width="594">
 							<control type="image">
 								<width>594</width>
-								<height>387</height>
+								<height>420</height>
 								<aspectratio>scale</aspectratio>
 								<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 							</control>
 							<control type="image">
 								<width>594</width>
-								<height>387</height>
+								<height>420</height>
 								<texture>logo_back.png</texture>
 							</control>
-							<control type="label">
+							<control type="textbox">
 								<left>10</left>
-								<top>292</top>
+								<top>325</top>
 								<width>574</width>
-								<height>43</height>
+								<height>86</height>
 								<align>center</align>
 								<font>font14</font>
 								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
 								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-								<label>[B]$INFO[ListItem.Property(Type),,:][/B]</label>
-							</control>
-							<control type="label">
-								<left>10</left>
-								<top>335</top>
-								<width>574</width>
-								<height>43</height>
-								<align>center</align>
-								<font>font14</font>
-								<textcolor>white2</textcolor>
-								<shadowcolor>shadow</shadowcolor>
-								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-								<label>$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.Property(Type),[B],: [/B]][CR]$INFO[ListItem.Label]</label>
 							</control>
 						</itemlayout>
-						<focusedlayout height="387" width="594">
+						<focusedlayout height="420" width="594">
 							<control type="group">
 								<animation type="Focus" reversible="false">
 									<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -1201,40 +1134,27 @@
 								</animation>
 								<control type="image">
 									<width>594</width>
-									<height>387</height>
+									<height>420</height>
 									<aspectratio>scale</aspectratio>
 									<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 								</control>
 								<control type="image">
 									<width>594</width>
-									<height>387</height>
+									<height>420</height>
 									<texture>logo_back.png</texture>
 								</control>
-								<control type="label">
+								<control type="textbox">
 									<left>10</left>
-									<top>292</top>
+									<top>325</top>
 									<width>574</width>
-									<height>43</height>
+									<height>86</height>
 									<align>center</align>
 									<font>font14</font>
 									<textcolor>$VAR[ThemeLabelColor]</textcolor>
 									<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 									<shadowcolor>shadow</shadowcolor>
-									<label>[B]$INFO[ListItem.Property(Type),,:][/B]</label>
-									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(1150)">Conditional</animation>									
-								</control>
-								<control type="label">
-									<left>10</left>
-									<top>335</top>
-									<width>574</width>
-									<height>43</height>
-									<align>center</align>
-									<font>font14</font>
-									<textcolor>$VAR[ThemeLabelColor]</textcolor>
-									<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-									<shadowcolor>shadow</shadowcolor>
-									<label>$INFO[ListItem.Label]</label>
-									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(1150)">Conditional</animation>									
+									<label>$INFO[ListItem.Property(Type),[B],: [/B]][CR]$INFO[ListItem.Label]</label>
+									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(1150)">Conditional</animation>
 								</control>
 							</control>
 						</focusedlayout>
@@ -1249,32 +1169,32 @@
 						<preloaditems>2</preloaditems>
 						<scrolltime tween="quadratic" easing="out">300</scrolltime>
 						<visible>IntegerGreaterThan(Container(350).NumItems,0)</visible>
-						<itemlayout height="387" width="594">
+						<itemlayout height="420" width="594">
 							<control type="image">
 								<width>594</width>
-								<height>387</height>
+								<height>420</height>
 								<aspectratio>scale</aspectratio>
 								<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 							</control>
 							<control type="image">
 								<width>594</width>
-								<height>387</height>
+								<height>420</height>
 								<texture>logo_back.png</texture>
 							</control>
 							<control type="textbox">
 								<left>10</left>
-								<top>292</top>
+								<top>325</top>
 								<width>574</width>
-								<height>84</height>
+								<height>86</height>
 								<align>center</align>
 								<font>font14</font>
 								<textcolor>white2</textcolor>
 								<shadowcolor>shadow</shadowcolor>
 								<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
-								<label>$INFO[ListItem.Property(Type),[B],: [/B]]$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.Label]</label>
 							</control>
 						</itemlayout>
-						<focusedlayout height="387" width="594">
+						<focusedlayout height="420" width="594">
 							<control type="group">
 								<animation type="Focus" reversible="false">
 									<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -1282,27 +1202,27 @@
 								</animation>
 								<control type="image">
 									<width>594</width>
-									<height>387</height>
+									<height>420</height>
 									<aspectratio>scale</aspectratio>
 									<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
 								</control>
 								<control type="image">
 									<width>594</width>
-									<height>387</height>
+									<height>420</height>
 									<texture>logo_back.png</texture>
 								</control>
 								<control type="textbox">
 									<left>10</left>
-									<top>292</top>
+									<top>325</top>
 									<width>574</width>
-									<height>84</height>
+									<height>86</height>
 									<align>center</align>
 									<font>font14</font>
 									<textcolor>$VAR[ThemeLabelColor]</textcolor>
 									<selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
 									<shadowcolor>shadow</shadowcolor>
-									<label>$INFO[ListItem.Property(Type),[B],: [/B]]$INFO[ListItem.Label]</label>
-									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(350)">Conditional</animation>									
+									<label>$INFO[ListItem.Label]</label>
+									<animation effect="fade" start="100" end="40" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(350)">Conditional</animation>
 								</control>
 							</control>
 						</focusedlayout>
@@ -1317,15 +1237,12 @@
 						<preloaditems>2</preloaditems>
 						<scrolltime tween="quadratic" easing="out">300</scrolltime>
 						<visible>IntegerGreaterThan(Container(1250).NumItems,0)</visible>
-						<animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>
 						<itemlayout height="420" width="280">
 							<control type="image">
 								<width>280</width>
 								<height>420</height>
 								<aspectratio aligny="top">scale</aspectratio>
 								<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-								<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-								<bordersize>2</bordersize>
 							</control>
 						</itemlayout>
 						<focusedlayout height="420" width="280">
@@ -1339,7 +1256,7 @@
 									<height>420</height>
 									<aspectratio aligny="top">scale</aspectratio>
 									<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-									<bordertexture border="8">thumbs/thumbnail_focused.png</bordertexture>
+									<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
 									<bordersize>8</bordersize>
 								</control>
 							</control>
@@ -1355,18 +1272,15 @@
 						<preloaditems>2</preloaditems>
 						<scrolltime tween="quadratic" easing="out">300</scrolltime>
 						<visible>IntegerGreaterThan(Container(1350).NumItems,0)</visible>
-						<animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>
-						<itemlayout height="388" width="594">
+						<itemlayout height="420" width="594">
 							<control type="image">
 								<width>594</width>
-								<height>388</height>
+								<height>420</height>
 								<aspectratio>scale</aspectratio>
 								<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-								<bordertexture border="2">thumbs/panel_border3.png</bordertexture>
-								<bordersize>2</bordersize>
 							</control>
 						</itemlayout>
-						<focusedlayout height="388" width="594">
+						<focusedlayout height="420" width="594">
 							<control type="group">
 								<animation type="Focus" reversible="false">
 									<effect type="zoom" start="95" end="100" time="300" tween="sine" easing="inout" center="auto" />
@@ -1374,10 +1288,10 @@
 								</animation>
 								<control type="image">
 									<width>594</width>
-									<height>388</height>
+									<height>420</height>
 									<aspectratio>scale</aspectratio>
 									<texture background="true" fallback="DefaultVideoCover.png">$INFO[ListItem.Thumb]</texture>
-									<bordertexture border="8">thumbs/thumbnail_focused.png</bordertexture>
+									<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="8">thumbs/thumbnail_focused.png</bordertexture>
 									<bordersize>8</bordersize>
 								</control>
 							</control>
@@ -1423,72 +1337,6 @@
 				<control type="scrollbar" id="70">
 					<include>HiddenObject</include>
 				</control>
-		<!-- Add Page Count -->	
-				<control type="group">
-                    <left>915</left>
-                    <top>980</top>
-                    <width>400</width>
-                    <height>90</height>
-                    <aligny>top</aligny>
-					<align>left</align>
-                    <animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>					
-					<control type="label">
-						<font>font14</font>	
-						<textcolor>grey2</textcolor>
-						<fadetime>200</fadetime>						
-						<visible>Control.HasFocus(1000)</visible>
-						<label>Page: $INFO[Container(1000).CurrentPage]/$INFO[Container(1000).NumPages]</label>
-					</control>	
-					<control type="label">
-						<font>font14</font>	
-						<textcolor>grey2</textcolor>
-						<fadetime>200</fadetime>						
-						<visible>Control.HasFocus(750)</visible>
-						<label>Page: $INFO[Container(750).CurrentPage]/$INFO[Container(750).NumPages]</label>
-					</control>
-					<control type="label">
-						<font>font14</font>	
-						<textcolor>grey2</textcolor>
-						<fadetime>200</fadetime>						
-						<visible>Control.HasFocus(150)</visible>
-						<label>Page: $INFO[Container(150).CurrentPage]/$INFO[Container(150).NumPages]</label>
-					</control>					
-					<control type="label">
-						<font>font14</font>	
-						<textcolor>grey2</textcolor>
-						<fadetime>200</fadetime>						
-						<visible>Control.HasFocus(250)</visible>
-						<label>Page: $INFO[Container(250).CurrentPage]/$INFO[Container(250).NumPages]</label>
-					</control>
-					<control type="label">
-						<font>font14</font>	
-						<textcolor>grey2</textcolor>
-						<fadetime>200</fadetime>						
-						<visible>Control.HasFocus(1150)</visible>
-						<label>Page: $INFO[Container(1150).CurrentPage]/$INFO[Container(1150).NumPages]</label>
-					</control>
-					<control type="label">
-						<font>font14</font>	
-						<textcolor>grey2</textcolor>
-						<fadetime>200</fadetime>						
-						<visible>Control.HasFocus(350)</visible>
-						<label>Page: $INFO[Container(350).CurrentPage]/$INFO[Container(350).NumPages]</label>
-					</control>	
-					<control type="label">
-						<font>font14</font>	
-						<textcolor>grey2</textcolor>
-						<fadetime>200</fadetime>						
-						<visible>Control.HasFocus(1250)</visible>
-						<label>Page: $INFO[Container(1250).CurrentPage]/$INFO[Container(1250).NumPages]</label>
-					</control>
-					<control type="label">
-						<font>font14</font>	
-						<textcolor>grey2</textcolor>
-						<fadetime>200</fadetime>						
-						<visible>Control.HasFocus(1350)</visible>
-						<label>Page: $INFO[Container(1350).CurrentPage]/$INFO[Container(1350).NumPages]</label>
-					</control>					
-                </control>					
 				<control type="group" id="71">
 					<left>0</left>
 					<top>975</top>

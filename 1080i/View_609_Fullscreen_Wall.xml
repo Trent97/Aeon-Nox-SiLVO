@@ -81,7 +81,7 @@
 							<left>0</left>
 							<width>240</width>
 							<height>360</height>
-							<aspectratio scalediffuse="false">keep</aspectratio>
+							<aspectratio scalediffuse="false">scale</aspectratio>
 							<texture background="true">$VAR[PosterThumbVar]</texture>
 							<bordertexture colordiffuse="$VAR[ThemeLabelColor]" border="9">thumbs/thumbnail_focused.png</bordertexture>
 							<bordersize>8</bordersize>
@@ -91,7 +91,7 @@
 							<top>10</top>
 							<width>85</width>
 							<height>60</height>
-							<aspectratio>scale</aspectratio>
+							<aspectratio>keep</aspectratio>
 							<texture background="true">oscars.png</texture>
 							<visible>Skin.HasSetting(oscars609) + [SubString(ListItem.FileName,.oscars) | StringCompare(Container.FolderPath,special://profile/playlists/video/BestPicture.xsp)]</visible>
 						</control>
@@ -117,7 +117,6 @@
 							<left>0</left>
 							<width>192</width>
 							<height>270</height>
-							<aspectratio scalediffuse="false">scale</aspectratio>							
 							<texture background="true">$VAR[PosterThumbVar]</texture>
 						</control>
 						<control type="image">
@@ -237,7 +236,7 @@
 						</control>
 					</control>
 				</focusedlayout>
-			</control>z
+			</control>
 			<control type="scrollbar" id="60">
 				<left>1906</left>
 				<top>0</top>

@@ -76,7 +76,7 @@
 				</itemlayout>
 				<focusedlayout height="285" width="185">
 					<control type="group">
-						<animation effect="zoom" center="100,200" start="100" end="115" time="420" tween="back" reversible="false">Focus</animation>
+						<animation effect="zoom" center="100,200" start="100" end="120" time="420" tween="back" reversible="false">Focus</animation>
 						<control type="image">
 							<width>185</width>
 							<height>285</height>
